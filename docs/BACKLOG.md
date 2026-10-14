@@ -15,15 +15,15 @@ Updated 14.10.2026.
 
 ## P: the owner's own actions
 
-- **P-1 Tokenfactory key.** notebooks.amd.com/tokenfactory says "Your email is not registered for API
-  key distribution" for pete@sunrisesoftware.app (AMD AI Developer Program and lablab use the same
-  address; the lablab team exists since 14.10.). Ask the organisers: lablab Discord #ineedhelp, or
-  the address community@lablab.ai shown on the lablab site. Without the key the public demo replays
-  recorded runs (adr.ap.010); the AMD requirement is met by the Radeon cards in local mode.
-- **P-2 Merge Atlas PR #477** (the model's modules and ADRs 005-010) if the agent's permission check
-  refuses the merge; the agent then deploys and re-renders `docs/adr/`.
-- **P-3 DNS for asprescribed.sunrisesoftware.app** (Cloudflare), or permission for the agent to add
-  it; *check* whether the name is the one wanted (it was marked a proposal).
+- **P-1 Tokenfactory key: waiting for the organisers.** notebooks.amd.com/tokenfactory says "Your email
+  is not registered for API key distribution" for pete@sunrisesoftware.app (AMD AI Developer Program
+  and lablab use the same address; the lablab team exists since 14.10.). The owner emailed
+  community@lablab.ai on 14.10.2026; the lablab Discord shows him no #ineedhelp channel. Without the
+  key the public demo replays recorded runs (adr.ap.010); the AMD requirement is met by the Radeon
+  cards in local mode.
+- **P-3 DNS record for asprescribed.sunrisesoftware.app** (Cloudflare, proxied, to 135.181.157.185):
+  the name is confirmed by the owner (14.10.2026); the record is made by the owner, or by the agent
+  with a Cloudflare token the owner provides.
 - **P-4 Video voice-over or presence** in the demo video, if wanted (SUB-1).
 
 ## DEPLOY

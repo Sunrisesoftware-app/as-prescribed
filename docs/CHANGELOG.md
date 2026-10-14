@@ -5,6 +5,14 @@ sub-entries. What changed and *why*, with what was measured, so a later reader c
 decision from a habit. The canonical state is [`BUILD_INFO.json`](BUILD_INFO.json): refer to it,
 do not copy it here.
 
+## Session 1, 14.10.2026 (continued): Atlas PR #477 merged and deployed
+
+**Decided (the owner):** PR #477 merged; the name asprescribed.sunrisesoftware.app confirmed (Atlas
+decision log). **Done:** both Atlas workers deployed from main b632460 (atlas-mcp d9780c2e, viewer
+43c40811); `atlas_get_system` shows 13 modules; `docs/adr` re-rendered from main with no diff. The
+owner emailed community@lablab.ai about the tokenfactory key; the Discord shows him no #ineedhelp
+channel.
+
 ## Session 1, 14.10.2026: from the handoff to a measured, recorded demo (chain 1)
 
 **Decided (the owner, in decision boxes; DECISIONS.md rows 9-16, 17-19):** the name As Prescribed;

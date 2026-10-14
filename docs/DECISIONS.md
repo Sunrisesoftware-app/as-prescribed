@@ -23,7 +23,7 @@ States: **draft** (not asked) · **OK** (decided) · **edit** · **drop** · **l
 | 12 | 7900 XT | Laya-FI paused 15.-17.10. | booked windows (recommended) / **pause** / one window | OK, the owner chose against the recommendation (dec_975184ba2b9543e1) |
 | 13 | S2 injury | Lower-limb amputation | **amputation** / nerve injury / fixator | OK (dec_7b568a36fe204ca0) |
 | 14 | Clinical review | One review page, rows approved, no prose written | **review page** / Atlas doc / boxes | OK (dec_9038a0f31fcf4350) |
-| 15 | Deploy | asprescribed.sunrisesoftware.app (proposed name), ultragravel machine, systemd | **subdomain + systemd** / docker / own domain | OK (dec_5b3d764b787b41f1) |
+| 15 | Deploy | asprescribed.sunrisesoftware.app, ultragravel machine, systemd | **subdomain + systemd** / docker / own domain | OK (dec_5b3d764b787b41f1); the name confirmed by the owner 14.10.2026 (dec_591baa2b30f743b2) |
 | 16 | Public input | Synthetic sessions and error injection, no free text (adr.ap.004) | **sessions + injection** / sessions only / free text | OK (dec_bc0df4d7c1d64869) |
 | 17 | Atlas | A system of its own | — (the owner, in chat) | OK (14.10.2026) |
 | 18 | S2.2 | Single-leg bridge on the intact (right) leg | **single-leg, right** / remove | OK (dec_053ef87aba2e4ce3) |
