@@ -8,6 +8,7 @@ and every line gets exactly one state: conflict > proposal > uncertain translati
 import json
 import time
 from collections import Counter
+from collections.abc import Callable
 from dataclasses import dataclass, field
 
 from .config import DATA_DIR, Endpoint
@@ -30,6 +31,7 @@ class RoundLog:
     objections: dict[str, int]   # by kind, everything raised this round
     correctable: int             # what the generator was asked to fix
     seconds: float
+    raised: list[dict] = field(default_factory=list)  # every objection raised this round
 
 
 @dataclass
@@ -39,6 +41,7 @@ class SessionResult:
     lines: list[PatientLine]
     heard_not_prescribed: list[Item]       # deferred or withdrawn: shown to the therapist, never to the patient
     rounds: list[RoundLog]
+    items: list[Item] = field(default_factory=list)  # the final items, all statuses
     notes: list[str] = field(default_factory=list)
     calls: dict[str, list[dict]] = field(default_factory=lambda: {"generator": [], "falsifier": []})
     seconds: float = 0.0
@@ -79,8 +82,11 @@ async def correct_items(spans: list[Span], items: list[Item], objections: list[O
 
 async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn: ChatFn = chat,
                       max_rounds: int = 3, budget_s: float | None = None,
-                      items: list[Item] | None = None) -> SessionResult:
-    """items: start from these instead of extracting (the evaluation injects errors this way)."""
+                      items: list[Item] | None = None,
+                      translation_hook: Callable[[str, str], str] | None = None) -> SessionResult:
+    """items: start from these instead of extracting (the evaluation injects item errors this way).
+    translation_hook(item_id, text): applied to round 0's translations (the evaluation injects
+    mistranslations this way); later rounds re-translate without it."""
     t0 = time.perf_counter()
     spans = load_spans(session_path(session_id))
     by_id = {s.span_id: s for s in spans}
@@ -126,6 +132,8 @@ async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn:
         if todo:
             new, c = await translate(todo, language, gen, chat_fn=chat_fn, feedback=feedback)
             _log(result, "generator", c, f"translate r{k}")
+            if translation_hook and k == 0:
+                new = {iid: translation_hook(iid, text) for iid, text in new.items()}
             translations.update(new)
             sources.update({iid: en for iid, en in todo.items() if iid in new})
             missing = [iid for iid in todo if iid not in new]
@@ -153,7 +161,7 @@ async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn:
         item_fix = [o for o in raised if o.kind in CORRECTABLE and o.blocking]
         trans_fix = {o.item_id: o.detail for o in raised if o.kind == "mistranslation"}
         result.rounds.append(RoundLog(k, dict(Counter(o.kind for o in raised)), len(item_fix) + len(trans_fix),
-                                      round(time.perf_counter() - tr, 2)))
+                                      round(time.perf_counter() - tr, 2), [o.model_dump() for o in raised]))
 
         out_of_time = budget_s is not None and time.perf_counter() - t0 > budget_s
         if not item_fix and not trans_fix or k == max_rounds - 1 or out_of_time:
@@ -166,6 +174,7 @@ async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn:
             result.notes += notes
         feedback = trans_fix
 
+    result.items = items
     for i in items:
         if i.status != "prescribed":
             result.heard_not_prescribed.append(i)

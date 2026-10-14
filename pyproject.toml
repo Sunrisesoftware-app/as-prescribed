@@ -25,5 +25,5 @@ target-version = "py311"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["."]
+pythonpath = [".", "tests"]
 asyncio_mode = "auto"

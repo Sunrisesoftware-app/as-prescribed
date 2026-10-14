@@ -1,0 +1,559 @@
+{
+ "version": 1,
+ "runs": [
+  {
+   "run": "A1",
+   "session": "S1",
+   "type": "wrong_dose_or_frequency",
+   "injection": {
+    "op": "set",
+    "item_id": "S1.1",
+    "fields": {
+     "dose": "3 x 15"
+    }
+   }
+  },
+  {
+   "run": "A2",
+   "session": "S1",
+   "type": "wrong_dose_or_frequency",
+   "injection": {
+    "op": "set",
+    "item_id": "S1.4",
+    "fields": {
+     "frequency": "every day"
+    }
+   }
+  },
+  {
+   "run": "A3",
+   "session": "S2",
+   "type": "wrong_dose_or_frequency",
+   "injection": {
+    "op": "set",
+    "item_id": "S2.3",
+    "fields": {
+     "dose": "2 x 12"
+    }
+   }
+  },
+  {
+   "run": "A4",
+   "session": "S2",
+   "type": "wrong_dose_or_frequency",
+   "injection": {
+    "op": "set",
+    "item_id": "S2.1",
+    "fields": {
+     "frequency": "every evening"
+    }
+   }
+  },
+  {
+   "run": "A5",
+   "session": "S3",
+   "type": "wrong_dose_or_frequency",
+   "injection": {
+    "op": "set",
+    "item_id": "S3.3",
+    "fields": {
+     "frequency": "every other day"
+    }
+   }
+  },
+  {
+   "run": "A6",
+   "session": "S3",
+   "type": "wrong_dose_or_frequency",
+   "injection": {
+    "op": "set",
+    "item_id": "S3.1",
+    "fields": {
+     "dose": "5 minutes"
+    }
+   }
+  },
+  {
+   "run": "B1",
+   "session": "S1",
+   "type": "wrong_side",
+   "injection": {
+    "op": "set",
+    "item_id": "S1.2",
+    "fields": {
+     "side": "left"
+    }
+   }
+  },
+  {
+   "run": "B2",
+   "session": "S1",
+   "type": "wrong_side",
+   "injection": {
+    "op": "set",
+    "item_id": "S1.5",
+    "fields": {
+     "side": "left"
+    }
+   }
+  },
+  {
+   "run": "B3",
+   "session": "S2",
+   "type": "wrong_side",
+   "injection": {
+    "op": "set",
+    "item_id": "S2.2",
+    "fields": {
+     "side": "left"
+    }
+   }
+  },
+  {
+   "run": "B4",
+   "session": "S2",
+   "type": "wrong_side",
+   "injection": {
+    "op": "set",
+    "item_id": "S2.3",
+    "fields": {
+     "side": "right"
+    }
+   }
+  },
+  {
+   "run": "B5",
+   "session": "S3",
+   "type": "wrong_side",
+   "injection": {
+    "op": "set",
+    "item_id": "S3.2",
+    "fields": {
+     "side": "left"
+    }
+   }
+  },
+  {
+   "run": "C1",
+   "session": "S1",
+   "type": "invented_item",
+   "injection": {
+    "op": "add",
+    "item_id": "X1",
+    "fields": {
+     "exercise_id": "ex.heel_raise",
+     "side": "both",
+     "dose": "3 x 10",
+     "frequency": "every day",
+     "source_span_ids": [
+      "s034"
+     ]
+    }
+   }
+  },
+  {
+   "run": "C2",
+   "session": "S1",
+   "type": "invented_item",
+   "injection": {
+    "op": "add",
+    "item_id": "X2",
+    "fields": {
+     "exercise_id": "ex.mini_squat",
+     "side": "both",
+     "dose": "2 x 10",
+     "frequency": "every day",
+     "source_span_ids": [
+      "s024"
+     ]
+    }
+   }
+  },
+  {
+   "run": "C3",
+   "session": "S2",
+   "type": "invented_item",
+   "injection": {
+    "op": "add",
+    "item_id": "X3",
+    "fields": {
+     "exercise_id": "ex.clamshell",
+     "side": "left",
+     "dose": "3 x 12",
+     "frequency": "every day",
+     "source_span_ids": [
+      "s016",
+      "s017"
+     ]
+    }
+   }
+  },
+  {
+   "run": "C4",
+   "session": "S2",
+   "type": "invented_item",
+   "injection": {
+    "op": "add",
+    "item_id": "X4",
+    "fields": {
+     "exercise_id": "ex.straight_leg_raise",
+     "side": "left",
+     "dose": "3 x 12",
+     "frequency": "every day",
+     "source_span_ids": [
+      "s021"
+     ]
+    }
+   }
+  },
+  {
+   "run": "C5",
+   "session": "S3",
+   "type": "invented_item",
+   "injection": {
+    "op": "add",
+    "item_id": "X5",
+    "fields": {
+     "exercise_id": "ex.wall_slide",
+     "side": null,
+     "dose": null,
+     "frequency": null,
+     "source_span_ids": [
+      "s027"
+     ]
+    }
+   }
+  },
+  {
+   "run": "D1",
+   "session": "S1",
+   "type": "dropped_caution",
+   "injection": {
+    "op": "set",
+    "item_id": "S1.2",
+    "fields": {
+     "cautions": []
+    }
+   }
+  },
+  {
+   "run": "D2",
+   "session": "S1",
+   "type": "dropped_caution",
+   "injection": {
+    "op": "set",
+    "item_id": "S1.3",
+    "fields": {
+     "cautions": []
+    }
+   }
+  },
+  {
+   "run": "D3",
+   "session": "S1",
+   "type": "dropped_caution",
+   "injection": {
+    "op": "set",
+    "item_id": "S1.4",
+    "fields": {
+     "cautions": []
+    }
+   }
+  },
+  {
+   "run": "D4",
+   "session": "S2",
+   "type": "dropped_caution",
+   "injection": {
+    "op": "set",
+    "item_id": "S2.5",
+    "fields": {
+     "cautions": []
+    }
+   }
+  },
+  {
+   "run": "D5",
+   "session": "S3",
+   "type": "dropped_caution",
+   "injection": {
+    "op": "set",
+    "item_id": "S3.2",
+    "fields": {
+     "cautions": []
+    }
+   }
+  },
+  {
+   "run": "E1",
+   "session": "S2",
+   "type": "contraindicated",
+   "injection": {
+    "op": "add",
+    "item_id": "X6",
+    "fields": {
+     "exercise_id": "ex.step_up",
+     "side": "left",
+     "dose": "2 x 10",
+     "frequency": "every day",
+     "source_span_ids": [
+      "s021"
+     ]
+    }
+   }
+  },
+  {
+   "run": "E2",
+   "session": "S2",
+   "type": "contraindicated",
+   "injection": {
+    "op": "add",
+    "item_id": "X7",
+    "fields": {
+     "exercise_id": "ex.kneeling_hip_stretch",
+     "side": "left",
+     "dose": "3 x 30 seconds",
+     "frequency": "every day",
+     "source_span_ids": [
+      "s025"
+     ]
+    }
+   }
+  },
+  {
+   "run": "E3",
+   "session": "S2",
+   "type": "contraindicated",
+   "injection": {
+    "op": "add",
+    "item_id": "X8",
+    "fields": {
+     "exercise_id": "ex.heel_raise_single",
+     "side": "left",
+     "dose": "3 x 12",
+     "frequency": "every day",
+     "source_span_ids": [
+      "s021"
+     ]
+    }
+   }
+  },
+  {
+   "run": "E4",
+   "session": "S2",
+   "type": "contraindicated",
+   "injection": {
+    "op": "add",
+    "item_id": "X9",
+    "fields": {
+     "exercise_id": "ex.cat_camel",
+     "side": "none",
+     "dose": "2 x 10",
+     "frequency": "every day",
+     "source_span_ids": [
+      "s013"
+     ]
+    }
+   }
+  },
+  {
+   "run": "E5",
+   "session": "S3",
+   "type": "contraindicated",
+   "injection": {
+    "op": "add",
+    "item_id": "X10",
+    "fields": {
+     "exercise_id": "ex.sit_up",
+     "side": "none",
+     "dose": "2 x 15",
+     "frequency": "every day",
+     "source_span_ids": [
+      "s021",
+      "s022"
+     ]
+    }
+   }
+  },
+  {
+   "run": "F1",
+   "session": "S1",
+   "type": "mistranslation",
+   "injection": {
+    "op": "translation",
+    "item_id": "S1.1",
+    "how": "change_number"
+   }
+  },
+  {
+   "run": "F2",
+   "session": "S2",
+   "type": "mistranslation",
+   "injection": {
+    "op": "translation",
+    "item_id": "S2.4",
+    "how": "change_number"
+   }
+  },
+  {
+   "run": "F3",
+   "session": "S1",
+   "type": "mistranslation",
+   "injection": {
+    "op": "translation",
+    "item_id": "S1.3",
+    "how": "swap_side"
+   }
+  },
+  {
+   "run": "F4",
+   "session": "S2",
+   "type": "mistranslation",
+   "injection": {
+    "op": "translation",
+    "item_id": "S2.3",
+    "how": "swap_side"
+   }
+  },
+  {
+   "run": "F5",
+   "session": "S3",
+   "type": "mistranslation",
+   "injection": {
+    "op": "translation",
+    "item_id": "S3.2",
+    "how": "drop_last_sentence"
+   }
+  },
+  {
+   "run": "F6",
+   "session": "S1",
+   "type": "mistranslation",
+   "injection": {
+    "op": "translation",
+    "item_id": "S1.4",
+    "how": "drop_last_sentence"
+   }
+  },
+  {
+   "run": "K1",
+   "session": "S1",
+   "type": "clean",
+   "injection": null
+  },
+  {
+   "run": "K2",
+   "session": "S2",
+   "type": "clean",
+   "injection": null
+  },
+  {
+   "run": "K3",
+   "session": "S3",
+   "type": "clean",
+   "injection": null
+  },
+  {
+   "run": "K4",
+   "session": "S1",
+   "type": "clean",
+   "injection": null
+  },
+  {
+   "run": "K5",
+   "session": "S2",
+   "type": "clean",
+   "injection": null
+  },
+  {
+   "run": "K6",
+   "session": "S3",
+   "type": "clean",
+   "injection": null
+  },
+  {
+   "run": "K7",
+   "session": "S1",
+   "type": "clean",
+   "injection": null
+  },
+  {
+   "run": "K8",
+   "session": "S2",
+   "type": "clean",
+   "injection": null
+  },
+  {
+   "run": "K9",
+   "session": "S3",
+   "type": "clean",
+   "injection": null
+  }
+ ],
+ "types": [
+  "wrong_dose_or_frequency",
+  "wrong_side",
+  "invented_item",
+  "dropped_caution",
+  "contraindicated",
+  "mistranslation"
+ ],
+ "detects": {
+  "wrong_dose_or_frequency": [
+   "not_entailed",
+   "wrong_dose",
+   "wrong_frequency"
+  ],
+  "wrong_side": [
+   "not_entailed",
+   "wrong_side"
+  ],
+  "invented_item": [
+   "invented_item",
+   "not_entailed",
+   "wrong_dose",
+   "wrong_frequency",
+   "wrong_side"
+  ],
+  "dropped_caution": [
+   "dropped_caution",
+   "not_entailed"
+  ],
+  "contraindicated": [
+   "rule_conflict"
+  ],
+  "mistranslation": [
+   "mistranslation"
+  ]
+ },
+ "expected": [
+  [
+   "S2.5",
+   "rule_conflict"
+  ],
+  [
+   "S3.4",
+   "incomplete"
+  ]
+ ],
+ "falsifier_only": [
+  "A2",
+  "A4",
+  "A5",
+  "B3",
+  "B4",
+  "C2",
+  "C3",
+  "C4",
+  "C5",
+  "D1",
+  "D2",
+  "D3",
+  "D4",
+  "D5",
+  "F3",
+  "F4",
+  "F5",
+  "F6"
+ ]
+}
