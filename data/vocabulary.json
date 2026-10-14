@@ -1,0 +1,30 @@
+{
+  "_note": "Fixed movement and load vocabulary. Exercises carry these tags and rules match on them, so a rule check never needs a model. Every row is a PROPOSAL until Petri approves it on the review page (handoff v3 D14).",
+  "tags": [
+    {"id": "wb_bilateral", "group": "load", "en": "Standing, weight on both legs", "fi": "Seisten, paino molemmilla jaloilla"},
+    {"id": "wb_single_leg", "group": "load", "en": "Standing on one leg (side-specific)", "fi": "Yhden jalan seisonta (puolikohtainen)"},
+    {"id": "impact", "group": "load", "en": "Jumping, hopping or running", "fi": "Hypyt, loikat tai juoksu"},
+    {"id": "stairs", "group": "load", "en": "Steps or stairs", "fi": "Askelmat tai portaat"},
+    {"id": "walking", "group": "load", "en": "Walking", "fi": "Kävely"},
+    {"id": "balance_challenge", "group": "load", "en": "Balance is deliberately challenged", "fi": "Tasapainoa haastetaan tarkoituksella"},
+    {"id": "distal_limb_pressure", "group": "load", "en": "Pressure on the end of the limb", "fi": "Paine raajan päähän (tyngän päähän)"},
+    {"id": "kneeling", "group": "position", "en": "Kneeling or weight on the knees", "fi": "Polviseisonta tai paino polvilla"},
+    {"id": "prone", "group": "position", "en": "Lying face down", "fi": "Vatsamakuu"},
+    {"id": "supine", "group": "position", "en": "Lying on the back", "fi": "Selinmakuu"},
+    {"id": "side_lying", "group": "position", "en": "Lying on the side", "fi": "Kylkimakuu"},
+    {"id": "sitting", "group": "position", "en": "Sitting", "fi": "Istuen"},
+    {"id": "spinal_flexion", "group": "movement", "en": "Bending the spine forward", "fi": "Selän eteentaivutus"},
+    {"id": "spinal_flexion_loaded", "group": "movement", "en": "Bending the spine forward against load (e.g. sit-ups)", "fi": "Selän eteentaivutus kuormaa vastaan (esim. vatsarutistus)"},
+    {"id": "spinal_rotation", "group": "movement", "en": "Twisting the spine", "fi": "Selän kierto"},
+    {"id": "hip_flexion_deep", "group": "movement", "en": "Hip bent beyond 90 degrees", "fi": "Lonkan koukistus yli 90 astetta"},
+    {"id": "knee_flexion_deep_loaded", "group": "movement", "en": "Deep knee bend under body weight", "fi": "Syvä polven koukistus kehon painolla"},
+    {"id": "knee_extension_resisted", "group": "movement", "en": "Straightening the knee against resistance", "fi": "Polven ojennus vastusta vastaan"},
+    {"id": "shoulder_elevation_overhead", "group": "movement", "en": "Raising the arm above shoulder height", "fi": "Käden nosto yli olkatason"},
+    {"id": "shoulder_resisted", "group": "movement", "en": "Shoulder movement against resistance", "fi": "Olkapään liike vastusta vastaan"},
+    {"id": "end_range_stretch", "group": "movement", "en": "Sustained stretch at the end of the range", "fi": "Pitkäkestoinen venytys liikelaajuuden ääriasennossa"},
+    {"id": "prosthesis_on", "group": "equipment", "en": "Done wearing the prosthesis", "fi": "Tehdään proteesi jalassa"},
+    {"id": "elastic_band", "group": "equipment", "en": "Elastic band resistance", "fi": "Kuminauhavastus"},
+    {"id": "external_weight", "group": "equipment", "en": "Hand weight or other external load", "fi": "Käsipaino tai muu ulkoinen kuorma"},
+    {"id": "breath_hold_risk", "group": "effort", "en": "Heavy effort that invites holding the breath", "fi": "Raskas ponnistus, jossa hengitystä on taipumus pidättää"}
+  ]
+}

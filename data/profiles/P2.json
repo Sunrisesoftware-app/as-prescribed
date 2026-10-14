@@ -1,0 +1,9 @@
+{
+  "_note": "Synthetic profile. No real patient. Matter-of-fact, no graphic injury detail (handoff D7). PROPOSAL until Petri approves it.",
+  "profile_id": "P2",
+  "session_id": "S2",
+  "language": "uk",
+  "age_band": "25-34",
+  "conditions": ["C.tt_amputation_left", "C.prosthesis_wb_restricted_left", "C.residual_limb_graft_left"],
+  "summary": "Left below-knee amputation after a war injury, about four months ago; treated in Finland since. Early prosthetic rehabilitation: the prosthetist is still fitting the socket and has restricted single-leg standing on the prosthesis to supervised sessions. Skin graft at the end of the residual limb."
+}

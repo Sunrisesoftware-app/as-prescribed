@@ -1,0 +1,28 @@
+{
+  "_note": "Documented restrictions as rules: profile condition x tag (x side) -> block | caution. The engine is deterministic; no model decides a conflict. A block halts the program: 'documented restriction found, therapist decides'. A caution must appear in the patient line, so a dropped caution is an objection. side: the side the rule protects ('any' = every side; an item on 'both' sides matches left and right). Every row is a PROPOSAL until Petri approves it.",
+  "conditions": [
+    {"id": "C.knee_oa_right", "en": "Right knee osteoarthritis", "fi": "Oikean polven nivelrikko"},
+    {"id": "C.hypertension", "en": "Hypertension, on medication", "fi": "Verenpainetauti, lääkitty"},
+    {"id": "C.tt_amputation_left", "en": "Left below-knee (transtibial) amputation, early prosthetic phase", "fi": "Vasen säären amputaatio, proteesikuntoutuksen alkuvaihe"},
+    {"id": "C.prosthesis_wb_restricted_left", "en": "Prosthetist: no unsupervised single-leg weight-bearing on the left prosthesis while the socket is fitted", "fi": "Apuvälineteknikko: ei valvomatonta yhden jalan kuormitusta vasemmalla proteesilla holkin sovituksen aikana"},
+    {"id": "C.residual_limb_graft_left", "en": "Skin graft at the end of the left residual limb", "fi": "Ihonsiirre vasemman tyngän päässä"},
+    {"id": "C.shoulder_pain_right", "en": "Right shoulder pain on raising the arm (rotator cuff related)", "fi": "Oikean olkapään kipu käden nostossa (kiertäjäkalvosin)"},
+    {"id": "C.osteoporosis", "en": "Osteoporosis, on medication", "fi": "Osteoporoosi, lääkitty"}
+  ],
+  "rules": [
+    {"id": "R01", "condition": "C.knee_oa_right", "tag": "impact", "side": "any", "effect": "block", "text": "No jumping or running for now."},
+    {"id": "R02", "condition": "C.knee_oa_right", "tag": "knee_flexion_deep_loaded", "side": "any", "effect": "caution", "text": "Stop before the knee is deeply bent."},
+    {"id": "R03", "condition": "C.hypertension", "tag": "breath_hold_risk", "side": "any", "effect": "caution", "text": "Breathe out during the effort; do not hold your breath."},
+    {"id": "R04", "condition": "C.prosthesis_wb_restricted_left", "tag": "wb_single_leg", "side": "left", "effect": "block", "text": "Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it."},
+    {"id": "R05", "condition": "C.prosthesis_wb_restricted_left", "tag": "stairs", "side": "left", "effect": "block", "text": "No step-ups leading with the left prosthesis outside supervised sessions."},
+    {"id": "R06", "condition": "C.residual_limb_graft_left", "tag": "kneeling", "side": "left", "effect": "block", "text": "No kneeling on the left residual limb (skin graft)."},
+    {"id": "R07", "condition": "C.residual_limb_graft_left", "tag": "distal_limb_pressure", "side": "left", "effect": "block", "text": "No pressure on the end of the left residual limb (skin graft)."},
+    {"id": "R08", "condition": "C.tt_amputation_left", "tag": "impact", "side": "any", "effect": "block", "text": "No hopping on the right leg."},
+    {"id": "R09", "condition": "C.tt_amputation_left", "tag": "prosthesis_on", "side": "left", "effect": "caution", "text": "Check the skin of the residual limb after wearing the prosthesis."},
+    {"id": "R10", "condition": "C.osteoporosis", "tag": "spinal_flexion_loaded", "side": "any", "effect": "block", "text": "No loaded forward bending of the spine (osteoporosis)."},
+    {"id": "R11", "condition": "C.osteoporosis", "tag": "spinal_flexion", "side": "any", "effect": "caution", "text": "Bend from the hips and keep the back straight."},
+    {"id": "R12", "condition": "C.osteoporosis", "tag": "spinal_rotation", "side": "any", "effect": "caution", "text": "Avoid forceful twisting of the back."},
+    {"id": "R13", "condition": "C.shoulder_pain_right", "tag": "shoulder_elevation_overhead", "side": "right", "effect": "caution", "text": "Stay in a pain-free range; stop if the pain rises."},
+    {"id": "R14", "condition": "C.shoulder_pain_right", "tag": "external_weight", "side": "right", "effect": "caution", "text": "No hand weights in the right hand for now."}
+  ]
+}

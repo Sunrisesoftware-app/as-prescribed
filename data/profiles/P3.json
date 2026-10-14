@@ -1,0 +1,9 @@
+{
+  "_note": "Synthetic profile. No real patient. PROPOSAL until Petri approves it.",
+  "profile_id": "P3",
+  "session_id": "S3",
+  "language": "ar",
+  "age_band": "65-74",
+  "conditions": ["C.shoulder_pain_right", "C.osteoporosis"],
+  "summary": "Right shoulder pain when raising the arm, for about two months, rotator cuff related. Osteoporosis, on medication. First visit."
+}

@@ -1,0 +1,14 @@
+# Secrets: .env holds the tokenfactory key and is never committed (scripts/check-secrets.sh refuses it).
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Run outputs (eval runs write here; the sealed keys and reports that matter are copied to eval/results)
+runs/

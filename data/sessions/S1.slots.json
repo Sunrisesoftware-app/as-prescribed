@@ -1,0 +1,17 @@
+{
+  "_note": "Session template: the clinical choices are slots filled from the catalogue. Petri approves the slot values; the dialogue (S1.transcript.jsonl, English) is written around them afterwards and checked against them. PROPOSAL until approved.",
+  "session_id": "S1",
+  "profile_id": "P1",
+  "patient_language": "ar",
+  "transcript_language": "en",
+  "visit_minutes": 12,
+  "demonstrates": "Happy path: every line supported, no rule fires, Arabic right-to-left patient view.",
+  "prescribed": [
+    {"slot": "S1.1", "exercise_id": "ex.sit_to_stand", "side": "both", "dose": "3 x 10", "frequency": "every day", "cautions": [], "extra_tags": [], "stated": "explicit", "expected_state": "supported"},
+    {"slot": "S1.2", "exercise_id": "ex.knee_ext_band", "side": "right", "dose": "3 x 12", "frequency": "every other day", "cautions": ["Breathe out as you straighten the knee."], "extra_tags": [], "stated": "explicit", "expected_state": "supported"},
+    {"slot": "S1.3", "exercise_id": "ex.step_up", "side": "right", "dose": "2 x 10", "frequency": "every day", "cautions": ["Hold the stair rail."], "extra_tags": [], "stated": "explicit", "expected_state": "supported"},
+    {"slot": "S1.4", "exercise_id": "ex.walking", "side": "none", "dose": "20 minutes", "frequency": "5 days a week", "cautions": ["Some knee pain while walking is acceptable if it has settled by the next morning."], "extra_tags": [], "stated": "explicit", "expected_state": "supported"},
+    {"slot": "S1.5", "exercise_id": "ex.calf_stretch", "side": "right", "dose": "3 x 30 seconds", "frequency": "every day", "cautions": [], "extra_tags": [], "stated": "explicit", "expected_state": "supported"}
+  ],
+  "traps": []
+}

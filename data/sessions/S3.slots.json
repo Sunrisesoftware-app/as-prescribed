@@ -1,0 +1,19 @@
+{
+  "_note": "Session template: the clinical choices are slots filled from the catalogue. Petri approves the slot values; the dialogue (S3.transcript.jsonl, English) is written around them afterwards. PROPOSAL until approved.",
+  "session_id": "S3",
+  "profile_id": "P3",
+  "patient_language": "ar",
+  "transcript_language": "en",
+  "visit_minutes": 13,
+  "demonstrates": "Ambiguity: one exercise without side or dose becomes a proposal shown to the therapist only; two items mentioned but NOT prescribed are traps a model tends to include; one idiom invites an uncertain translation.",
+  "prescribed": [
+    {"slot": "S3.1", "exercise_id": "ex.pendulum", "side": "right", "dose": "1 minute", "frequency": "three times a day", "cautions": [], "extra_tags": [], "stated": "explicit", "expected_state": "supported"},
+    {"slot": "S3.2", "exercise_id": "ex.er_band", "side": "right", "dose": "3 x 10", "frequency": "every day", "cautions": ["Keep your elbow tucked in against your side."], "extra_tags": [], "stated": "explicit", "expected_state": "supported", "note": "The caution is an idiom ('tucked in'); a candidate for the uncertain-translation state."},
+    {"slot": "S3.3", "exercise_id": "ex.row_band", "side": "both", "dose": "2 x 15", "frequency": "every day", "cautions": [], "extra_tags": [], "stated": "explicit", "expected_state": "supported"},
+    {"slot": "S3.4", "exercise_id": "ex.hamstring_stretch", "side": null, "dose": null, "frequency": null, "cautions": [], "extra_tags": [], "stated": "missing side, dose and frequency: 'and the stretch for the back of the thigh, hold it for a while'", "expected_state": "proposal", "note": "R11's caution applies (osteoporosis, spinal flexion)."}
+  ],
+  "traps": [
+    {"slot": "T3.1", "exercise_id": "ex.wall_slide", "how_mentioned": "The therapist defers it: 'when the pain settles we will add wall slides, but not yet'.", "expected": "Must not appear as a prescribed line; if it does, it is a proposal (not entailed)."},
+    {"slot": "T3.2", "exercise_id": "ex.sit_up", "how_mentioned": "The patient mentions doing sit-ups every morning; the therapist says 'let us leave the sit-ups out for now'.", "expected": "Must not appear; if it does, it is an invented item AND a rule conflict (R10)."}
+  ]
+}

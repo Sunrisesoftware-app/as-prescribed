@@ -1,0 +1,9 @@
+{
+  "_note": "Synthetic profile. No real patient. PROPOSAL until Petri approves it.",
+  "profile_id": "P1",
+  "session_id": "S1",
+  "language": "ar",
+  "age_band": "55-64",
+  "conditions": ["C.knee_oa_right", "C.hypertension"],
+  "summary": "Right knee osteoarthritis, painful on stairs and after long walks. Hypertension, on medication. Second visit of a knee exercise program."
+}
