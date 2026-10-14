@@ -1,0 +1,186 @@
+{
+ "summary": {
+  "session": "S3",
+  "states": {
+   "supported": 3,
+   "proposal": 1
+  },
+  "rounds": 2,
+  "objections_per_round": [
+   1,
+   0
+  ],
+  "seconds": 31.2
+ },
+ "lines": [
+  {
+   "item_id": "i1",
+   "language": "ar",
+   "text": "تأرجح ذراع البندول (اليمين). ادعم نفسك على طاولة باليد الأخرى ودع ذراعك الأيمن يتدلى ويتأرجح برفق في دوائر صغيرة. دقيقة واحدة، 3 مرات في اليوم. صغير ومسترخٍ. الذراع يتدلى فقط.",
+   "source_en": "Pendulum arm swing (right). Support yourself on a table with the other hand and let your right arm hang and swing gently in small circles. 1 minute, 3 times a day. Small and relaxed. The arm just hangs.",
+   "back_translation": "Pendulum arm swing (right). Support yourself on a table with the other hand and let your right arm hang and swing gently in small circles. One minute, 3 times a day. Small and relaxed. The arm only hangs.",
+   "span_ids": [
+    "s012",
+    "s013",
+    "s014",
+    "s015"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "i2",
+   "language": "ar",
+   "text": "دوران خارجي بشريط (اليمين). حافظ على المرفق ملاصقًا لجانبك وحوّل الساعد للخارج ضد الشريط. 3 × 10، كل يوم. حافظ على مرفقك مطويًا ملاصقًا لجانبك.",
+   "source_en": "Outward rotation with a band (right). Keep the elbow against your side and turn the forearm outwards against the band. 3 × 10, every day. Keep your elbow tucked in against your side.",
+   "back_translation": "External rotation with a band (right). Keep the elbow close to your side and turn the forearm outwards against the band. 3 times by 10, every day. Keep your elbow folded close to your side.",
+   "span_ids": [
+    "s016",
+    "s017",
+    "s018",
+    "s019"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "i3",
+   "language": "ar",
+   "text": "جري بشريط (الجانبان). اسحب الشريط نحوك بكلتا اليدين، واضغط لوحي الكتف معًا. 2 × 15، كل يوم. امسك الشريط بكلتا اليدين واسحبه نحوك، واضغط لوحي الكتف معًا.",
+   "source_en": "Rowing with a band (both sides). Pull the band towards you with both hands, squeezing the shoulder blades together. 2 × 15, every day. Hold the band with both hands and pull it towards you, squeezing the shoulder blades together.",
+   "back_translation": "Rowing with a band (both sides). Pull the band towards you with both hands, pressing the shoulder blades together. 2 times by 15, every day. Hold the band with both hands and pull it towards you, pressing the shoulder blades together.",
+   "span_ids": [
+    "s020",
+    "s021"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "i4",
+   "language": "ar",
+   "text": "تمطيط العضلة الخلفية للركبة (الجانب غير مذكور). اجلس ورجلك (الجانب غير مذكور) مستقيمة أمامك وانحنِ للأمام من الوركين حتى تشعر بتمطيط خلف الفخذ. امسكه لبعض الوقت، التكرار غير مذكور. من سجلاتك: انحنِ من الوركين واحافظ على استقامة الظهر.",
+   "source_en": "Seated hamstring stretch (side not stated). Sit with your (side not stated) leg straight in front of you and lean forward from the hips until you feel a stretch behind the thigh. Hold it for a while, how often not stated. From your records: Bend from the hips and keep the back straight.",
+   "back_translation": "Seated hamstring stretch (side not stated). Sit with your (side not stated) leg straight in front of you and lean forward from the hips until you feel a stretch behind the thigh. Hold it for a while, how often not stated. From your records: Bend from the hips and keep the back straight.",
+   "span_ids": [
+    "s025"
+   ],
+   "rule_ids": [
+    "R11"
+   ],
+   "state": "proposal",
+   "objections": [
+    {
+     "item_id": "i4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    }
+   ]
+  }
+ ],
+ "heard_not_prescribed": [
+  {
+   "item_id": "i5",
+   "exercise": "sit-ups",
+   "exercise_id": "ex.sit_up",
+   "side": "none",
+   "dose": null,
+   "frequency": null,
+   "cautions": [
+    "With osteoporosis I don't want you curling the back forward against weight."
+   ],
+   "source_span_ids": [
+    "s022",
+    "s023"
+   ],
+   "tags": [],
+   "status": "withdrawn"
+  },
+  {
+   "item_id": "i6",
+   "exercise": "wall slides",
+   "exercise_id": "ex.wall_slide",
+   "side": "none",
+   "dose": null,
+   "frequency": null,
+   "cautions": [],
+   "source_span_ids": [
+    "s027",
+    "s028",
+    "s029"
+   ],
+   "tags": [],
+   "status": "deferred"
+  }
+ ],
+ "rounds": [
+  {
+   "round": 0,
+   "objections": {
+    "incomplete": 1,
+    "wrong_frequency": 1
+   },
+   "correctable": 1,
+   "seconds": 23.61,
+   "raised": [
+    {
+     "item_id": "i4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    },
+    {
+     "item_id": "i4",
+     "kind": "wrong_frequency",
+     "detail": "The transcript does not state a frequency (s025).",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "round": 1,
+   "objections": {
+    "incomplete": 1
+   },
+   "correctable": 0,
+   "seconds": 4.71,
+   "raised": [
+    {
+     "item_id": "i4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  "r0 i1: falsifier wrong_dose overruled by the cited spans",
+  "r0 i1: falsifier wrong_frequency overruled by the cited spans",
+  "r0 i2: falsifier wrong_dose overruled by the cited spans",
+  "r0 i2: falsifier wrong_frequency overruled by the cited spans"
+ ],
+ "models": {
+  "mode": "local",
+  "generator": "Qwen3.5-35B-A3B-Q4_K_M.gguf",
+  "falsifier": "gemma-3-12b-it-Q4_K_M.gguf"
+ },
+ "tokens_per_s": {
+  "generator": 66.1,
+  "falsifier": 53.7
+ },
+ "calls": {
+  "generator": 2,
+  "falsifier": 3
+ },
+ "mode": "live",
+ "latency_after_last_chunk_s": 43.9
+}

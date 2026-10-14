@@ -1,0 +1,179 @@
+{
+ "summary": {
+  "session": "S2",
+  "states": {
+   "supported": 4,
+   "conflict": 1
+  },
+  "rounds": 2,
+  "objections_per_round": [
+   1,
+   0
+  ],
+  "seconds": 34.1
+ },
+ "lines": [
+  {
+   "item_id": "S2.1",
+   "language": "uk",
+   "text": "Лежачи обличчям вниз. Ляжте на живіт, витягніть стегна і залиштеся так. 10 хвилин, 2 рази на день.",
+   "source_en": "Lying face down. Lie on your stomach with both hips straight and stay there. 10 minutes, 2 times a day.",
+   "back_translation": "Lying face down. Lie on your belly, extend your hips and remain like that. 10 minutes, 2 times a day.",
+   "span_ids": [
+    "s008",
+    "s009"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.2",
+   "language": "uk",
+   "text": "Місток на одній нозі (права). Ляжте на спину, зігніть праве коліно, інша нога пряма, підніміть стегна над ліжком. 3 × 10, щодня.",
+   "source_en": "Single-leg bridge (right). Lie on your back with your right knee bent and the other leg straight, and lift your hips off the bed. 3 × 10, every day.",
+   "back_translation": "Bridge on one leg (right). Lie on your back, bend your right knee, the other leg is straight, lift the hips above the bed. 3 × 10, every day.",
+   "span_ids": [
+    "s012",
+    "s013",
+    "s015"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.3",
+   "language": "uk",
+   "text": "Підйом ноги лежачи на боці (ліва). Ляжте на бік, підніміть верхню ногу прямо вгору, потім повільно опустіть. 3 × 12, щодня.",
+   "source_en": "Side-lying leg lift (left). Lie on your side and lift the upper leg straight up, then lower it slowly. 3 × 12, every day.",
+   "back_translation": "Leg lift lying on the side (left). Lie on your side, lift the upper leg straight up, then slowly lower it. 3 × 12, every day.",
+   "span_ids": [
+    "s016",
+    "s017"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.4",
+   "language": "uk",
+   "text": "Випрямлення коліна сидячи з еспандером (ліва). Сядьте на стілець, еспандер на гомілці, повільно випрямте коліно. 3 × 12, щодня.",
+   "source_en": "Seated knee straightening with a band (left). Sit on a chair with the band around the ankle and straighten the knee slowly. 3 × 12, every day.",
+   "back_translation": "Knee straightening while sitting with an expander (left). Sit on a chair, the expander is on the lower leg, slowly straighten the knee. 3 × 12, every day.",
+   "span_ids": [
+    "s020",
+    "s021"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.5",
+   "language": "uk",
+   "text": "Стійка на одній нозі (ліва). Стойте на одній нозі біля стійки, за яку можна вчепитися, і тримайте положення. 3 × 30 секунд, щодня, вдома. Стойте біля кухонної стійки. З ваших записів: Перевіряйте шкіру кульшової частини після носіння протеза.",
+   "source_en": "Single-leg stance (left). Stand on one leg next to a counter you can grab, and hold the position. 3 × 30 seconds, every day, at home. Stand next to the kitchen counter. From your records: Check the skin of the residual limb after wearing the prosthesis.",
+   "back_translation": "Single-leg stance (left). Stand on one leg next to a counter you can grab, and hold the position. 3 × 30 seconds, every day, at home. Stand next to the kitchen counter. From your records: Check the skin of the hip part after wearing the prosthesis.",
+   "span_ids": [
+    "s023",
+    "s025",
+    "s026"
+   ],
+   "rule_ids": [
+    "R04",
+    "R09"
+   ],
+   "state": "conflict",
+   "objections": [
+    {
+     "item_id": "S2.5",
+     "kind": "rule_conflict",
+     "detail": "R04: documented restriction found, therapist decides. Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it.",
+     "blocking": true,
+     "source": "rules"
+    }
+   ]
+  }
+ ],
+ "heard_not_prescribed": [],
+ "rounds": [
+  {
+   "round": 0,
+   "objections": {
+    "rule_conflict": 1,
+    "wrong_frequency": 1
+   },
+   "correctable": 1,
+   "seconds": 23.03,
+   "raised": [
+    {
+     "item_id": "S2.5",
+     "kind": "rule_conflict",
+     "detail": "R04: documented restriction found, therapist decides. Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it.",
+     "blocking": true,
+     "source": "rules"
+    },
+    {
+     "item_id": "S2.1",
+     "kind": "wrong_frequency",
+     "detail": "The transcript states 'twice a day', not 'every evening' (s009, s011).",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "round": 1,
+   "objections": {
+    "rule_conflict": 1
+   },
+   "correctable": 0,
+   "seconds": 8.09,
+   "raised": [
+    {
+     "item_id": "S2.5",
+     "kind": "rule_conflict",
+     "detail": "R04: documented restriction found, therapist decides. Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it.",
+     "blocking": true,
+     "source": "rules"
+    }
+   ]
+  }
+ ],
+ "notes": [],
+ "models": {
+  "mode": "local",
+  "generator": "Qwen3.5-35B-A3B-Q4_K_M.gguf",
+  "falsifier": "gemma-3-12b-it-Q4_K_M.gguf"
+ },
+ "tokens_per_s": {
+  "generator": 63.7,
+  "falsifier": 55.2
+ },
+ "calls": {
+  "generator": 3,
+  "falsifier": 4
+ },
+ "mode": "prescription",
+ "seconds": 34.1,
+ "injection": {
+  "id": "A4",
+  "type": "wrong_dose_or_frequency",
+  "label": "Change a dose or how often",
+  "detail": "S2.1: frequency every evening",
+  "observation": {
+   "run": "A4",
+   "session": "S2",
+   "type": "wrong_dose_or_frequency",
+   "item_id": "S2.1",
+   "injected": true,
+   "detected": true,
+   "primary_kind": true,
+   "by_checks": false,
+   "by_falsifier": true,
+   "final_state": "supported"
+  }
+ }
+}

@@ -1,0 +1,230 @@
+{
+ "summary": {
+  "session": "S3",
+  "states": {
+   "supported": 3,
+   "proposal": 1
+  },
+  "rounds": 3,
+  "objections_per_round": [
+   5,
+   2,
+   0
+  ],
+  "seconds": 45.6
+ },
+ "lines": [
+  {
+   "item_id": "S3.1",
+   "language": "ar",
+   "text": "تأرجح ذراع البندول (اليمين). ادعم نفسك على طاولة باليد الأخرى ودع ذراعك الأيمن يتدلى ويتأرجح بلطف في دوائر صغيرة. دقيقة واحدة، 3 مرات في اليوم. صغير ومسترخٍ. الذراع يتدلى فقط.",
+   "source_en": "Pendulum arm swing (right). Support yourself on a table with the other hand and let your right arm hang and swing gently in small circles. 1 minute, 3 times a day. Small and relaxed. The arm just hangs.",
+   "back_translation": "Pendulum arm swing (right). Support yourself on a table with the other hand and let your right arm hang and swing gently in small circles. One minute, 3 times a day. Small and relaxed. The arm only hangs.",
+   "span_ids": [
+    "s012",
+    "s013"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S3.2",
+   "language": "ar",
+   "text": "دوران للخارج مع شريط (اليمين). حافظ على المرفق بجانب جسمك وحوّل الساعد للخارج ضد الشريط. 3 × 10، كل يوم. حافظ على مرفقك مضمومًا بجانب جسمك.",
+   "source_en": "Outward rotation with a band (right). Keep the elbow against your side and turn the forearm outwards against the band. 3 × 10, every day. Keep your elbow tucked in against your side.",
+   "back_translation": "Outward rotation with a band (right). Keep the elbow against your body and turn the forearm outwards against the band. 3 x 10, every day. Keep your elbow tucked in against your body.",
+   "span_ids": [
+    "s016",
+    "s017"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S3.3",
+   "language": "ar",
+   "text": "تمارين التجديف بشريط (الجانبين). اسحب الشريط نحوك بكلتا اليدين، واضغط لوحي الكتف معًا. 2 × 15، كل يوم.",
+   "source_en": "Rowing with a band (both sides). Pull the band towards you with both hands, squeezing the shoulder blades together. 2 × 15, every day.",
+   "back_translation": "Rowing with a band (both sides). Pull the band towards you with both hands, squeezing the shoulder blades together. 2 x 15, every day.",
+   "span_ids": [
+    "s020",
+    "s021"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S3.4",
+   "language": "ar",
+   "text": "تمطيط العضلة الخلفية للركبة (الجانب غير مذكور). اجلس ورجلك (الجانب غير مذكور) مستقيمة أمامك وانحنِ للأمام من الوركين حتى تشعر بتمطيط خلف الفخذ. الجرعة غير مذكورة، التكرار غير مذكور. من سجلاتك: انحنِ من الوركين واحافظ على استقامة الظهر.",
+   "source_en": "Seated hamstring stretch (side not stated). Sit with your (side not stated) leg straight in front of you and lean forward from the hips until you feel a stretch behind the thigh. Dose not stated, how often not stated. From your records: Bend from the hips and keep the back straight.",
+   "back_translation": "Seated hamstring stretch (side not stated). Sit with your (side not stated) leg straight in front of you and lean forward from the hips until you feel a stretch behind the thigh. Dose not stated, how often not stated. From your records: Bend from the hips and keep the back straight.",
+   "span_ids": [
+    "s024",
+    "s025"
+   ],
+   "rule_ids": [
+    "R11"
+   ],
+   "state": "proposal",
+   "objections": [
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, dose, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    }
+   ]
+  }
+ ],
+ "heard_not_prescribed": [],
+ "rounds": [
+  {
+   "round": 0,
+   "objections": {
+    "wrong_dose": 3,
+    "incomplete": 1,
+    "dropped_caution": 1,
+    "wrong_frequency": 1
+   },
+   "correctable": 5,
+   "seconds": 21.9,
+   "raised": [
+    {
+     "item_id": "S3.1",
+     "kind": "wrong_dose",
+     "detail": "dose states 5, which the cited spans do not",
+     "blocking": true,
+     "source": "checks"
+    },
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, dose, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    },
+    {
+     "item_id": "S3.1",
+     "kind": "dropped_caution",
+     "detail": "the therapist said: Small and relaxed. The arm just hangs.",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.1",
+     "kind": "wrong_dose",
+     "detail": "The transcript states 'One minute, three times a day.' (s013)",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.4",
+     "kind": "wrong_frequency",
+     "detail": "The transcript does not state a frequency for the stretch.",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.4",
+     "kind": "wrong_dose",
+     "detail": "The transcript does not state a dose for the stretch.",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "round": 1,
+   "objections": {
+    "incomplete": 1,
+    "wrong_frequency": 1,
+    "wrong_dose": 1
+   },
+   "correctable": 2,
+   "seconds": 12.4,
+   "raised": [
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, dose, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    },
+    {
+     "item_id": "S3.4",
+     "kind": "wrong_frequency",
+     "detail": "The transcript does not state a frequency for the stretch (s025).",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.4",
+     "kind": "wrong_dose",
+     "detail": "The transcript does not state a dose for the stretch (s025).",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "round": 2,
+   "objections": {
+    "incomplete": 1
+   },
+   "correctable": 0,
+   "seconds": 3.51,
+   "raised": [
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, dose, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  "r0 S3.1: falsifier wrong_frequency overruled by the cited spans",
+  "r1 S3.1: falsifier wrong_dose overruled by the cited spans",
+  "r1 S3.1: falsifier wrong_frequency overruled by the cited spans"
+ ],
+ "models": {
+  "mode": "local",
+  "generator": "Qwen3.5-35B-A3B-Q4_K_M.gguf",
+  "falsifier": "gemma-3-12b-it-Q4_K_M.gguf"
+ },
+ "tokens_per_s": {
+  "generator": 65.9,
+  "falsifier": 54.1
+ },
+ "calls": {
+  "generator": 4,
+  "falsifier": 5
+ },
+ "mode": "prescription",
+ "seconds": 45.6,
+ "injection": {
+  "id": "A6",
+  "type": "wrong_dose_or_frequency",
+  "label": "Change a dose or how often",
+  "detail": "S3.1: dose 5 minutes",
+  "observation": {
+   "run": "A6",
+   "session": "S3",
+   "type": "wrong_dose_or_frequency",
+   "item_id": "S3.1",
+   "injected": true,
+   "detected": true,
+   "primary_kind": true,
+   "by_checks": true,
+   "by_falsifier": true,
+   "final_state": "supported"
+  }
+ }
+}
