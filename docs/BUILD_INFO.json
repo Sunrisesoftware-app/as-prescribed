@@ -5,7 +5,7 @@
   "phaseName": "AMD Developer Hackathon ACT III, Health and Wellbeing track: build 14.-17.10.2026, submission by Sun 18.10.2026 13:00 EEST at the latest (the live dashboard's countdown; the event page was read as 18:00), target Sat 17.10.",
   "session": 2,
   "updated": "2026-10-14",
-  "state": "Session 2 (chain 2) 14.10.2026 evening (Code). The public demo is up at https://asprescribed.sunrisesoftware.app in replay mode: a systemd unit on the ultragravel machine behind a Cloudflare Worker (custom domain) and Workers VPC over the machine's tunnel; the gate passed in the browser (S2 recorded run with the conflict on the prosthesis line, the patient sheet opens). Decided: how AMD is shown to the judges (DECISIONS row 20: recordings labelled as Radeon runs, a live run on the box in the video, the tokenfactory key pursued); the page now names the date, models and GPUs of every replayed run. The lablab rules read; the deadline in the docs moved to Sun 13:00 EEST. Still from session 1: the pipeline, the desk and the patient sheet, the approved synthetic content, the sealed evaluation (run 1 failed recall 0.594 and false alarms 16.2 %; run 2 after fixes failed recall 0.719, passed false alarms 6.9 %), 38 recorded demo cases. The tokenfactory key arrived 14.10. evening (team-1199, twelve models, among them Qwen3.8-27B and Gemma-4-31B-IT); not yet in .env. 86 tests green; CI green.",
+  "state": "Session 2 (chain 2) closed 14.10.2026 evening (Code). The public demo is up at https://asprescribed.sunrisesoftware.app in replay mode: a systemd unit on the ultragravel machine behind a Cloudflare Worker (custom domain) and Workers VPC over the machine's tunnel. The gate passed in the browser. The page names the date, models and GPUs of every replayed run. The patient sheet marks its Arabic and Ukrainian headings as machine-written. Docker compose was checked end to end. The Token Factory key arrived (team-1199; base URL https://developer.amd.com.cn/radeon/api/v1, in the local .env). A trial on it (Qwen3.8-27B + Gemma-4-31B-IT) gave the six clean demo cases the same line states as the Radeon recordings: 53-85 s after the visit, no failed call. Decided: the public demo goes live on Token Factory with the recordings as fallback (DECISIONS row 22), to be built on Thu 15.10. The deadline in the docs is Sun 18.10. 13:00 EEST (the live countdown). From session 1: the pipeline, the desk, the approved synthetic content, the sealed evaluation (run 1 failed recall 0.594 and false alarms 16.2 %; run 2 after fixes failed recall 0.719, passed false alarms 6.9 %), 38 recorded cases. 88 tests green; CI green.",
   "github": "github.com/Sunrisesoftware-app/as-prescribed (public, MIT)",
   "machines": {
     "windows": "E:\\projects\\sunrisesoftware\\AMD act3 on the owner's machine (PowerShell 5.1 for the owner; Git Bash for the agent; uv with Python 3.12). The Atlas checkout is E:\\projects\\sunrisesoftware\\quaesitor atlas; the worktree E:\\projects\\sunrisesoftware\\atlas-apply-as-prescribed (detached at Atlas main) and the merged local branches apply-approved/as-prescribed and as-prescribed/model-sync-1 can be removed (ask before deleting).",
@@ -39,20 +39,20 @@
   },
   "next_session": {
     "id": "session-3",
-    "name": "Demo polish and the submission texts: the replay banner, the patient sheet headings, the docker run; title, descriptions, tags, slides and cover; then the video on the box",
+    "name": "The public demo live on Token Factory (BACKLOG DEPLOY-4), then the submission texts, slides and cover; the video on Fri 16.10.",
     "read_first": [
       "CLAUDE.md",
       "docs/BUILD_INFO.json (this file)",
-      "docs/BACKLOG.md (the owner's actions first)",
-      "Atlas as-prescribed.STATUS (the newest)",
+      "docs/BACKLOG.md (DEPLOY-4 first, then the owner's actions)",
+      "Atlas AS-PRESCRIBED-KETJUNVAIHTO-2 (the chain handover)",
       "Atlas AS-PRESCRIBED-SOMNUS-BOKSI (before any use of the box)"
     ],
     "scope": [
-      "The tokenfactory key into .env, then public mode on tokenfactory (BACKLOG P-1, DEPLOY-4)",
-      "Demo polish (BACKLOG DEMO-4), redeployed per deploy/README.md",
-      "Submission material (BACKLOG SUB-1..5)"
+      "DEPLOY-4: 429 retry, the live/recorded banner, the key in a root-only EnvironmentFile on the machine, the README note on Token Factory's two-day prompt retention, a browser check",
+      "Submission material (BACKLOG SUB-2..4): texts, slides, cover",
+      "DEMO-4 kept in mind for the video"
     ],
-    "gate": "A complete draft of every submission item by Fri 16.10.; submitted on lablab on Sat 17.10., before Sun 18.10.2026 13:00 EEST at the latest",
+    "gate": "The public URL runs S2 live on Token Factory and says so, and falls back to the recording when the endpoint is off; every text item drafted by the end of Thu 15.10.",
     "previous": "session 2 (chain 2), 14.10.2026 evening"
   }
 }

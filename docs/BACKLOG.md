@@ -11,14 +11,10 @@ before listing a row as open, verify it is not already done (an uncertain row is
 Codes: **P** the owner's own actions · **DEPLOY** the public demo · **SUB** the submission ·
 **DEMO** the demo itself · **REP** reporting.
 
-Updated 14.10.2026 (session 2).
+Updated 14.10.2026 evening (session 2 closed).
 
 ## P: the owner's own actions
 
-- **P-1 The tokenfactory key into `.env`.** The owner has the key (team-1199, redeemed 14.10.2026:
-  sign in at notebooks.amd.com first, then open `/tokenfactory`). Into the repo's `.env`, never into
-  chat: `TOKENFACTORY_BASE_URL` from the page's User Manual and `TOKENFACTORY_API_KEY`. Leave the
-  `GENERATOR_*` and `FALSIFIER_*` lines as they are (local mode); public-mode runs override them.
 - **P-2 Google prize:** ask the organisers whether a project that runs Gemma on AMD hardware
   qualifies (the page lists $5,000 from Google but no criteria). The community@lablab.ai email of
   14.10. about the key can be closed as solved.
@@ -28,14 +24,27 @@ Updated 14.10.2026 (session 2).
 
 ## DEPLOY
 
-- **DEPLOY-4 Public mode on tokenfactory** (DECISIONS row 20), after P-1:
-  1. List the models (`scripts/models.py`) and run S1-S3 once on a pair of different families. The
-     proposal is Qwen3.8-27B generating and Gemma-4-31B-IT falsifying, the same families as local
-     mode. Measure the latency, tok/s and the line states against the recordings.
-  2. Decision box: whether the public demo runs live on tokenfactory, with the recorded runs as the
-     fallback when the endpoint fails or the shared key is throttled. The key would then live in a
-     root-only file on the machine.
-  3. Any recall figure on tokenfactory is a tagged run of plan-v1 made after reading run 1
+- **DEPLOY-4 The public demo live on Token Factory** (DECISIONS row 22; do first on Thu 15.10.). The
+  trial of 14.10. is in the CHANGELOG. Base URL and key are in the local `.env`. The manual's limits:
+  20 requests a minute per account, 8 concurrent per key, a $1 daily cap. Unknown fields are dropped,
+  and thinking is controlled by `reasoning_effort`.
+  1. `asprescribed/llm.py`: retry 429 and 502/503 when Retry-After is short (a few seconds, with
+     jitter), otherwise raise so the run falls back to its recording. Check whether Qwen3.8-27B honours
+     the dropped `chat_template_kwargs` or needs `reasoning_effort: low` (the trial ran without
+     thinking at about 2 s a call, 25 tok/s). Tests with the fake client.
+  2. The banner and `/api/demo` say "live on AMD Radeon Cloud (Token Factory): Qwen3.8-27B +
+     Gemma-4-31B-IT" for a live run, and keep the recorded wording for a fallback. A fallback in the
+     public demo must not read as a failure.
+  3. The machine: `/etc/as-prescribed/env` (root, 0600) with `AP_MODE=public`, the two endpoints,
+     the models, `GENERATOR_THINKING_PARAM` and the key. The unit drops `AP_REPLAY=1` and reads it
+     with `EnvironmentFile=` (DynamicUser cannot read a root-only file itself). Copy the key from the
+     local `.env` over ssh without printing it, or the owner pastes it with a prompt.
+  4. README: public mode is live on Token Factory, with the recordings as fallback. Our server logs
+     nothing, but Token Factory keeps prompts about two days (synthetic only; its terms forbid real
+     health data).
+  5. Check in the browser: S2 live and prescription on the public URL, an injection run, two runs at
+     once (the lock queues the second).
+  6. Any recall figure on Token Factory is a tagged run of plan-v1 made after reading run 1
      (adr.ap.009), or a new sealed plan.
 - **DEPLOY-3** (optional) A deploy workflow (test-gated ssh deploy with a public curl check), only if
   the demo changes often; until then an update is the three commands in

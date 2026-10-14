@@ -4,6 +4,19 @@ Newest first. The **root cause** is the heading, not the symptom, because the ro
 elsewhere. Only lessons whose price was actually paid. A lesson that becomes a permanent rule moves
 into `CLAUDE.md`; a lesson that becomes a decision becomes an ADR.
 
+## 14.10.2026: a gated page's refusal can mean "no session yet", not "no access"
+
+### "Your email is not registered for API key distribution" for most of a day
+
+notebooks.amd.com/tokenfactory refused the owner's email, so we planned around a missing key. We
+emailed the organisers, decided how to show AMD without one (DECISIONS row 20) and deployed
+replay-only. In the evening the owner signed in at notebooks.amd.com itself and then opened
+`/tokenfactory`, and the team's key page appeared: the key had been provisioned all along.
+
+**The rule:** when a page behind single sign-on refuses, sign in at the service's root first and
+then open the page, before treating the refusal as a fact; the provider's own manual (here the
+Token Factory documentation on the key page) beats third-party descriptions.
+
 ## 14.10.2026: a correction loop can undo a safety halt
 
 ### The generator rewrote contraindicated items until the rule stopped firing

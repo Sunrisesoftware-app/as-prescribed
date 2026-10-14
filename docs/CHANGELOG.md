@@ -5,12 +5,20 @@ sub-entries. What changed and *why*, with what was measured, so a later reader c
 decision from a habit. The canonical state is [`BUILD_INFO.json`](BUILD_INFO.json): refer to it,
 do not copy it here.
 
-## Session 2, 14.10.2026 evening: the public demo is up
+## Session 2, 14.10.2026 evening: the public demo is up, and Token Factory works
 
-**Decided (the owner):** the order of the remaining work (deploy first, then the lablab rules, demo
-polish, texts, video, submission); the Cloudflare part handed to Code; how AMD is shown to the
-judges: the recordings labelled as Radeon runs and a live run on the box in the video, with the
-tokenfactory key pursued for a live public demo (DECISIONS row 20, dec_4df9557bb0ad458e).
+**Decided (the owner):**
+- The order of the remaining work: deploy first, then the lablab rules, demo polish, texts, video,
+  submission.
+- The Cloudflare part handed to Code.
+- How AMD is shown to the judges: the recordings labelled as Radeon runs and a live run on the box in
+  the video, with the tokenfactory key pursued for a live public demo (DECISIONS row 20,
+  dec_4df9557bb0ad458e).
+- The patient sheet's headings marked as machine-written (row 21, dec_7d8e8ed0856248e3).
+- After the Token Factory trial, the public demo goes live on it with the recordings as fallback
+  (row 22, dec_2b5a21c1196c400d), to be built on Thu 15.10.
+
+A lesson paid for: the key page's refusal meant no session yet (LESSONS.md).
 
 **Done:**
 - https://asprescribed.sunrisesoftware.app in replay mode ([`deploy/`](../deploy/README.md)). The
