@@ -63,7 +63,7 @@ S2 = [
     (106, "T", "Lie on your stomach for ten minutes, twice a day."),
     (115, "P", "On the bed is okay?"),
     (119, "T", "On the bed is fine."),
-    (150, "T", "Second, the bridge. Last time we did it with both legs, but for now do it only on the right leg."),
+    (150, "T", "Second, the bridge. Last time we did it with both legs, but the skin at the end of the left leg got irritated, because the prosthesis can rub in that position. So for now, do it only on the right leg."),
     (163, "T", "Lie on your back, right knee bent, the left leg straight, and lift your hips. Three sets of ten, every day."),
     (176, "P", "Only the right."),
     (180, "T", "Only the right for now."),
