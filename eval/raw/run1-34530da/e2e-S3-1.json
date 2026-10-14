@@ -1,0 +1,173 @@
+{
+ "session": "S3",
+ "rep": 1,
+ "seconds": 40.0,
+ "summary": {
+  "session": "S3",
+  "states": {
+   "supported": 3,
+   "proposal": 1
+  },
+  "rounds": 1,
+  "objections_per_round": [
+   0
+  ],
+  "seconds": 40.0
+ },
+ "extraction": {
+  "session": "S3",
+  "slots": [
+   {
+    "slot": "S3.1",
+    "found": true,
+    "side": true,
+    "dose": true,
+    "frequency": true,
+    "cautions": true
+   },
+   {
+    "slot": "S3.2",
+    "found": true,
+    "side": true,
+    "dose": true,
+    "frequency": true,
+    "cautions": false
+   },
+   {
+    "slot": "S3.3",
+    "found": true,
+    "side": false,
+    "dose": true,
+    "frequency": true,
+    "cautions": true
+   },
+   {
+    "slot": "S3.4",
+    "found": true,
+    "side": false,
+    "dose": false,
+    "frequency": true,
+    "cautions": true
+   }
+  ],
+  "traps": [
+   {
+    "slot": "T3.1",
+    "kept_out": true
+   },
+   {
+    "slot": "T3.2",
+    "kept_out": true
+   }
+  ],
+  "invented": [],
+  "slot_recall": 1.0,
+  "field_accuracy": 0.75
+ },
+ "calls": {
+  "generator": [
+   {
+    "what": "extract",
+    "seconds": 19.52,
+    "tokens": 703,
+    "tokens_per_s": 39.6
+   },
+   {
+    "what": "translate r0",
+    "seconds": 9.53,
+    "tokens": 273,
+    "tokens_per_s": 30.3
+   }
+  ],
+  "falsifier": [
+   {
+    "what": "check items r0",
+    "seconds": 2.46,
+    "tokens": 69,
+    "tokens_per_s": 54.1
+   },
+   {
+    "what": "check translations r0",
+    "seconds": 8.46,
+    "tokens": 431,
+    "tokens_per_s": 55.7
+   }
+  ]
+ },
+ "notes": [],
+ "lines": [
+  {
+   "item_id": "i1",
+   "language": "ar",
+   "text": "تأرجح ذراع البندول (اليمين). ادعم نفسك على طاولة باليد الأخرى ودع ذراعك الأيمن يتدلى ويتأرجح برفق في دوائر صغيرة. 1 دقيقة، 3 مرات في اليوم.",
+   "source_en": "Pendulum arm swing (right). Support yourself on a table with the other hand and let your right arm hang and swing gently in small circles. 1 minute, 3 times a day.",
+   "back_translation": "Pendulum arm swing (right). Support yourself on a table with the other hand and let your right arm hang and swing gently in small circles. 1 minute, 3 times in the day.",
+   "span_ids": [
+    "s012",
+    "s013",
+    "s014",
+    "s015"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "i2",
+   "language": "ar",
+   "text": "دوران للخارج مع شريط (اليمين). حافظ على المرفق بجانب جسمك وحوّل الساعد للخارج ضد الشريط. 3 × 10، كل يوم.",
+   "source_en": "Outward rotation with a band (right). Keep the elbow against your side and turn the forearm outwards against the band. 3 × 10, every day.",
+   "back_translation": "Rotation outwards with a band (right). Keep the elbow against your body and turn the forearm outwards against the band. 3 times by 10, every day.",
+   "span_ids": [
+    "s016",
+    "s017",
+    "s018",
+    "s019"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "i3",
+   "language": "ar",
+   "text": "جري مع شريط. اسحب الشريط نحوك بكلتا اليدين، واضغط لوحي الكتف معًا. 2 × 15، كل يوم.",
+   "source_en": "Rowing with a band. Pull the band towards you with both hands, squeezing the shoulder blades together. 2 × 15, every day.",
+   "back_translation": "Rowing with a band. Pull the band towards you with both hands, and press the shoulder blades together. 2 times by 15, every day.",
+   "span_ids": [
+    "s020",
+    "s021"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "i4",
+   "language": "ar",
+   "text": "تمطيط العضلة الخلفية للركبة (الجلوس) (لم يُذكر الجانب). اجلس ورجلك (لم يُذكر الجانب) مستقيمة أمامك وانحنِ للأمام من الوركين حتى تشعر بتمطيط خلف الفخذ. امسكه لبعض الوقت، لم يُذكر التكرار. من سجلاتك: انحنِ من الوركين واحافظ على استقامة الظهر.",
+   "source_en": "Seated hamstring stretch (side not stated). Sit with your (side not stated) leg straight in front of you and lean forward from the hips until you feel a stretch behind the thigh. Hold it for a while, how often not stated. From your records: Bend from the hips and keep the back straight.",
+   "back_translation": "Hamstring stretch (sitting) (side not mentioned). Sit with your (side not mentioned) leg straight in front of you and bend forward from the hips until you feel a stretch behind the thigh. Hold it for a while, how often not mentioned. From your records: bend from the hips and keep the back straight.",
+   "span_ids": [
+    "s025"
+   ],
+   "rule_ids": [
+    "R11"
+   ],
+   "state": "proposal",
+   "objections": [
+    {
+     "item_id": "i4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    }
+   ]
+  }
+ ],
+ "models": {
+  "generator": "Qwen3.5-35B-A3B-Q4_K_M.gguf",
+  "falsifier": "gemma-3-12b-it-Q4_K_M.gguf"
+ }
+}

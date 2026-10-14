@@ -1,0 +1,254 @@
+{
+ "run": "C2",
+ "summary": {
+  "session": "S1",
+  "states": {
+   "supported": 6
+  },
+  "rounds": 2,
+  "objections_per_round": [
+   1,
+   0
+  ],
+  "seconds": 34.5
+ },
+ "observation": {
+  "run": "C2",
+  "session": "S1",
+  "type": "invented_item",
+  "item_id": "X2",
+  "injected": true,
+  "detected": true,
+  "primary_kind": true,
+  "by_checks": false,
+  "by_falsifier": true,
+  "final_state": "supported"
+ },
+ "clean": [
+  {
+   "run": "C2",
+   "session": "S1",
+   "item_id": "S1.1",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "C2",
+   "session": "S1",
+   "item_id": "S1.2",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "C2",
+   "session": "S1",
+   "item_id": "S1.3",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "C2",
+   "session": "S1",
+   "item_id": "S1.4",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "C2",
+   "session": "S1",
+   "item_id": "S1.5",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  }
+ ],
+ "lines": [
+  {
+   "item_id": "S1.1",
+   "language": "ar",
+   "text": "الجلوس والوقوف من كرسي (الجانبين). قف من الكرسي دون استخدام يديك، ثم اجلس ببطء. 3 × 10، كل يوم.",
+   "source_en": "Sit-to-stand from a chair (both sides). Stand up from a chair without using your hands, then sit down slowly. 3 × 10, every day.",
+   "back_translation": "Sitting and standing from a chair (both sides). Stand up from the chair without using your hands, then sit slowly. 3 × 10, every day.",
+   "span_ids": [
+    "s012",
+    "s013"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S1.2",
+   "language": "ar",
+   "text": "تقويم الركبة جالسًا مع شريط (اليمين). اجلس على كرسي والشريط حول الكاحل، وقم بتقويم الركبة ببطء. 3 × 12، كل يومين. زفر الهواء عند تقويم الركبة.",
+   "source_en": "Seated knee straightening with a band (right). Sit on a chair with the band around the ankle and straighten the knee slowly. 3 × 12, every other day. Breathe out as you straighten the knee.",
+   "back_translation": "Straightening the knee while sitting with a band (right). Sit on a chair with the band around the ankle, and straighten the knee slowly. 3 × 12, every two days. Exhale when straightening the knee.",
+   "span_ids": [
+    "s016",
+    "s018",
+    "s019"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S1.3",
+   "language": "ar",
+   "text": "الخطوة للأعلى (اليمين). اخطُ للأعلى على الدرجة السفلى مع تقديم ساقك اليمنى أولاً، ثم انزل. 2 × 10، كل يوم. امسك درابزين الدرج.",
+   "source_en": "Step-up (right). Step up onto the bottom stair leading with your right leg, then step down. 2 × 10, every day. Hold the stair rail.",
+   "back_translation": "Step-up (right). Step up onto the lower step leading with your right leg, then step down. 2 × 10, every day. Hold the staircase railing.",
+   "span_ids": [
+    "s024",
+    "s025"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S1.4",
+   "language": "ar",
+   "text": "المشي. امشِ بسرعة مريحة. 20 دقيقة، 5 أيام في الأسبوع. بعض ألم الركبة أثناء المشي مقبول إذا زال بحلول الصباح التالي.",
+   "source_en": "Walking. Walk at a comfortable pace. 20 minutes, 5 days a week. Some knee pain while walking is acceptable if it has settled by the next morning.",
+   "back_translation": "Walking. Walk at a comfortable speed. 20 minutes, 5 days a week. Some knee pain while walking is acceptable if it disappears by the next morning.",
+   "span_ids": [
+    "s028",
+    "s031"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S1.5",
+   "language": "ar",
+   "text": "تمدد الساق الخلفي ضد الحائط (اليمين). انحنِ ضد الحائط مع وضع ساقك اليمنى خلفك، كعبك على الأرض، وامسك. 3 × 30 ثانية، كل يوم.",
+   "source_en": "Calf stretch against a wall (right). Lean against a wall with your right leg behind you, heel down, and hold. 3 × 30 seconds, every day.",
+   "back_translation": "Stretching the back of the leg against the wall (right). Lean against the wall with your right leg behind you, your heel on the ground, and hold.",
+   "span_ids": [
+    "s034",
+    "s035",
+    "s037"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "X2",
+   "language": "ar",
+   "text": "ارتقِ بخطوة متقدمة بالساق اليمنى ثم انزل (اليمين). 2 × 10، كل يوم. أمسك دائمًا بمسند الدرج.",
+   "source_en": "Step up leading with right leg then step down (right). 2 × 10, every day. Always hold the stair rail.",
+   "back_translation": "Rise with a step forward with the right leg then descend (right). 2 × 10, every day. Always hold the handrail.",
+   "span_ids": [
+    "s024",
+    "s025"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": [
+    {
+     "item_id": "X2",
+     "kind": "no_catalogue_match",
+     "detail": "not a catalogued exercise: its tags, and so the rule check, are unknown",
+     "blocking": false,
+     "source": "checks"
+    }
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 0,
+   "objections": {
+    "invented_item": 1
+   },
+   "correctable": 1,
+   "seconds": 20.85,
+   "raised": [
+    {
+     "item_id": "X2",
+     "kind": "invented_item",
+     "detail": "The therapist did not prescribe mini squats. The transcript mentions stairs, but not squats.",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "round": 1,
+   "objections": {
+    "no_catalogue_match": 1
+   },
+   "correctable": 0,
+   "seconds": 10.44,
+   "raised": [
+    {
+     "item_id": "X2",
+     "kind": "no_catalogue_match",
+     "detail": "not a catalogued exercise: its tags, and so the rule check, are unknown",
+     "blocking": false,
+     "source": "checks"
+    }
+   ]
+  }
+ ],
+ "calls": {
+  "generator": [
+   {
+    "what": "translate r0",
+    "seconds": 6.38,
+    "tokens": 378,
+    "tokens_per_s": 65.9
+   },
+   {
+    "what": "correct r0",
+    "seconds": 3.21,
+    "tokens": 137,
+    "tokens_per_s": 65.9
+   },
+   {
+    "what": "translate r1",
+    "seconds": 1.38,
+    "tokens": 54,
+    "tokens_per_s": 65.7
+   }
+  ],
+  "falsifier": [
+   {
+    "what": "check items r0",
+    "seconds": 2.85,
+    "tokens": 139,
+    "tokens_per_s": 53.4
+   },
+   {
+    "what": "check translations r0",
+    "seconds": 11.62,
+    "tokens": 555,
+    "tokens_per_s": 54.7
+   },
+   {
+    "what": "check items r1",
+    "seconds": 6.62,
+    "tokens": 274,
+    "tokens_per_s": 53.1
+   },
+   {
+    "what": "check translations r1",
+    "seconds": 2.44,
+    "tokens": 111,
+    "tokens_per_s": 56.5
+   }
+  ]
+ },
+ "notes": [],
+ "models": {
+  "generator": "Qwen3.5-35B-A3B-Q4_K_M.gguf",
+  "falsifier": "gemma-3-12b-it-Q4_K_M.gguf"
+ }
+}

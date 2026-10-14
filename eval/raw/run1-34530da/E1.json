@@ -1,0 +1,487 @@
+{
+ "run": "E1",
+ "summary": {
+  "session": "S2",
+  "states": {
+   "supported": 4,
+   "conflict": 1,
+   "proposal": 1
+  },
+  "rounds": 3,
+  "objections_per_round": [
+   3,
+   4,
+   6
+  ],
+  "seconds": 59.9
+ },
+ "observation": {
+  "run": "E1",
+  "session": "S2",
+  "type": "contraindicated",
+  "item_id": "X6",
+  "injected": true,
+  "detected": true,
+  "primary_kind": true,
+  "by_checks": true,
+  "by_falsifier": false,
+  "final_state": "proposal"
+ },
+ "clean": [
+  {
+   "run": "E1",
+   "session": "S2",
+   "item_id": "S2.1",
+   "false_alarm": true,
+   "kinds": [
+    "wrong_dose"
+   ],
+   "sources": [
+    "falsifier"
+   ]
+  },
+  {
+   "run": "E1",
+   "session": "S2",
+   "item_id": "S2.2",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "E1",
+   "session": "S2",
+   "item_id": "S2.3",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "E1",
+   "session": "S2",
+   "item_id": "S2.4",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "E1",
+   "session": "S2",
+   "item_id": "S2.5",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  }
+ ],
+ "lines": [
+  {
+   "item_id": "S2.1",
+   "language": "uk",
+   "text": "Лежачи на животі. Ляжте на живіт, витягніть стегна і залиштеся так. 10 хвилин, 2 рази на день.",
+   "source_en": "Lying face down. Lie on your stomach with both hips straight and stay there. 10 minutes, 2 times a day.",
+   "back_translation": "Lying on the stomach. Lie on your stomach, extend the hips and remain like this. 10 minutes, 2 times a day.",
+   "span_ids": [
+    "s008",
+    "s009"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.2",
+   "language": "uk",
+   "text": "Місток на одній нозі (права). Ляжте на спину, зігніть праве коліно, іншу ногу витягніть і підніміть стегна від ліжка. 3 × 10, щодня.",
+   "source_en": "Single-leg bridge (right). Lie on your back with your right knee bent and the other leg straight, and lift your hips off the bed. 3 × 10, every day.",
+   "back_translation": "Bridge on one leg (right). Lie on your back, bend your right knee, extend the other leg and lift the hips from the bed.",
+   "span_ids": [
+    "s012",
+    "s013",
+    "s015"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.3",
+   "language": "uk",
+   "text": "Підйом ноги лежачи на боці (ліва). Ляжте на бік, підніміть верхню ногу прямо вгору, потім повільно опустіть. 3 × 12, щодня.",
+   "source_en": "Side-lying leg lift (left). Lie on your side and lift the upper leg straight up, then lower it slowly. 3 × 12, every day.",
+   "back_translation": "Leg lift lying on the side (left). Lie on your side, lift the upper leg straight up, then slowly lower it. 3 × 12, every day.",
+   "span_ids": [
+    "s016",
+    "s017"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.4",
+   "language": "uk",
+   "text": "Випрямлення коліна сидячи з еспандером (ліва). Сядьте на стілець, обмотайте еспандером навколо гомілки і повільно випрямте коліно. 3 × 12, щодня.",
+   "source_en": "Seated knee straightening with a band (left). Sit on a chair with the band around the ankle and straighten the knee slowly. 3 × 12, every day.",
+   "back_translation": "Knee straightening while sitting with an expander (left). Sit on a chair, wrap the expander around the lower leg and slowly straighten the knee. 3 × 12, every day.",
+   "span_ids": [
+    "s020",
+    "s021"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.5",
+   "language": "uk",
+   "text": "Стійка на одній нозі (ліва). Станьте на одну ногу біля стійки, за яку можна вчепитися, і утримуйте положення. 3 рази по 30 секунд, щодня. Станьте біля кухонної стійки, щоб можна було вчепитися. З ваших записів: Перевіряйте шкіру кульшової частини після носіння протеза.",
+   "source_en": "Single-leg stance (left). Stand on one leg next to a counter you can grab, and hold the position. 3 times 30 seconds, every day. Stand next to the kitchen counter so you can grab it. From your records: Check the skin of the residual limb after wearing the prosthesis.",
+   "back_translation": "Standing on one leg (left). Stand on one leg near a support that you can hold onto, and maintain the position. 3 times 30 seconds, daily. Stand near the kitchen counter so you can hold onto it. From your records: Check the skin of the hip area after wearing the prosthesis.",
+   "span_ids": [
+    "s023",
+    "s025",
+    "s026"
+   ],
+   "rule_ids": [
+    "R04",
+    "R09"
+   ],
+   "state": "conflict",
+   "objections": [
+    {
+     "item_id": "S2.5",
+     "kind": "rule_conflict",
+     "detail": "R04: documented restriction found, therapist decides. Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it.",
+     "blocking": true,
+     "source": "rules"
+    },
+    {
+     "item_id": "S2.5",
+     "kind": "wrong_dose",
+     "detail": "The transcript states 'three times thirty seconds' (s025)",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S2.5",
+     "kind": "wrong_side",
+     "detail": "The transcript states 'left leg with the prosthesis on' (s025)",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S2.5",
+     "kind": "dropped_caution",
+     "detail": "The transcript states 'Stand next to the kitchen counter so you can grab it' (s026)'",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "item_id": "X6",
+   "language": "uk",
+   "text": "Стояння на протезі (ліва). 3 рази по 30 секунд, щодня. Стійте поруч із кухонною стійкою, щоб триматися за неї. З ваших записів: Перевіряйте шкіру кульшової ділянки після носіння протеза.",
+   "source_en": "Standing on the prosthesis (left). 3 times 30 seconds, every day. Stand next to the kitchen counter so you can grab it. From your records: Check the skin of the residual limb after wearing the prosthesis.",
+   "back_translation": "Standing on the prosthesis (left). 3 times 30 seconds, every day. Stand next to the kitchen counter to hold it. From your records: Check the skin of the hip joint area after wearing the prosthesis.",
+   "span_ids": [
+    "s025",
+    "s026"
+   ],
+   "rule_ids": [
+    "R09"
+   ],
+   "state": "proposal",
+   "objections": [
+    {
+     "item_id": "X6",
+     "kind": "no_catalogue_match",
+     "detail": "not a catalogued exercise: its tags, and so the rule check, are unknown",
+     "blocking": false,
+     "source": "checks"
+    },
+    {
+     "item_id": "X6",
+     "kind": "wrong_dose",
+     "detail": "The transcript states 'three times 30 seconds' (s025)",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "X6",
+     "kind": "wrong_side",
+     "detail": "The transcript states 'left leg with the prosthesis on' (s025)",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "X6",
+     "kind": "dropped_caution",
+     "detail": "The transcript states 'Stand next to the kitchen counter so you can grab it' (s026)'",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 0,
+   "objections": {
+    "rule_conflict": 3,
+    "wrong_dose": 2,
+    "invented_item": 1
+   },
+   "correctable": 3,
+   "seconds": 24.91,
+   "raised": [
+    {
+     "item_id": "S2.5",
+     "kind": "rule_conflict",
+     "detail": "R04: documented restriction found, therapist decides. Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it.",
+     "blocking": true,
+     "source": "rules"
+    },
+    {
+     "item_id": "X6",
+     "kind": "rule_conflict",
+     "detail": "R04: documented restriction found, therapist decides. Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it.",
+     "blocking": true,
+     "source": "rules"
+    },
+    {
+     "item_id": "X6",
+     "kind": "rule_conflict",
+     "detail": "R05: documented restriction found, therapist decides. No step-ups leading with the left prosthesis outside supervised sessions.",
+     "blocking": true,
+     "source": "rules"
+    },
+    {
+     "item_id": "X6",
+     "kind": "wrong_dose",
+     "detail": "dose states 2, 10, which the cited spans do not",
+     "blocking": true,
+     "source": "checks"
+    },
+    {
+     "item_id": "S2.1",
+     "kind": "wrong_dose",
+     "detail": "The transcript states 'ten minutes, twice a day' (s009).",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "X6",
+     "kind": "invented_item",
+     "detail": "The therapist never prescribed this exercise. The transcript mentions standing on the prosthesis, but not a step-up (s023, s025).",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "round": 1,
+   "objections": {
+    "rule_conflict": 1,
+    "no_catalogue_match": 1,
+    "wrong_frequency": 2,
+    "dropped_caution": 2
+   },
+   "correctable": 4,
+   "seconds": 11.1,
+   "raised": [
+    {
+     "item_id": "S2.5",
+     "kind": "rule_conflict",
+     "detail": "R04: documented restriction found, therapist decides. Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it.",
+     "blocking": true,
+     "source": "rules"
+    },
+    {
+     "item_id": "X6",
+     "kind": "no_catalogue_match",
+     "detail": "not a catalogued exercise: its tags, and so the rule check, are unknown",
+     "blocking": false,
+     "source": "checks"
+    },
+    {
+     "item_id": "S2.5",
+     "kind": "wrong_frequency",
+     "detail": "every day, at home [s025]",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S2.5",
+     "kind": "dropped_caution",
+     "detail": "Stand next to the kitchen counter so you can grab it [s026]",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "X6",
+     "kind": "wrong_frequency",
+     "detail": "every day [s025]",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "X6",
+     "kind": "dropped_caution",
+     "detail": "Stand next to the kitchen counter so you can grab it [s026]",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "round": 2,
+   "objections": {
+    "rule_conflict": 1,
+    "no_catalogue_match": 1,
+    "wrong_dose": 2,
+    "wrong_side": 2,
+    "dropped_caution": 2
+   },
+   "correctable": 6,
+   "seconds": 13.58,
+   "raised": [
+    {
+     "item_id": "S2.5",
+     "kind": "rule_conflict",
+     "detail": "R04: documented restriction found, therapist decides. Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it.",
+     "blocking": true,
+     "source": "rules"
+    },
+    {
+     "item_id": "X6",
+     "kind": "no_catalogue_match",
+     "detail": "not a catalogued exercise: its tags, and so the rule check, are unknown",
+     "blocking": false,
+     "source": "checks"
+    },
+    {
+     "item_id": "S2.5",
+     "kind": "wrong_dose",
+     "detail": "The transcript states 'three times thirty seconds' (s025)",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S2.5",
+     "kind": "wrong_side",
+     "detail": "The transcript states 'left leg with the prosthesis on' (s025)",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S2.5",
+     "kind": "dropped_caution",
+     "detail": "The transcript states 'Stand next to the kitchen counter so you can grab it' (s026)'",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "X6",
+     "kind": "wrong_dose",
+     "detail": "The transcript states 'three times 30 seconds' (s025)",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "X6",
+     "kind": "wrong_side",
+     "detail": "The transcript states 'left leg with the prosthesis on' (s025)",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "X6",
+     "kind": "dropped_caution",
+     "detail": "The transcript states 'Stand next to the kitchen counter so you can grab it' (s026)'",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  }
+ ],
+ "calls": {
+  "generator": [
+   {
+    "what": "translate r0",
+    "seconds": 7.72,
+    "tokens": 474,
+    "tokens_per_s": 66.2
+   },
+   {
+    "what": "correct r0",
+    "seconds": 5.02,
+    "tokens": 261,
+    "tokens_per_s": 65.4
+   },
+   {
+    "what": "translate r1",
+    "seconds": 1.88,
+    "tokens": 95,
+    "tokens_per_s": 64.7
+   },
+   {
+    "what": "correct r1",
+    "seconds": 5.27,
+    "tokens": 281,
+    "tokens_per_s": 65.9
+   },
+   {
+    "what": "translate r2",
+    "seconds": 2.41,
+    "tokens": 127,
+    "tokens_per_s": 63.9
+   }
+  ],
+  "falsifier": [
+   {
+    "what": "check items r0",
+    "seconds": 6.18,
+    "tokens": 272,
+    "tokens_per_s": 53.9
+   },
+   {
+    "what": "check translations r0",
+    "seconds": 11.01,
+    "tokens": 545,
+    "tokens_per_s": 54.8
+   },
+   {
+    "what": "check items r1",
+    "seconds": 6.05,
+    "tokens": 211,
+    "tokens_per_s": 53.4
+   },
+   {
+    "what": "check translations r1",
+    "seconds": 3.17,
+    "tokens": 151,
+    "tokens_per_s": 56.7
+   },
+   {
+    "what": "check items r2",
+    "seconds": 7.43,
+    "tokens": 296,
+    "tokens_per_s": 53.8
+   },
+   {
+    "what": "check translations r2",
+    "seconds": 3.74,
+    "tokens": 169,
+    "tokens_per_s": 56.1
+   }
+  ]
+ },
+ "notes": [
+  "X6: unknown catalogue id 'ex.standing_prosthesis' set to null"
+ ],
+ "models": {
+  "generator": "Qwen3.5-35B-A3B-Q4_K_M.gguf",
+  "falsifier": "gemma-3-12b-it-Q4_K_M.gguf"
+ }
+}

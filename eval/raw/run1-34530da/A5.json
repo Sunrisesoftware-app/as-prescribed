@@ -1,0 +1,392 @@
+{
+ "run": "A5",
+ "summary": {
+  "session": "S3",
+  "states": {
+   "proposal": 4
+  },
+  "rounds": 3,
+  "objections_per_round": [
+   4,
+   1,
+   7
+  ],
+  "seconds": 46.9
+ },
+ "observation": {
+  "run": "A5",
+  "session": "S3",
+  "type": "wrong_dose_or_frequency",
+  "item_id": "S3.3",
+  "injected": true,
+  "detected": true,
+  "primary_kind": true,
+  "by_checks": false,
+  "by_falsifier": true,
+  "final_state": "proposal"
+ },
+ "clean": [
+  {
+   "run": "A5",
+   "session": "S3",
+   "item_id": "S3.1",
+   "false_alarm": true,
+   "kinds": [
+    "mistranslation",
+    "wrong_frequency"
+   ],
+   "sources": [
+    "checks",
+    "falsifier"
+   ]
+  },
+  {
+   "run": "A5",
+   "session": "S3",
+   "item_id": "S3.2",
+   "false_alarm": true,
+   "kinds": [
+    "wrong_frequency"
+   ],
+   "sources": [
+    "falsifier"
+   ]
+  },
+  {
+   "run": "A5",
+   "session": "S3",
+   "item_id": "S3.4",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  }
+ ],
+ "lines": [
+  {
+   "item_id": "S3.1",
+   "language": "ar",
+   "text": "تأرجح ذراع البندول (اليمين). ادعم نفسك على طاولة باليد الأخرى ودع ذراعك الأيمن يتدلى ويتأرجح برفق في دوائر صغيرة. 1 دقيقة، 3 مرات في اليوم.",
+   "source_en": "Pendulum arm swing (right). Support yourself on a table with the other hand and let your right arm hang and swing gently in small circles. 1 minute, 3 times a day.",
+   "back_translation": "Swing the pendulum arm (right). Support yourself on a table with the other hand and let your right arm hang and swing gently in small circles. 1 minute, 3 times in the day.",
+   "span_ids": [
+    "s012",
+    "s013"
+   ],
+   "rule_ids": [],
+   "state": "proposal",
+   "objections": [
+    {
+     "item_id": "S3.1",
+     "kind": "wrong_dose",
+     "detail": "The transcript states 'One minute' (s013).",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.1",
+     "kind": "wrong_frequency",
+     "detail": "The transcript states 'three times a day' (s013).",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "item_id": "S3.2",
+   "language": "ar",
+   "text": "دوران للخارج مع شريط (اليمين). حافظ على المرفق ملاصقًا لجانبك وحوّل الساعد للخارج ضد الشريط. 3 × 10، كل يوم. حافظ على مرفقك مطويًا ملاصقًا لجانبك.",
+   "source_en": "Outward rotation with a band (right). Keep the elbow against your side and turn the forearm outwards against the band. 3 × 10, every day. Keep your elbow tucked in against your side.",
+   "back_translation": "Rotation outwards with a band (right). Keep the elbow close to your side and turn the forearm outwards against the band. 3 times by 10, every day. Keep your elbow folded close to your side.",
+   "span_ids": [
+    "s016",
+    "s017"
+   ],
+   "rule_ids": [],
+   "state": "proposal",
+   "objections": [
+    {
+     "item_id": "S3.2",
+     "kind": "wrong_dose",
+     "detail": "The transcript states 'Three sets of ten' (s017).",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.2",
+     "kind": "wrong_frequency",
+     "detail": "The transcript states 'every day' (s017).",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.2",
+     "kind": "dropped_caution",
+     "detail": "The transcript states 'Keep your elbow tucked in against your side' (s016, s018, s019).",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "item_id": "S3.3",
+   "language": "ar",
+   "text": "تمارين التجديف باستخدام الشريط (الجانبين). اسحب الشريط نحوك بكلتا يديك، واضغط على شفرات الكتف معًا. 2 × 15، كل يوم.",
+   "source_en": "Rowing with a band (both sides). Pull the band towards you with both hands, squeezing the shoulder blades together. 2 × 15, every day.",
+   "back_translation": "Rowing exercises using the band (both sides). Pull the band towards you with both hands, and press the shoulder blades together. 2 times by 15, every day.",
+   "span_ids": [
+    "s020",
+    "s021"
+   ],
+   "rule_ids": [],
+   "state": "proposal",
+   "objections": [
+    {
+     "item_id": "S3.3",
+     "kind": "wrong_dose",
+     "detail": "The transcript states 'Two sets of fifteen' (s021).",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.3",
+     "kind": "wrong_frequency",
+     "detail": "The transcript states 'every day' (s021).",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "item_id": "S3.4",
+   "language": "ar",
+   "text": "تمدد لعضلة الفخذ الخلفية (لم يُذكر الجانب). اجلس ورجلك (لم يُذكر الجانب) مستقيمة أمامك وانحنِ للأمام من الوركين حتى تشعر بتمدد خلف الفخذ. لم يُذكر الجرعة، ولم يُذكر التكرار. من سجلاتك: انحنِ من الوركين واحافظ على استقامة الظهر.",
+   "source_en": "Seated hamstring stretch (side not stated). Sit with your (side not stated) leg straight in front of you and lean forward from the hips until you feel a stretch behind the thigh. Dose not stated, how often not stated. From your records: Bend from the hips and keep the back straight.",
+   "back_translation": "Stretch for the hamstring muscle (side not mentioned). Sit with your (side not mentioned) leg straight in front of you and bend forward from the hips until you feel a stretch behind the thigh. Dose not mentioned, how often not mentioned. From your records: bend from the hips and keep the back straight.",
+   "span_ids": [
+    "s024",
+    "s025"
+   ],
+   "rule_ids": [
+    "R11"
+   ],
+   "state": "proposal",
+   "objections": [
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, dose, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    }
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 0,
+   "objections": {
+    "incomplete": 1,
+    "wrong_frequency": 3,
+    "mistranslation": 1
+   },
+   "correctable": 4,
+   "seconds": 19.17,
+   "raised": [
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, dose, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    },
+    {
+     "item_id": "S3.1",
+     "kind": "wrong_frequency",
+     "detail": "The therapist stated 'three times a day' (s013).",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.2",
+     "kind": "wrong_frequency",
+     "detail": "The therapist stated 'every day' (s017).",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.3",
+     "kind": "wrong_frequency",
+     "detail": "The therapist stated 'every day' (s021).",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.1",
+     "kind": "mistranslation",
+     "detail": "numbers differ from the English line (missing 1)",
+     "blocking": true,
+     "source": "checks"
+    }
+   ]
+  },
+  {
+   "round": 1,
+   "objections": {
+    "incomplete": 1,
+    "wrong_side": 1
+   },
+   "correctable": 1,
+   "seconds": 9.33,
+   "raised": [
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, dose, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    },
+    {
+     "item_id": "S3.2",
+     "kind": "wrong_side",
+     "detail": "right",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "round": 2,
+   "objections": {
+    "incomplete": 1,
+    "wrong_dose": 3,
+    "wrong_frequency": 3,
+    "dropped_caution": 1
+   },
+   "correctable": 7,
+   "seconds": 8.4,
+   "raised": [
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, dose, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    },
+    {
+     "item_id": "S3.1",
+     "kind": "wrong_dose",
+     "detail": "The transcript states 'One minute' (s013).",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.1",
+     "kind": "wrong_frequency",
+     "detail": "The transcript states 'three times a day' (s013).",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.2",
+     "kind": "wrong_dose",
+     "detail": "The transcript states 'Three sets of ten' (s017).",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.2",
+     "kind": "wrong_frequency",
+     "detail": "The transcript states 'every day' (s017).",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.2",
+     "kind": "dropped_caution",
+     "detail": "The transcript states 'Keep your elbow tucked in against your side' (s016, s018, s019).",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.3",
+     "kind": "wrong_dose",
+     "detail": "The transcript states 'Two sets of fifteen' (s021).",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.3",
+     "kind": "wrong_frequency",
+     "detail": "The transcript states 'every day' (s021).",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  }
+ ],
+ "calls": {
+  "generator": [
+   {
+    "what": "translate r0",
+    "seconds": 5.09,
+    "tokens": 299,
+    "tokens_per_s": 66.0
+   },
+   {
+    "what": "correct r0",
+    "seconds": 6.77,
+    "tokens": 372,
+    "tokens_per_s": 66.2
+   },
+   {
+    "what": "translate r1",
+    "seconds": 2.44,
+    "tokens": 135,
+    "tokens_per_s": 65.3
+   },
+   {
+    "what": "correct r1",
+    "seconds": 3.22,
+    "tokens": 147,
+    "tokens_per_s": 65.9
+   }
+  ],
+  "falsifier": [
+   {
+    "what": "check items r0",
+    "seconds": 5.44,
+    "tokens": 238,
+    "tokens_per_s": 54.3
+   },
+   {
+    "what": "check translations r0",
+    "seconds": 8.64,
+    "tokens": 443,
+    "tokens_per_s": 55.7
+   },
+   {
+    "what": "check items r1",
+    "seconds": 2.83,
+    "tokens": 90,
+    "tokens_per_s": 54.9
+   },
+   {
+    "what": "check translations r1",
+    "seconds": 4.06,
+    "tokens": 203,
+    "tokens_per_s": 56.9
+   },
+   {
+    "what": "check items r2",
+    "seconds": 8.4,
+    "tokens": 398,
+    "tokens_per_s": 54.2
+   }
+  ]
+ },
+ "notes": [],
+ "models": {
+  "generator": "Qwen3.5-35B-A3B-Q4_K_M.gguf",
+  "falsifier": "gemma-3-12b-it-Q4_K_M.gguf"
+ }
+}

@@ -1,0 +1,319 @@
+{
+ "run": "F4",
+ "summary": {
+  "session": "S2",
+  "states": {
+   "supported": 4,
+   "conflict": 1
+  },
+  "rounds": 3,
+  "objections_per_round": [
+   3,
+   1,
+   1
+  ],
+  "seconds": 49.3
+ },
+ "observation": {
+  "run": "F4",
+  "session": "S2",
+  "type": "mistranslation",
+  "item_id": "S2.3",
+  "injected": true,
+  "detected": true,
+  "primary_kind": true,
+  "by_checks": false,
+  "by_falsifier": true,
+  "final_state": "supported"
+ },
+ "clean": [
+  {
+   "run": "F4",
+   "session": "S2",
+   "item_id": "S2.1",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "F4",
+   "session": "S2",
+   "item_id": "S2.2",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "F4",
+   "session": "S2",
+   "item_id": "S2.4",
+   "false_alarm": true,
+   "kinds": [
+    "mistranslation"
+   ],
+   "sources": [
+    "falsifier"
+   ]
+  },
+  {
+   "run": "F4",
+   "session": "S2",
+   "item_id": "S2.5",
+   "false_alarm": true,
+   "kinds": [
+    "mistranslation"
+   ],
+   "sources": [
+    "falsifier"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "item_id": "S2.1",
+   "language": "uk",
+   "text": "Лежачи на животі. Ляжте на живіт, витягніть обидві ноги в колінах і залиштеся так. 10 хвилин, 2 рази на день.",
+   "source_en": "Lying face down. Lie on your stomach with both hips straight and stay there. 10 minutes, 2 times a day.",
+   "back_translation": "Lying on the stomach. Lie on your stomach, extend both legs at the knees and remain like this. 10 minutes, 2 times a day.",
+   "span_ids": [
+    "s008",
+    "s009"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.2",
+   "language": "uk",
+   "text": "Місток на одній нозі (права). Ляжте на спину, зігніть праве коліно, а іншу ногу витягніть, підніміть таз над ліжком. 3 × 10, щодня.",
+   "source_en": "Single-leg bridge (right). Lie on your back with your right knee bent and the other leg straight, and lift your hips off the bed. 3 × 10, every day.",
+   "back_translation": "Bridge on one leg (right). Lie on your back, bend your right knee, and extend the other leg, lift the pelvis above the bed. 3 × 10, every day.",
+   "span_ids": [
+    "s012",
+    "s013",
+    "s015"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.3",
+   "language": "uk",
+   "text": "Підйом ноги на боці (ліва). Ляжте на бік і підніміть верхню ногу прямо вгору, потім повільно опустіть її. 3 × 12, щодня.",
+   "source_en": "Side-lying leg lift (left). Lie on your side and lift the upper leg straight up, then lower it slowly. 3 × 12, every day.",
+   "back_translation": "Leg lift on the side (left). Lie on your side and lift the upper leg straight up, then slowly lower it. 3 x 12, every day.",
+   "span_ids": [
+    "s016",
+    "s017"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.4",
+   "language": "uk",
+   "text": "Випрямлення коліна сидячи з еспандером (ліва). Сядьте на стілець, обмотайте еспандером навколо щиколотки і повільно випрямляйте коліно. 3 × 12, щодня.",
+   "source_en": "Seated knee straightening with a band (left). Sit on a chair with the band around the ankle and straighten the knee slowly. 3 × 12, every day.",
+   "back_translation": "Knee straightening while sitting with an expander (left). Sit on a chair, wrap the expander around the ankle, and slowly straighten the knee. 3 x 12, every day.",
+   "span_ids": [
+    "s020",
+    "s021"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.5",
+   "language": "uk",
+   "text": "Стійка на одній нозі (ліва). Станьте на одну ногу поруч зі стійкою, за яку можна вчепитися, і утримуйте положення. 3 × 30 секунд, щодня, вдома. Станьте поруч із кухонною стійкою. З ваших записів: Перевіряйте шкіру кульшової частини після носіння протеза.",
+   "source_en": "Single-leg stance (left). Stand on one leg next to a counter you can grab, and hold the position. 3 × 30 seconds, every day, at home. Stand next to the kitchen counter. From your records: Check the skin of the residual limb after wearing the prosthesis.",
+   "back_translation": "Standing on one leg (left). Stand on one leg next to a support that you can hold onto, and maintain the position. 3 x 30 seconds, daily, at home. Stand next to the kitchen counter. From your records: Check the skin of the hip joint after wearing the prosthesis.",
+   "span_ids": [
+    "s023",
+    "s025",
+    "s026"
+   ],
+   "rule_ids": [
+    "R04",
+    "R09"
+   ],
+   "state": "conflict",
+   "objections": [
+    {
+     "item_id": "S2.5",
+     "kind": "rule_conflict",
+     "detail": "R04: documented restriction found, therapist decides. Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it.",
+     "blocking": true,
+     "source": "rules"
+    },
+    {
+     "item_id": "S2.5",
+     "kind": "mistranslation",
+     "detail": "1. **Side:** The Ukrainian uses 'ліва' (left) which is correctly translated as 'left' in the back-translation. The original uses '(left)' which is a parenthetical note. 2. **Support:** The Ukrainian uses 'стійкою' which literally translates to 'support' or 'stand', but in context refers to a counter. The original uses 'counter'. 3. **Hip Joint:** The Ukrainian uses 'кульшової частини' which translates to 'hip joint'. The original uses 'residual limb'. 4. **Frequency:** The Ukrainian uses 'щодня'",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 0,
+   "objections": {
+    "rule_conflict": 1,
+    "mistranslation": 3
+   },
+   "correctable": 3,
+   "seconds": 22.45,
+   "raised": [
+    {
+     "item_id": "S2.5",
+     "kind": "rule_conflict",
+     "detail": "R04: documented restriction found, therapist decides. Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it.",
+     "blocking": true,
+     "source": "rules"
+    },
+    {
+     "item_id": "S2.3",
+     "kind": "mistranslation",
+     "detail": "The original specifies 'left' leg, while the back-translation specifies 'right' leg. This is a significant difference in the side of the body being targeted.",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S2.4",
+     "kind": "mistranslation",
+     "detail": "The original specifies 'ankle', while the back-translation specifies 'lower leg'. This is a significant difference in the location of the band placement.",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S2.5",
+     "kind": "mistranslation",
+     "detail": "The original specifies 'residual limb', while the back-translation specifies 'hip part'. This is a significant difference in the body part to be checked. The original also includes the instruction to check 'after wearing the prosthesis', which is omitted in the back-translation.",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "round": 1,
+   "objections": {
+    "rule_conflict": 1,
+    "mistranslation": 1
+   },
+   "correctable": 1,
+   "seconds": 15.02,
+   "raised": [
+    {
+     "item_id": "S2.5",
+     "kind": "rule_conflict",
+     "detail": "R04: documented restriction found, therapist decides. Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it.",
+     "blocking": true,
+     "source": "rules"
+    },
+    {
+     "item_id": "S2.5",
+     "kind": "mistranslation",
+     "detail": "The Ukrainian back-translation refers to 'hip part' instead of 'residual limb'. The Ukrainian back-translation does not specify that the counter is for support.",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "round": 2,
+   "objections": {
+    "rule_conflict": 1,
+    "mistranslation": 1
+   },
+   "correctable": 1,
+   "seconds": 11.85,
+   "raised": [
+    {
+     "item_id": "S2.5",
+     "kind": "rule_conflict",
+     "detail": "R04: documented restriction found, therapist decides. Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it.",
+     "blocking": true,
+     "source": "rules"
+    },
+    {
+     "item_id": "S2.5",
+     "kind": "mistranslation",
+     "detail": "1. **Side:** The Ukrainian uses 'ліва' (left) which is correctly translated as 'left' in the back-translation. The original uses '(left)' which is a parenthetical note. 2. **Support:** The Ukrainian uses 'стійкою' which literally translates to 'support' or 'stand', but in context refers to a counter. The original uses 'counter'. 3. **Hip Joint:** The Ukrainian uses 'кульшової частини' which translates to 'hip joint'. The original uses 'residual limb'. 4. **Frequency:** The Ukrainian uses 'щодня'",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  }
+ ],
+ "calls": {
+  "generator": [
+   {
+    "what": "translate r0",
+    "seconds": 6.98,
+    "tokens": 414,
+    "tokens_per_s": 65.9
+   },
+   {
+    "what": "translate r1",
+    "seconds": 5.08,
+    "tokens": 271,
+    "tokens_per_s": 65.8
+   },
+   {
+    "what": "translate r2",
+    "seconds": 2.58,
+    "tokens": 121,
+    "tokens_per_s": 64.8
+   }
+  ],
+  "falsifier": [
+   {
+    "what": "check items r0",
+    "seconds": 2.99,
+    "tokens": 94,
+    "tokens_per_s": 54.0
+   },
+   {
+    "what": "check translations r0",
+    "seconds": 12.48,
+    "tokens": 611,
+    "tokens_per_s": 55.0
+   },
+   {
+    "what": "check items r1",
+    "seconds": 3.62,
+    "tokens": 94,
+    "tokens_per_s": 54.0
+   },
+   {
+    "what": "check translations r1",
+    "seconds": 6.32,
+    "tokens": 316,
+    "tokens_per_s": 55.7
+   },
+   {
+    "what": "check items r2",
+    "seconds": 3.5,
+    "tokens": 94,
+    "tokens_per_s": 54.1
+   },
+   {
+    "what": "check translations r2",
+    "seconds": 5.77,
+    "tokens": 297,
+    "tokens_per_s": 56.5
+   }
+  ]
+ },
+ "notes": [],
+ "models": {
+  "generator": "Qwen3.5-35B-A3B-Q4_K_M.gguf",
+  "falsifier": "gemma-3-12b-it-Q4_K_M.gguf"
+ }
+}

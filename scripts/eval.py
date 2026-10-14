@@ -10,6 +10,7 @@ resumes: a run whose result file exists is skipped. Results live in runs/eval/<s
 import argparse
 import asyncio
 import json
+import subprocess
 import sys
 from dataclasses import asdict
 from pathlib import Path
@@ -112,7 +113,10 @@ def do_score() -> None:
     runs = [{"objections_per_round": d["summary"]["objections_per_round"], "seconds": d["summary"]["seconds"],
              "calls": d["calls"]} for d in data]
     sc = score(obs, clean, runs)
-    res = {"seal": s, "runs_scored": len(data), "models": data[0]["models"] if data else None, **sc,
+    git = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, capture_output=True, text=True,
+                         check=False).stdout.strip()
+    res = {"seal": s, "code_commit": git, "runs_scored": len(data),
+           "models": data[0]["models"] if data else None, **sc,
            "e2e": [{"session": r["session"], "rep": r["rep"], "seconds": r["seconds"],
                     "slot_recall": r["extraction"]["slot_recall"], "field_accuracy": r["extraction"]["field_accuracy"],
                     "traps": r["extraction"]["traps"], "invented": r["extraction"]["invented"]} for r in e2e_runs],
