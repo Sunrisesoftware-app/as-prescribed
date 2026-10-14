@@ -6,17 +6,18 @@ remains, after max_rounds, or when the time budget is spent. What remains is sho
 and every line gets exactly one state: conflict > proposal > uncertain translation > supported.
 """
 import json
+import re
 import time
 from collections import Counter
 from collections.abc import Awaitable, Callable
 from dataclasses import dataclass, field
 
 from .config import DATA_DIR, Endpoint
-from .extract import ChatFn, check_item, extract, numbers_in, parse_items
+from .extract import _NUMBER_WORDS, ChatFn, check_item, extract, numbers_in, parse_items
 from .falsify import check_items, check_translations
 from .ingest import load_spans, session_path
 from .llm import Completion, chat
-from .program import completeness, compose, profile_for, rule_check, tag_item
+from .program import cited_text, completeness, compose, profile_for, rule_check, tag_item
 from .rules import load_catalog
 from .schemas import CORRECTABLE, Item, LineState, Objection, PatientLine, Span, resolve_state
 from .translate import number_check, translate
@@ -67,8 +68,9 @@ async def correct_items(spans: list[Span], items: list[Item], objections: list[O
             f"A checker raised these objections:\n{json.dumps(objs, ensure_ascii=False)}\n\n"
             "Correct each item so it states only what the therapist said. If the transcript does not state a field, "
             "set it to null; never fill in a typical value. If the therapist postponed the exercise, set status "
-            '"deferred"; if the therapist never prescribed it or left it out, set status "withdrawn". If you are sure '
-            "an objection is wrong, keep the item as it is. Keep every item_id.\n"
+            '"deferred"; if the therapist never prescribed it or left it out, set status "withdrawn". Never turn an '
+            "item into a different exercise. If you are sure an objection is wrong, keep the item as it is. "
+            "Keep every item_id.\n"
             'Answer with one JSON object only: {"items": [ ...the corrected items, same fields... ]}')
     c = await chat_fn(ep, [{"role": "system", "content": CORRECT_SYSTEM}, {"role": "user", "content": user}],
                       max_tokens=2000, temperature=0.0)
@@ -77,7 +79,40 @@ async def correct_items(spans: list[Span], items: list[Item], objections: list[O
     except ValueError as e:
         return items, [f"correction unreadable: {e}"], c
     by_id = {i.item_id: i for i in fixed if i.item_id in flagged}
-    return [by_id.get(i.item_id, i) for i in items], notes, c
+    out = []
+    for i in items:
+        new = by_id.get(i.item_id, i)
+        if i.exercise_id and new.exercise_id != i.exercise_id:
+            # Measured 14.10.2026 (eval run 1, C1-C3): an invented item was "corrected" into a copy of a real
+            # one. An item that has to become another exercise was not prescribed: it leaves the program.
+            notes.append(f"{i.item_id}: correction changed the exercise; withdrawn instead")
+            new = i.model_copy(update={"status": "withdrawn"})
+        out.append(new)
+    return out, notes, c
+
+
+def overruled(o: Objection, item: Item, cited: str) -> bool:
+    """A falsifier objection the cited spans contradict outright, by a rule a reader can check: the item's
+    side is the only side the spans name, or every number of the item's dose is in the spans, or every word
+    of its frequency is. Measured 14.10.2026 (eval run 1): most false alarms were of these three shapes."""
+    if o.source != "falsifier":
+        return False
+    words = set(re.findall(r"[a-z]+", cited.lower()))
+    if o.kind == "wrong_side" and item.side in ("left", "right"):
+        other = "left" if item.side == "right" else "right"
+        return item.side in words and other not in words
+    if o.kind == "wrong_dose" and item.dose:
+        need = numbers_in(item.dose)
+        return bool(need) and need <= numbers_in(cited)
+    if o.kind == "wrong_frequency" and item.frequency:
+        freq = item.frequency.lower()
+        fwords = {w for w in re.findall(r"[a-z]+", freq) if w not in _FREQ_SKIP and w not in _NUMBER_WORDS}
+        plural = {w + "s" for w in fwords}
+        return numbers_in(freq) <= numbers_in(cited) and all(w in words or w + "s" in words for w in fwords)             and bool(fwords | plural)
+    return False
+
+
+_FREQ_SKIP = {"a", "an", "the", "per", "at", "of", "on", "in", "time", "times"}
 
 
 async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn: ChatFn = chat,
@@ -115,6 +150,9 @@ async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn:
     feedback: dict[str, str] = {}
     final: dict[str, list[Objection]] = {}
     rule_ids: dict[str, list[str]] = {}
+    # A documented restriction that fired once stays: the therapist decides, and no correction may make the
+    # rule stop firing (measured 14.10.2026, eval run 1: E1-E3 were "corrected" past their conflict).
+    conflicts: dict[str, list[Objection]] = {}
 
     for k in range(max_rounds):
         tr = time.perf_counter()
@@ -126,14 +164,25 @@ async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn:
             i.tags = tag_item(i, by_id)
             blocks, cautions = rule_check(i, profile)
             rule_ids[i.item_id] = [o.detail.split(":")[0] for o in blocks] + [r.id for r in cautions]
-            raised += blocks + completeness(i) + check_item(i, by_id)
+            for b in blocks:
+                conflicts.setdefault(i.item_id, [])
+                if b.detail not in {x.detail for x in conflicts[i.item_id]}:
+                    conflicts[i.item_id].append(b)
+            raised += conflicts.get(i.item_id, []) + completeness(i) + check_item(i, by_id)
             english[i.item_id] = compose(i, cautions)
 
         if prescribed:
             fobj, c = await check_items(spans, prescribed, fal, chat_fn=chat_fn)
             _log(result, "falsifier", c, f"check items r{k}")
             result.notes += [o.detail for o in fobj if o.item_id == "*"]
-            raised += [o for o in fobj if o.item_id != "*"]
+            by_item = {i.item_id: i for i in prescribed}
+            for o in fobj:
+                if o.item_id == "*":
+                    continue
+                if overruled(o, by_item[o.item_id], cited_text(by_item[o.item_id], by_id)):
+                    result.notes.append(f"r{k} {o.item_id}: falsifier {o.kind} overruled by the cited spans")
+                    continue
+                raised.append(o)
             await emit("checked", round=k, objections=len([o for o in fobj if o.item_id != "*"]))
 
         # Translate only lines that are new, changed, or objected to last round.
@@ -170,7 +219,7 @@ async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn:
         final = {}
         for o in raised:
             final.setdefault(o.item_id, []).append(o)
-        item_fix = [o for o in raised if o.kind in CORRECTABLE and o.blocking]
+        item_fix = [o for o in raised if o.kind in CORRECTABLE and o.blocking and o.item_id not in conflicts]
         trans_fix = {o.item_id: o.detail for o in raised if o.kind == "mistranslation"}
         result.rounds.append(RoundLog(k, dict(Counter(o.kind for o in raised)), len(item_fix) + len(trans_fix),
                                       round(time.perf_counter() - tr, 2), [o.model_dump() for o in raised]))
@@ -190,6 +239,12 @@ async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn:
 
     result.items = items
     for i in items:
+        if i.status != "prescribed" and i.item_id in conflicts:
+            # Withdrawn or deferred by a correction after its restriction fired: the therapist still sees it.
+            i = i.model_copy(update={"status": "prescribed"})
+            final.setdefault(i.item_id, [])
+        if i.item_id in conflicts:
+            final[i.item_id] = conflicts[i.item_id] + [o for o in final.get(i.item_id, []) if o.kind != "rule_conflict"]
         if i.status != "prescribed":
             result.heard_not_prescribed.append(i)
             continue

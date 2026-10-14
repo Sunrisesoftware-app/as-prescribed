@@ -35,6 +35,7 @@ def number_check(item_id: str, source_en: str, translated: str, required: set[fl
     the English line ('stand on one leg') may stay a word, but a number the English line does not state
     at all is an addition."""
     got = digits_in(translated)
+    required = required - {1.0}  # one is a singular noun in Arabic and Ukrainian ("دقيقة", "хвилину"), not a digit
     missing, added = required - got, got - numbers_in(source_en) - required
     if not missing and not added:
         return []

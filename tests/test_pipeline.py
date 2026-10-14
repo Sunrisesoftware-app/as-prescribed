@@ -103,10 +103,47 @@ async def test_injected_wrong_dose_is_caught_and_corrected():
 
 
 async def test_objection_the_generator_does_not_fix_ends_as_proposal():
-    fake = FakeLLM(item_objections=[{"S1.3": [("wrong_side", "s024 says right")]}] * 3)
+    fake = FakeLLM(item_objections=[{"S1.3": [("not_entailed", "s024 says the bottom step only")]}] * 3)
     r = await run_session("S1", GEN, FAL, chat_fn=fake, items=gold_items("S1"), max_rounds=3)
     assert len(r.rounds) == 3 and states(r)["S1.3"] == LineState.proposal
-    assert any(o.kind == "wrong_side" for o in next(x for x in r.lines if x.item_id == "S1.3").objections)
+    assert any(o.kind == "not_entailed" for o in next(x for x in r.lines if x.item_id == "S1.3").objections)
+
+
+async def test_falsifier_objections_the_spans_contradict_are_overruled():
+    fake = FakeLLM(item_objections=[{"S1.3": [("wrong_side", "it is the left")],      # spans name only right
+                                     "S1.2": [("wrong_dose", "three sets of twelve")],  # 3 and 12 are in s018
+                                     "S1.1": [("wrong_frequency", "daily")]}])           # s013 says every day
+    r = await run_session("S1", GEN, FAL, chat_fn=fake, items=gold_items("S1"))
+    assert set(states(r).values()) == {LineState.supported}
+    assert sum("overruled" in n for n in r.notes) == 3
+
+
+async def test_a_conflict_stays_a_conflict_whatever_the_correction_does():
+    from asprescribed.evaluation import injected_items, plan
+    run = next(x for x in plan()["runs"] if x["run"] == "E1")          # step-up on the left prosthesis
+    fake = FakeLLM(item_objections=[{"X6": [("invented_item", "never prescribed")]}] * 3,
+                   corrections={"X6": {"side": "right"}})
+    r = await run_session("S2", GEN, FAL, chat_fn=fake, items=injected_items(run))
+    assert states(r)["X6"] == LineState.conflict
+
+
+async def test_a_correction_that_changes_the_exercise_withdraws_the_item():
+    from asprescribed.evaluation import injected_items, plan
+    run = next(x for x in plan()["runs"] if x["run"] == "C2")          # invented mini squat
+    fake = FakeLLM(item_objections=[{"X2": [("invented_item", "never prescribed")]}],
+                   corrections={"X2": {"exercise_id": "ex.step_up", "side": "right"}})
+    r = await run_session("S1", GEN, FAL, chat_fn=fake, items=injected_items(run))
+    assert "X2" not in states(r) and [i.item_id for i in r.heard_not_prescribed] == ["X2"]
+
+
+def test_caution_quotes_are_compared_by_code():
+    from asprescribed.falsify import caution_objections
+    from asprescribed.ingest import load_spans, session_path
+    spans = load_spans(session_path("S1"))
+    item = gold_items("S1")[2].model_copy(update={"cautions": []})      # S1.3 without "Hold the stair rail"
+    assert [o.kind for o in caution_objections(item, ["Always hold the stair rail when you do it."], spans)] ==         ["dropped_caution"]
+    assert caution_objections(item, ["Wear a knee brace on the stairs."], spans) == []   # never said
+    assert caution_objections(gold_items("S1")[2], ["Always hold the stair rail when you do it."], spans) == []
 
 
 async def test_dropped_digit_in_translation_is_retranslated():

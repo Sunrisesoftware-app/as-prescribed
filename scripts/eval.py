@@ -32,6 +32,7 @@ from asprescribed.evaluation import (
 from asprescribed.pipeline import run_session
 
 PLAN = ROOT / "eval" / "plan-v1.json"
+TAG = ""  # set from --tag: a later run of the same sealed plan, kept apart from the pre-registered one
 SEAL = ROOT / "eval" / "SEAL"
 
 
@@ -47,7 +48,7 @@ def load_sealed() -> tuple[dict, str]:
 async def run(only: set[str] | None, rounds: int) -> None:
     p, s = load_sealed()
     cfg = settings()
-    out_dir = ROOT / "runs" / "eval" / s[:12]
+    out_dir = ROOT / "runs" / "eval" / (s[:12] + (f"-{TAG}" if TAG else ""))
     out_dir.mkdir(parents=True, exist_ok=True)
     print(f"plan {s[:12]}: generator {cfg.generator.model}, falsifier {cfg.falsifier.model}")
     for r in p["runs"]:
@@ -83,7 +84,7 @@ async def e2e(rounds: int, reps: int) -> None:
     """S1-S3 end to end with extraction: the latency gate, and extraction against the answer key."""
     _, s = load_sealed()
     cfg = settings()
-    out_dir = ROOT / "runs" / "eval" / s[:12]
+    out_dir = ROOT / "runs" / "eval" / (s[:12] + (f"-{TAG}" if TAG else ""))
     out_dir.mkdir(parents=True, exist_ok=True)
     for rep in range(1, reps + 1):
         for sid in ("S1", "S2", "S3"):
@@ -104,7 +105,7 @@ async def e2e(rounds: int, reps: int) -> None:
 
 def do_score() -> None:
     _, s = load_sealed()
-    folder = ROOT / "runs" / "eval" / s[:12]
+    folder = ROOT / "runs" / "eval" / (s[:12] + (f"-{TAG}" if TAG else ""))
     files = sorted(f for f in folder.glob("*.json") if not f.name.startswith("e2e-"))
     e2e_runs = [json.loads(f.read_text(encoding="utf-8")) for f in sorted(folder.glob("e2e-*.json"))]
     data = [json.loads(f.read_text(encoding="utf-8")) for f in files]
@@ -115,13 +116,13 @@ def do_score() -> None:
     sc = score(obs, clean, runs)
     git = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, capture_output=True, text=True,
                          check=False).stdout.strip()
-    res = {"seal": s, "code_commit": git, "runs_scored": len(data),
+    res = {"seal": s, "tag": TAG or "run1 (pre-registered)", "code_commit": git, "runs_scored": len(data),
            "models": data[0]["models"] if data else None, **sc,
            "e2e": [{"session": r["session"], "rep": r["rep"], "seconds": r["seconds"],
                     "slot_recall": r["extraction"]["slot_recall"], "field_accuracy": r["extraction"]["field_accuracy"],
                     "traps": r["extraction"]["traps"], "invented": r["extraction"]["invented"]} for r in e2e_runs],
            "gates": gates(sc, e2e_runs)}
-    out = ROOT / "eval" / f"results-{s[:12]}.json"
+    out = ROOT / "eval" / f"results-{s[:12]}{'-' + TAG if TAG else ''}.json"
     out.write_text(json.dumps(res, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(json.dumps(res, ensure_ascii=False, indent=1))
 
@@ -132,7 +133,10 @@ def main() -> None:
     ap.add_argument("--only", default="")
     ap.add_argument("--rounds", type=int, default=3)
     ap.add_argument("--reps", type=int, default=1)
+    ap.add_argument("--tag", default="")
     a = ap.parse_args()
+    global TAG
+    TAG = a.tag
     if a.cmd == "plan":
         s = write_plan(PLAN)
         print(f"wrote {PLAN.relative_to(ROOT)}\nsha256 {s}\nRecord it in eval/SEAL and the ENNAKKO before any run.")
