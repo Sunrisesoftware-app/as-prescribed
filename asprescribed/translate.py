@@ -18,8 +18,16 @@ SYSTEM = ("You translate a physiotherapy home program for a patient to read at h
 _DIGITS = str.maketrans("٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹", "01234567890123456789")
 
 
+# Forms that state two without a digit: the Arabic dual ("twice", "two sets") and Ukrainian "twice".
+# Measured 14.10.2026: Qwen wrote "مجموعتان من 10" for "Two sets of ten".
+_TWO = re.compile(r"مرتين|مرتان|مجموعتان|مجموعتين|двічі")
+
+
 def digits_in(text: str) -> set[float]:
-    return {float(n) for n in re.findall(r"\d+(?:[.,]\d+)?", (text or "").translate(_DIGITS).replace(",", "."))}
+    found = {float(n) for n in re.findall(r"\d+(?:[.,]\d+)?", (text or "").translate(_DIGITS).replace(",", "."))}
+    if _TWO.search(text or ""):
+        found.add(2.0)
+    return found
 
 
 def number_check(item_id: str, source_en: str, translated: str, required: set[float]) -> list[Objection]:
@@ -45,7 +53,7 @@ async def translate(lines: dict[str, str], language: str, ep: Endpoint, *, chat_
     payload = [{"item_id": k, "text": v, **({"previous_problem": feedback[k]} if k in feedback else {})}
                for k, v in lines.items()]
     user = (f"Translate each line into {LANG_NAME[language]}. Plain words and short sentences. "
-            "Write every number with the digits 0-9, including counts such as 'twice' (write 2 times). "
+            "Write every number with the digits 0-9, and copy a dose written as 'N × M' unchanged. "
             "Where a line has a previous_problem, the earlier translation had that problem: fix it.\n\n"
             f"Lines:\n{json.dumps(payload, ensure_ascii=False)}\n\n"
             'Answer with one JSON object only: {"lines": [{"item_id": "...", "text": "..."}]}')

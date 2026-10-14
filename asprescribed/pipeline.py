@@ -8,7 +8,7 @@ and every line gets exactly one state: conflict > proposal > uncertain translati
 import json
 import time
 from collections import Counter
-from collections.abc import Callable
+from collections.abc import Awaitable, Callable
 from dataclasses import dataclass, field
 
 from .config import DATA_DIR, Endpoint
@@ -83,10 +83,17 @@ async def correct_items(spans: list[Span], items: list[Item], objections: list[O
 async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn: ChatFn = chat,
                       max_rounds: int = 3, budget_s: float | None = None,
                       items: list[Item] | None = None,
-                      translation_hook: Callable[[str, str], str] | None = None) -> SessionResult:
+                      translation_hook: Callable[[str, str], str] | None = None,
+                      on_event: Callable[[str, dict], Awaitable[None]] | None = None) -> SessionResult:
     """items: start from these instead of extracting (the evaluation injects item errors this way).
     translation_hook(item_id, text): applied to round 0's translations (the evaluation injects
-    mistranslations this way); later rounds re-translate without it."""
+    mistranslations this way); later rounds re-translate without it.
+    on_event(kind, data): awaited at every stage, so a view can show the rounds as they happen."""
+
+    async def emit(kind: str, **data) -> None:
+        if on_event:
+            await on_event(kind, data)
+
     t0 = time.perf_counter()
     spans = load_spans(session_path(session_id))
     by_id = {s.span_id: s for s in spans}
@@ -100,6 +107,7 @@ async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn:
             _log(result, "generator", c, "extract")
         result.notes += ex.notes
         items = ex.items
+        await emit("extracted", items=len(items))
 
     translations: dict[str, str] = {}
     sources: dict[str, str] = {}
@@ -110,6 +118,7 @@ async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn:
 
     for k in range(max_rounds):
         tr = time.perf_counter()
+        await emit("round", round=k)
         prescribed = [i for i in items if i.status == "prescribed"]
         raised: list[Objection] = []
         english: dict[str, str] = {}
@@ -125,6 +134,7 @@ async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn:
             _log(result, "falsifier", c, f"check items r{k}")
             result.notes += [o.detail for o in fobj if o.item_id == "*"]
             raised += [o for o in fobj if o.item_id != "*"]
+            await emit("checked", round=k, objections=len([o for o in fobj if o.item_id != "*"]))
 
         # Translate only lines that are new, changed, or objected to last round.
         todo = {iid: en for iid, en in english.items()
@@ -135,6 +145,7 @@ async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn:
             if translation_hook and k == 0:
                 new = {iid: translation_hook(iid, text) for iid, text in new.items()}
             translations.update(new)
+            await emit("translated", round=k, lines=len(new))
             sources.update({iid: en for iid, en in todo.items() if iid in new})
             missing = [iid for iid in todo if iid not in new]
             raised += [Objection(item_id=iid, kind="mistranslation", source="checks",
@@ -150,6 +161,7 @@ async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn:
                 _log(result, "falsifier", c, f"check translations r{k}")
                 backs.update(back)
                 raised += tobj
+                await emit("back_checked", round=k, objections=len(tobj))
         # Translation objections from earlier rounds stand for lines not re-translated this round.
         for iid, objs in final.items():
             if iid in english and iid not in todo:
@@ -162,6 +174,7 @@ async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn:
         trans_fix = {o.item_id: o.detail for o in raised if o.kind == "mistranslation"}
         result.rounds.append(RoundLog(k, dict(Counter(o.kind for o in raised)), len(item_fix) + len(trans_fix),
                                       round(time.perf_counter() - tr, 2), [o.model_dump() for o in raised]))
+        await emit("round_done", round=k, correctable=len(item_fix) + len(trans_fix))
 
         out_of_time = budget_s is not None and time.perf_counter() - t0 > budget_s
         if not item_fix and not trans_fix or k == max_rounds - 1 or out_of_time:
@@ -172,6 +185,7 @@ async def run_session(session_id: str, gen: Endpoint, fal: Endpoint, *, chat_fn:
             items, notes, c = await correct_items(spans, items, item_fix, gen, chat_fn=chat_fn)
             _log(result, "generator", c, f"correct r{k}")
             result.notes += notes
+            await emit("corrected", round=k, items=len({o.item_id for o in item_fix}))
         feedback = trans_fix
 
     result.items = items

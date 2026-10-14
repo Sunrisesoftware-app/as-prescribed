@@ -72,9 +72,31 @@ def compose(item: Item, cautions: list[Rule]) -> str:
         how = how.replace("the named ", f"your {item.side} ")
     elif entry and entry["side_mode"] == "per_side":
         how = how.replace("the named ", "your (side not stated) ")
-    dose = item.dose or "Dose not stated"
-    freq = item.frequency or "how often not stated"
+    dose = canonical(item.dose) if item.dose else "Dose not stated"
+    dose = dose[:1].upper() + dose[1:]
+    freq = canonical(item.frequency) if item.frequency else "how often not stated"
     parts = [head, how, f"{dose}, {freq}."]
-    parts += [c if c.endswith(".") else c + "." for c in item.cautions]
+    parts += [_sentence(c) for c in item.cautions]
     parts += [f"From your records: {r.text}" for r in cautions]
     return " ".join(p for p in parts if p).replace("..", ".")
+
+
+_WORDS = {"once": "1 time", "twice": "2 times", "thrice": "3 times", "one": "1", "two": "2", "three": "3",
+          "four": "4", "five": "5", "six": "6", "seven": "7", "eight": "8", "nine": "9", "ten": "10",
+          "eleven": "11", "twelve": "12", "fifteen": "15", "twenty": "20", "thirty": "30", "forty": "40",
+          "sixty": "60"}
+
+
+def canonical(text: str) -> str:
+    """Numbers as digits and 'N sets of M' as 'N × M', so a translation can copy them unchanged
+    (in Arabic a spelled-out two becomes a dual form, which no digit check can read). The multiplication
+    sign, not the letter x: in right-to-left text a Latin x splits '3 x 10' and shows it as 'x 10 3'."""
+    out = re.sub(r"[A-Za-z]+", lambda m: m[0] if m[0] == "x" else _WORDS.get(m[0].lower(), m[0]), text)
+    out = re.sub(r"(\d+)\s+(?:sets?|rounds?)\s+of\s+(\d+)", r"\1 × \2", out)
+    return re.sub(r"(\d+)\s*[xX]\s*(\d+)", r"\1 × \2", out)
+
+
+def _sentence(text: str) -> str:
+    t = text.strip()
+    t = t[:1].upper() + t[1:]
+    return t if t.endswith((".", "!", "?")) else t + "."

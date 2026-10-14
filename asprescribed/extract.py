@@ -30,7 +30,7 @@ Rules:
 - Keep the item_id of every item already listed; a new item gets the next free number.
 - side, dose and frequency: copy only what the transcript states. If it is not stated, use null. Never fill in a typical value.
 - An exercise the therapist postpones ("not yet", "later", "next time") has status "deferred". One the therapist removes or advises against has status "withdrawn". An exercise only the patient mentions is not an item unless the therapist prescribes it.
-- cautions: only cautions the therapist states for that exercise, in the therapist's words.
+- cautions: only warnings the therapist states for that exercise (what to do or avoid for safety), in the therapist's words. A reason or an explanation is not a caution.
 - source_span_ids: every span that states the exercise, its side, dose, frequency or cautions.
 - side is "none" for an exercise without a side (walking), "both" when both sides are prescribed.
 - exercise_id: the catalogue id when the exercise is one of them, else null.

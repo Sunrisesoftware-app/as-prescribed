@@ -15,6 +15,7 @@ from dataclasses import asdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.stdout.reconfigure(encoding="utf-8")  # Arabic and Ukrainian on a Windows console
 
 from asprescribed.config import ROOT, settings
 from asprescribed.evaluation import (

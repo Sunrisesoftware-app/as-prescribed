@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "as-prescribed",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": ["run", "uvicorn", "asprescribed.main:app", "--port", "8300"],
+      "port": 8300
+    }
+  ]
+}

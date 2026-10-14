@@ -126,7 +126,7 @@ def test_compose_names_the_side_in_the_catalogue_sentence():
     item = gold_items("S1")[2]  # S1.3 step-up, right
     line = compose(item, [])
     assert line.startswith("Step-up (right). Step up onto the bottom stair leading with your right leg")
-    assert "2 x 10, every day." in line and "Hold the stair rail." in line
+    assert "2 × 10, every day." in line and "Hold the stair rail." in line
 
 
 def test_number_check_requires_dose_digits_but_allows_number_words_elsewhere():
@@ -136,3 +136,14 @@ def test_number_check_requires_dose_digits_but_allows_number_words_elsewhere():
     assert number_check("x", src, "TR ٣ x ٣٠", {3, 30}) == []                      # Arabic-Indic digits
     assert [o.detail for o in number_check("x", src, "TR 3 x 20", {3, 30})] == [
         "numbers differ from the English line (missing 30; added 20)"]
+
+
+def test_canonical_dose_and_the_arabic_dual():
+    from asprescribed.program import canonical
+    from asprescribed.translate import digits_in
+    assert canonical("Two sets of ten") == "2 × 10"
+    assert canonical("3 x 12") == "3 × 12"
+    assert canonical("three times thirty seconds") == "3 times 30 seconds"
+    assert canonical("twice a day") == "2 times a day"
+    assert digits_in("مجموعتان من 10") == {2.0, 10.0}
+    assert digits_in("двічі на день") == {2.0}

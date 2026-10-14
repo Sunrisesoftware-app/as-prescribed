@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>As Prescribed</title>
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <span class="rx" aria-hidden="true">Rx</span>
+    <h1>As Prescribed</h1>
+    <span class="tag">Verifies the therapist's prescription, line by line, in the patient's language. Synthetic data only.</span>
+  </div>
+  <div class="controls">
+    <div class="seg" id="sessions" role="group" aria-label="Session"></div>
+    <div class="seg" role="group" aria-label="Mode">
+      <button type="button" id="mode-live" aria-pressed="true">Live visit</button>
+      <button type="button" id="mode-rx" aria-pressed="false">From the approved prescription</button>
+    </div>
+    <select id="injection" aria-label="Inject an error" hidden></select>
+    <button type="button" class="primary" id="run" disabled>Start the visit</button>
+  </div>
+</header>
+
+<main>
+  <div class="col">
+    <section class="panel" aria-labelledby="h-patient">
+      <h2 id="h-patient">Patient (synthetic)</h2>
+      <p id="profile" class="small"></p>
+      <div class="small muted">Documented restrictions and conditions</div>
+      <ul class="restrictions" id="conditions"></ul>
+    </section>
+    <section class="panel" aria-labelledby="h-transcript">
+      <h2 id="h-transcript">Session transcript</h2>
+      <div class="transcript" id="transcript" aria-live="polite"></div>
+    </section>
+  </div>
+
+  <div class="col">
+    <section class="panel" aria-labelledby="h-progress">
+      <h2 id="h-progress">Verification</h2>
+      <div class="progress" id="progress"></div>
+      <div class="facts" id="facts"></div>
+    </section>
+    <div id="banner"></div>
+    <section class="panel" aria-labelledby="h-program">
+      <h2 id="h-program">Home program for the therapist's approval</h2>
+      <div class="lines" id="lines"><p class="muted small">Start the visit to see the program build as the session goes.</p></div>
+    </section>
+    <section class="panel" id="heard-panel" hidden aria-labelledby="h-heard">
+      <h2 id="h-heard">Heard, but not prescribed</h2>
+      <ul class="heard" id="heard"></ul>
+    </section>
+    <section class="panel release" aria-label="Release">
+      <span class="small muted" id="release-note">Nothing reaches the patient until every line is approved or removed.</span>
+      <span class="controls">
+        <button type="button" class="ghost" id="approve-supported" disabled>Approve all supported lines</button>
+        <button type="button" class="primary" id="release" disabled>Release to patient</button>
+      </span>
+    </section>
+  </div>
+</main>
+<footer>
+  As Prescribed verifies that the patient receives what the therapist prescribed (fidelity, documented restrictions,
+  translation). It does not assess suitability, diagnose or recommend treatment: that is the therapist's judgement.
+  Every person and session here is synthetic.
+</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>

@@ -26,7 +26,10 @@ KINDS = """Objection kinds:
 - wrong_side: the side differs from what the therapist stated
 - dropped_caution: the therapist stated a caution for this exercise that the item lacks
 - invented_item: the therapist never prescribed this exercise, or postponed it, or left it out
-- not_entailed: anything else in the item that the transcript does not state"""
+- not_entailed: anything else in the item that the transcript does not state
+
+Not objections: an item does not have to repeat how to do the exercise, where to put the band or why it
+helps; leaving out such explanations is fine. Report only what the item states wrongly, plus cautions."""
 
 
 async def check_items(spans: list[Span], items: list[Item], ep: Endpoint, *,
