@@ -15,23 +15,28 @@ Updated 14.10.2026 (session 2).
 
 ## P: the owner's own actions
 
-- **P-1 Tokenfactory key: waiting for the organisers** (DECISIONS row 20: pursued so the public demo
-  can run live on AMD's cloud). notebooks.amd.com/tokenfactory says "Your email is not registered
-  for API key distribution" for pete@sunrisesoftware.app. The owner emailed community@lablab.ai on
-  14.10.2026. Next steps for the owner, in order:
-  1. On the ACT III event page, while signed in to lablab, use **Sign up with AMD** (the event's own
-     enrolment, which links the AMD AI Developer Program account) and check the page shows the
-     enrolment; the team "As Prescribed" exists since 14.10.
-  2. Link Discord in the lablab profile, so the event channels (help) appear on the lablab Discord.
-  3. Retry tokenfactory on Thu 15.10. morning: the distribution list may be filled in batches.
-  4. Ask in the same message whether a project that runs Gemma on AMD hardware qualifies for the
-     Google prize (the page lists $5,000 from Google but no criteria).
+- **P-1 The tokenfactory key into `.env`.** The owner has the key (team-1199, redeemed 14.10.2026:
+  sign in at notebooks.amd.com first, then open `/tokenfactory`). Into the repo's `.env`, never into
+  chat: `TOKENFACTORY_BASE_URL` from the page's User Manual and `TOKENFACTORY_API_KEY`. Leave the
+  `GENERATOR_*` and `FALSIFIER_*` lines as they are (local mode); public-mode runs override them.
+- **P-2 Google prize:** ask the organisers whether a project that runs Gemma on AMD hardware
+  qualifies (the page lists $5,000 from Google but no criteria). The community@lablab.ai email of
+  14.10. about the key can be closed as solved.
 - **P-4 Video voice-over or presence** in the demo video, if wanted (SUB-1).
 - **P-5 Confirm the deadline** with the organisers if convenient: the live dashboard's countdown ends
   Sun 18.10. 13:00 EEST, the event page was read as 18:00 EEST; the docs use 13:00.
 
 ## DEPLOY
 
+- **DEPLOY-4 Public mode on tokenfactory** (DECISIONS row 20), after P-1:
+  1. List the models (`scripts/models.py`) and run S1-S3 once on a pair of different families. The
+     proposal is Qwen3.8-27B generating and Gemma-4-31B-IT falsifying, the same families as local
+     mode. Measure the latency, tok/s and the line states against the recordings.
+  2. Decision box: whether the public demo runs live on tokenfactory, with the recorded runs as the
+     fallback when the endpoint fails or the shared key is throttled. The key would then live in a
+     root-only file on the machine.
+  3. Any recall figure on tokenfactory is a tagged run of plan-v1 made after reading run 1
+     (adr.ap.009), or a new sealed plan.
 - **DEPLOY-3** (optional) A deploy workflow (test-gated ssh deploy with a public curl check), only if
   the demo changes often; until then an update is the three commands in
   [`deploy/README.md`](../deploy/README.md).
