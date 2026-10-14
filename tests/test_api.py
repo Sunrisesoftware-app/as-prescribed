@@ -53,7 +53,7 @@ def events(text: str) -> list[tuple[str, dict]]:
 
 def test_pages_and_sessions(client):
     assert client.get("/").status_code == 200 and "As Prescribed" in client.get("/").text
-    assert client.get("/patient").status_code == 200
+    assert client.get("/patient").status_code == 200 and "Machine-written" in client.get("/patient").text
     ids = [s["id"] for s in client.get("/api/sessions").json()]
     assert ids == ["S1", "S2", "S3"]
     s2 = client.get("/api/sessions/S2").json()

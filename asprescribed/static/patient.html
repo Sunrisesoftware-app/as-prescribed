@@ -24,6 +24,7 @@
   .tools { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; font-size: 15px; }
   button { font: inherit; border: 1px solid var(--line); background: transparent; color: var(--ink); border-radius: 8px; padding: 8px 14px; cursor: pointer; }
   .empty { color: var(--muted); }
+  .note { margin: 20px 0 0; font-size: 14px; color: var(--muted); direction: ltr; text-align: left; }
   @media print { .tools { display: none; } li { break-inside: avoid; } body { background: #fff; color: #000; } }
 </style>
 </head>
@@ -34,6 +35,7 @@
     <div class="sub" id="sub"></div>
   </header>
   <ol id="list"></ol>
+  <p class="note" id="note" lang="en" hidden></p>
   <div class="tools">
     <button type="button" id="print">Print</button>
     <label><input type="checkbox" id="show-en" checked> Show the English line under each exercise</label>
@@ -42,11 +44,11 @@
 <script>
 "use strict";
 // Fixed headings in the patient's language. Code wrote these and nobody on the team reads Arabic or
-// Ukrainian: they are proposals until a native speaker checks them.
+// Ukrainian, so the sheet says they are machine-written (DECISIONS row 21) until a native speaker checks them.
 const CHROME = {
-  ar: { dir: "rtl", title: "برنامج تمارينك المنزلية", by: "وصفه لك معالجك الفيزيائي", date: "التاريخ" },
-  uk: { dir: "ltr", title: "Ваша програма домашніх вправ", by: "Призначено вашим фізіотерапевтом", date: "Дата" },
-  en: { dir: "ltr", title: "Your home exercise program", by: "Prescribed by your physiotherapist", date: "Date" },
+  ar: { dir: "rtl", name: "Arabic", title: "برنامج تمارينك المنزلية", by: "وصفه لك معالجك الفيزيائي", date: "التاريخ" },
+  uk: { dir: "ltr", name: "Ukrainian", title: "Ваша програма домашніх вправ", by: "Призначено вашим фізіотерапевтом", date: "Дата" },
+  en: { dir: "ltr", name: "English", title: "Your home exercise program", by: "Prescribed by your physiotherapist", date: "Date" },
 };
 function decode(hash) {
   const b64 = hash.replace(/-/g, "+").replace(/_/g, "/");
@@ -70,6 +72,13 @@ if (!program || !program.lines || !program.lines.length) {
     const t = document.createElement("div"); t.className = "text"; t.lang = program.language; t.textContent = line.text;
     const en = document.createElement("div"); en.className = "en"; en.lang = "en"; en.textContent = line.en;
     li.append(t, en); list.append(li);
+  }
+  if (program.language !== "en") {
+    const note = document.getElementById("note");
+    note.textContent = `Machine-written: this sheet's ${c.name} headings were written by a model and have not been `
+      + `checked by a native speaker. Each exercise line was translated by the generator model and back-translated `
+      + `by the falsifier model before the therapist approved it.`;
+    note.hidden = false;
   }
 }
 document.getElementById("print").addEventListener("click", () => window.print());

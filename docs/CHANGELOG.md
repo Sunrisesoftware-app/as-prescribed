@@ -44,6 +44,16 @@ endpoint that did not answer, which is wrong when the public demo runs no model 
 - Two tests: replay mode labels the run, and all 38 recordings were made on the models the label
   names (88 tests).
 
+**Demo polish: the patient sheet and Docker.**
+- The patient sheet says in English, under the exercises, that its Arabic or Ukrainian headings are
+  machine-written and unchecked by a native speaker (DECISIONS row 21, the owner's choice).
+- `docker compose build` and a replay run of the service (Docker 29.5.2): health, `/api/demo`, the S3
+  run (three supported lines, one proposal) and the patient sheet answer, and no `.env` is in the image.
+
+**The tokenfactory key arrived.** The owner signed in at notebooks.amd.com and opened `/tokenfactory`
+after it, which showed the team's key page (team-1199): redeemed. Twelve models are listed, among them
+Qwen3.8-27B, Qwen3.8-Flash-Next and Gemma-4-31B-IT. The key is the owner's, kept out of the chat.
+
 ## Session 1, 14.10.2026 (continued): Atlas PR #477 merged and deployed
 
 **Decided (the owner):** PR #477 merged; the name asprescribed.sunrisesoftware.app confirmed (Atlas

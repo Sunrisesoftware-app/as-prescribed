@@ -56,13 +56,10 @@ application URL. Judged on application of technology, presentation, business val
 
 ## DEMO
 
-- **DEMO-2** *check* the patient sheet's three fixed headings in Arabic and Ukrainian (written by Code;
-  nobody on the team reads them): a native speaker, or mark them in the sheet as machine-written.
 - **DEMO-4** S2's recorded conflict line carries a caution whose Ukrainian says "the skin of the hip
   part" where the English says "the residual limb"; the back-translation shows it and the falsifier
   did not object. A real miss, reported as it fell; do not show that Ukrainian line as correct in the
   video, and name it if it is shown.
-- **DEMO-3** Docker compose run once end to end (the README promises it).
 
 ## REP: reporting
 
