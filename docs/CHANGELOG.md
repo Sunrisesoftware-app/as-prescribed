@@ -53,6 +53,24 @@ endpoint that did not answer, which is wrong when the public demo runs no model 
 **The tokenfactory key arrived.** The owner signed in at notebooks.amd.com and opened `/tokenfactory`
 after it, which showed the team's key page (team-1199): redeemed. Twelve models are listed, among them
 Qwen3.8-27B, Qwen3.8-Flash-Next and Gemma-4-31B-IT. The key is the owner's, kept out of the chat.
+The owner set it in `.env` with a PowerShell prompt. The base URL is
+https://developer.amd.com.cn/radeon/api/v1. Token Factory is AMD Radeon Cloud's model API on AMD GPUs.
+Per the owner's copy of its manual:
+- 20 requests a minute per account and 8 concurrent per key, enforced by the gateway.
+- The gateway drops unknown fields silently and controls thinking with `reasoning_effort`.
+- Prompts are kept about two days.
+
+**Trial on Token Factory** (BACKLOG DEPLOY-4.1; Qwen3.8-27B generating, Gemma-4-31B-IT falsifying, the
+six clean demo cases through the app, sequential):
+- Every case ended in the same line states as its Radeon recording.
+- No call failed or fell back to a recording.
+- Ready after the visit: S1 85 s, S2 53 s, S3 66 s (local Radeon: 34-44 s).
+- Prescription runs: 30-86 s.
+- Rounds: S1 3 rounds (round-0 objections 3 → 2 → 0); S2 and S3 1 round each.
+- Speed, tokens over wall time including the network: generator 24-29 tok/s, falsifier 33-40 tok/s.
+- About 11 calls per run. The day's spend was $0.0018 of the key's $1 daily cap.
+- S2's caution reads "residual limb" in Ukrainian here (cf. DEMO-4).
+- Raw results in `runs/tokenfactory-20261014T183321Z/` (not in git).
 
 ## Session 1, 14.10.2026 (continued): Atlas PR #477 merged and deployed
 
