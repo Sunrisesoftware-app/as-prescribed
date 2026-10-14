@@ -1,5 +1,5 @@
 {
-  "_note": "Exercise catalogue: common home exercises with tags from vocabulary.json. side_mode: per_side (needs a side), bilateral, or none. dose_unit says what a dose counts. 'how' is one plain sentence for the patient view. Every row is a PROPOSAL until Petri approves it.",
+  "_note": "Exercise catalogue: common home exercises with tags from vocabulary.json. side_mode: per_side (needs a side), bilateral, or none. dose_unit says what a dose counts. 'how' is one plain sentence for the patient view. Approved by Petri on the review page 14.10.2026: every row OK, S2.2 and the S2 dialogue changed on his comments (Atlas dec_053ef87aba2e4ce3).",
   "exercises": [
     {"id": "ex.sit_to_stand", "en": "Sit-to-stand from a chair", "fi": "Tuolilta ylösnousu", "tags": ["wb_bilateral", "sitting"], "side_mode": "bilateral", "dose_unit": "reps", "how": "Stand up from a chair without using your hands, then sit down slowly."},
     {"id": "ex.heel_raise", "en": "Heel raises on both feet", "fi": "Varpaille nousu molemmilla jaloilla", "tags": ["wb_bilateral"], "side_mode": "bilateral", "dose_unit": "reps", "how": "Hold on to a counter, rise onto your toes and lower slowly."},

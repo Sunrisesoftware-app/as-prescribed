@@ -1,5 +1,5 @@
 {
-  "_note": "Fixed movement and load vocabulary. Exercises carry these tags and rules match on them, so a rule check never needs a model. Every row is a PROPOSAL until Petri approves it on the review page (handoff v3 D14).",
+  "_note": "Fixed movement and load vocabulary. Exercises carry these tags and rules match on them, so a rule check never needs a model. Approved by Petri on the review page 14.10.2026: every row OK, S2.2 and the S2 dialogue changed on his comments (Atlas dec_053ef87aba2e4ce3).",
   "tags": [
     {"id": "wb_bilateral", "group": "load", "en": "Standing, weight on both legs", "fi": "Seisten, paino molemmilla jaloilla"},
     {"id": "wb_single_leg", "group": "load", "en": "Standing on one leg (side-specific)", "fi": "Yhden jalan seisonta (puolikohtainen)"},

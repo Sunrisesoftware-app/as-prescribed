@@ -1,5 +1,5 @@
 {
-  "_note": "Session template: the clinical choices are slots filled from the catalogue. Petri approves the slot values; the dialogue (S2.transcript.jsonl, English) is written around them afterwards. Matter-of-fact, no graphic injury detail (handoff D7). PROPOSAL until approved.",
+  "_note": "Session template: the clinical choices are slots filled from the catalogue. Petri approves the slot values; the dialogue (S2.transcript.jsonl, English) is written around them afterwards. Matter-of-fact, no graphic injury detail (handoff D7). Approved by Petri on the review page 14.10.2026: every row OK, S2.2 and the S2 dialogue changed on his comments (Atlas dec_053ef87aba2e4ce3).",
   "session_id": "S2",
   "profile_id": "P2",
   "patient_language": "uk",

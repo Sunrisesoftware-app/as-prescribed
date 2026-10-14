@@ -1,5 +1,5 @@
 {
-  "_note": "Session template: the clinical choices are slots filled from the catalogue. Petri approves the slot values; the dialogue (S3.transcript.jsonl, English) is written around them afterwards. PROPOSAL until approved.",
+  "_note": "Session template: the clinical choices are slots filled from the catalogue. Petri approves the slot values; the dialogue (S3.transcript.jsonl, English) is written around them afterwards. Approved by Petri on the review page 14.10.2026: every row OK, S2.2 and the S2 dialogue changed on his comments (Atlas dec_053ef87aba2e4ce3).",
   "session_id": "S3",
   "profile_id": "P3",
   "patient_language": "ar",
