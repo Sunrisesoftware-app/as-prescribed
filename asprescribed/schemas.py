@@ -21,7 +21,8 @@ class Span(BaseModel):
 
 
 class Item(BaseModel):
-    """One prescribed item extracted from the transcript."""
+    """One item extracted from the transcript. Only status 'prescribed' reaches the program;
+    'deferred' (not yet) and 'withdrawn' (left out) are kept so the therapist sees they were heard."""
     item_id: str
     exercise: str
     exercise_id: str | None = None  # catalogue id when matched
@@ -31,6 +32,7 @@ class Item(BaseModel):
     cautions: list[str] = []
     source_span_ids: list[str] = []
     tags: list[str] = []
+    status: Literal["prescribed", "deferred", "withdrawn"] = "prescribed"
 
 
 class LineState(str, Enum):
