@@ -1,0 +1,26 @@
+# /etc/systemd/system/as-prescribed.service
+# The public demo on the ultragravel machine: replays the recorded runs (adr.ap.010), so no model
+# endpoint and no key are needed. Binds 127.0.0.1 only; nginx fronts it (deploy/nginx.conf).
+# Nothing about a session is logged: no access log here or in nginx.
+[Unit]
+Description=As Prescribed public demo (recorded runs, synthetic data)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/as-prescribed/app
+Environment=AP_REPLAY=1
+Environment=AP_MODE=public
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/opt/as-prescribed/app/.venv/bin/uvicorn asprescribed.main:app --host 127.0.0.1 --port 8300 --no-access-log
+# The app only reads its checkout: an ephemeral user and a read-only system.
+DynamicUser=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+NoNewPrivileges=yes
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
