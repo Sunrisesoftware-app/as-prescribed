@@ -1,0 +1,34 @@
+{"span_id": "s001", "speaker": "therapist", "ts": 5, "text": "Hello, welcome. This is your first visit, so tell me about the shoulder."}
+{"span_id": "s002", "speaker": "patient", "ts": 16, "text": "It is the right shoulder. For two months it hurts when I lift my arm, for example to the kitchen shelf."}
+{"span_id": "s003", "speaker": "therapist", "ts": 29, "text": "Does it hurt at night?"}
+{"span_id": "s004", "speaker": "patient", "ts": 34, "text": "Sometimes, if I lie on that side."}
+{"span_id": "s005", "speaker": "therapist", "ts": 44, "text": "I see from your papers that you also have osteoporosis, and you take medicine for it."}
+{"span_id": "s006", "speaker": "patient", "ts": 53, "text": "Yes, for some years now."}
+{"span_id": "s007", "speaker": "therapist", "ts": 70, "text": "Thank you. Let me look at the shoulder. Lift your right arm forward as far as is comfortable."}
+{"span_id": "s008", "speaker": "patient", "ts": 82, "text": "Here it starts to hurt."}
+{"span_id": "s009", "speaker": "therapist", "ts": 92, "text": "Okay, just below shoulder height. And turning the arm out, like this? Good, that's stronger than I expected."}
+{"span_id": "s010", "speaker": "patient", "ts": 106, "text": "My son wanted me to have the exercises in Arabic. He will not be there every day."}
+{"span_id": "s011", "speaker": "therapist", "ts": 114, "text": "Of course, you'll get them in Arabic."}
+{"span_id": "s012", "speaker": "therapist", "ts": 140, "text": "The first exercise is the pendulum. Lean on the table with your left hand, and let the right arm hang and swing gently in small circles."}
+{"span_id": "s013", "speaker": "therapist", "ts": 154, "text": "One minute, three times a day."}
+{"span_id": "s014", "speaker": "patient", "ts": 162, "text": "Only small circles?"}
+{"span_id": "s015", "speaker": "therapist", "ts": 167, "text": "Small and relaxed. The arm just hangs."}
+{"span_id": "s016", "speaker": "therapist", "ts": 195, "text": "The second one is with the band, for the right arm. Keep your elbow tucked in against your side, and turn the forearm outwards against the band."}
+{"span_id": "s017", "speaker": "therapist", "ts": 210, "text": "Three sets of ten, every day."}
+{"span_id": "s018", "speaker": "patient", "ts": 217, "text": "Tucked in?"}
+{"span_id": "s019", "speaker": "therapist", "ts": 222, "text": "Close to your body, as if you were holding a newspaper under your arm."}
+{"span_id": "s020", "speaker": "therapist", "ts": 250, "text": "Third, rowing with the band. Hold the band with both hands and pull it towards you, squeezing the shoulder blades together."}
+{"span_id": "s021", "speaker": "therapist", "ts": 262, "text": "Two sets of fifteen, every day."}
+{"span_id": "s022", "speaker": "patient", "ts": 274, "text": "My back is stiff as well. Every morning I do sit-ups for my stomach."}
+{"span_id": "s023", "speaker": "therapist", "ts": 284, "text": "Let's leave the sit-ups out for now. With osteoporosis I don't want you curling the back forward against weight."}
+{"span_id": "s024", "speaker": "patient", "ts": 297, "text": "Okay. The back of my legs is tight too, from sitting."}
+{"span_id": "s025", "speaker": "therapist", "ts": 306, "text": "Then add the stretch for the back of the thigh. Sit, straighten the leg in front of you, lean forward from the hips, and hold it for a while."}
+{"span_id": "s026", "speaker": "patient", "ts": 320, "text": "Okay."}
+{"span_id": "s027", "speaker": "therapist", "ts": 345, "text": "Lifting the arm up the wall, the wall slides, we will add when the pain settles. Not yet."}
+{"span_id": "s028", "speaker": "patient", "ts": 356, "text": "So not the wall now."}
+{"span_id": "s029", "speaker": "therapist", "ts": 361, "text": "Not now. Maybe at the next visit."}
+{"span_id": "s030", "speaker": "therapist", "ts": 400, "text": "So at home: the pendulum, the band turning outwards, the rowing, and the stretch for the back of the thigh."}
+{"span_id": "s031", "speaker": "patient", "ts": 414, "text": "Four. Good, I can do that."}
+{"span_id": "s032", "speaker": "therapist", "ts": 422, "text": "We'll see how it has gone next week."}
+{"span_id": "s033", "speaker": "patient", "ts": 430, "text": "Thank you, doctor."}
+{"span_id": "s034", "speaker": "therapist", "ts": 434, "text": "I'm a physiotherapist, but you're welcome. See you next week."}

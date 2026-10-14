@@ -94,7 +94,32 @@ def main(out_dir: Path) -> None:
                               "Ansat ovat mainintoja, joita malli helposti lisää ohjelmaan.",
                      "rows": session_rows})
 
-    sections.append({"key": "exercises", "order": 5, "title": "Liikekatalogi",
+    dialogue_rows = []
+    for s in sessions:
+        sid = s["session_id"]
+        raw = (DATA / "sessions" / f"{sid}.transcript.jsonl").read_text(encoding="utf-8")
+        lines = [json.loads(x) for x in raw.splitlines() if x.strip()]
+        key = json.loads((DATA / "sessions" / f"{sid}.gold.json").read_text(encoding="utf-8"))
+        cites: dict[str, list[str]] = {}
+        for g in key["items"]:
+            for span in g["span_ids"]:
+                cites.setdefault(span, []).append(g["slot"])
+
+        def line(x: dict, cites: dict[str, list[str]] = cites) -> str:
+            who = "T" if x["speaker"] == "therapist" else "P"
+            tag = f"   [{', '.join(cites[x['span_id']])}]" if x["span_id"] in cites else ""
+            return f"{x['span_id'][1:]} {who}: {x['text']}{tag}"
+
+        body = "\n".join(line(x) for x in lines)
+        dialogue_rows.append(row(f"{sid}.dialogue", f"Dialogi {sid} · {len(lines)} repliikkiä · {lines[-1]['ts'] // 60} min",
+                                 [("Merkinnät", "T = terapeutti, P = potilas; [S1.2] = repliikki, joka sanoo määräyksen")],
+                                 body, "dialogue"))
+    sections.append({"key": "dialogues", "order": 5, "title": "Dialogit",
+                     "intro": "Englanninkieliset vastaanottodialogit hyväksyttyjen määräysten ympärillä. Hakasulkeissa vastausavain: "
+                              "mikä repliikki sanoo minkäkin määräyksen. Tarkista, että dialogi kuulostaa vastaanotolta.",
+                     "rows": dialogue_rows})
+
+    sections.append({"key": "exercises", "order": 6, "title": "Liikekatalogi",
                      "intro": "Yleiset kotiharjoitteet tunnisteineen. Ohjelause näkyy potilaalle (käännettynä).",
                      "rows": [row(e["id"], f"{e['fi']} ({e['en']})",
                                   [("Tunnisteet", ", ".join(vocab[t]["fi"] for t in e["tags"])),
@@ -102,7 +127,7 @@ def main(out_dir: Path) -> None:
                                    ("Annosyksikkö", UNIT_FI[e["dose_unit"]])],
                                   e["how"], "exercise") for e in catalog.values()]})
 
-    sections.append({"key": "tags", "order": 6, "title": "Liike- ja kuormitussanasto",
+    sections.append({"key": "tags", "order": 7, "title": "Liike- ja kuormitussanasto",
                      "intro": "Kiinteä sanasto, johon säännöt osuvat. Pienet asiat viimeiseksi.",
                      "rows": [row(t["id"], t["fi"], [("Ryhmä", t["group"])], t["en"], "tag")
                               for t in vocab.values()]})

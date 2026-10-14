@@ -1,0 +1,48 @@
+{
+ "_note": "Answer key: the spans that state each slot (and each trap). Ground truth for tests and the evaluation.",
+ "session_id": "S2",
+ "items": [
+  {
+   "slot": "S2.1",
+   "span_ids": [
+    "s008",
+    "s009"
+   ],
+   "status": "prescribed"
+  },
+  {
+   "slot": "S2.2",
+   "span_ids": [
+    "s012",
+    "s013",
+    "s015"
+   ],
+   "status": "prescribed"
+  },
+  {
+   "slot": "S2.3",
+   "span_ids": [
+    "s016",
+    "s017"
+   ],
+   "status": "prescribed"
+  },
+  {
+   "slot": "S2.4",
+   "span_ids": [
+    "s020",
+    "s021"
+   ],
+   "status": "prescribed"
+  },
+  {
+   "slot": "S2.5",
+   "span_ids": [
+    "s023",
+    "s025",
+    "s026"
+   ],
+   "status": "prescribed"
+  }
+ ]
+}
