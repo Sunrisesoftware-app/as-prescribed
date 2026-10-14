@@ -16,6 +16,8 @@ from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
+from .config import DATA_DIR
+from .extract import numbers_in
 from .pipeline import SessionResult, gold_items
 from .rules import load_catalog
 from .schemas import Item
@@ -41,6 +43,10 @@ EXPECTED = {("S2.5", "rule_conflict"), ("S3.4", "incomplete")}
 EXPECTED_KINDS_ANYWHERE = {"no_catalogue_match"}  # non-blocking, informational
 
 LANG = {"S1": "ar", "S2": "uk", "S3": "ar"}
+
+# Locked by Petri 14.10.2026 (Atlas dec_19703418a6214843, AS-PRESCRIBED-EVAL-ENNAKKO v2).
+GATES = {"recall_overall_min": 0.80, "recall_falsifier_only_min": 0.60, "false_alarm_rate_max": 0.15,
+         "latency_s_max": 90.0}
 
 
 def _set(slot, **fields):
@@ -249,6 +255,56 @@ def score(observations: list[dict], clean: list[dict], runs: list[dict]) -> dict
         "seconds": {"median": sorted(secs)[len(secs) // 2] if secs else None, "max": max(secs) if secs else None},
         "tokens_per_s_median": {role: sorted(v)[len(v) // 2] for role, v in tps.items() if v},
     }
+
+
+def gates(s: dict, e2e: list[dict]) -> dict:
+    fa = s["false_alarms"]["rate"]
+    rounds = s["objections_per_round_mean"]
+    lat = [r["seconds"] for r in e2e]
+    recall = None
+    if s["recall_overall"] is not None and s["recall_falsifier_only"] is not None:
+        recall = (s["recall_overall"] >= GATES["recall_overall_min"]
+                  and s["recall_falsifier_only"] >= GATES["recall_falsifier_only_min"])
+    return {
+        "recall": recall,
+        "false_alarms": None if fa is None else fa <= GATES["false_alarm_rate_max"],
+        "objections_fall": None if 1 not in rounds else rounds[0] > rounds[1],
+        "latency": None if not lat else max(lat) <= GATES["latency_s_max"],
+        "thresholds": GATES,
+    }
+
+
+def _same_frequency(a: str | None, b: str | None) -> bool:
+    words = {"other", "week", "evening", "morning", "night"}
+    norm = [(numbers_in(x or ""), words & set((x or "").lower().split())) for x in (a, b)]
+    return norm[0] == norm[1]
+
+
+def extraction_report(session_id: str, items: list[Item]) -> dict:
+    """Extracted items against the answer key: one row per slot and trap, plus invented items."""
+    slots = json.loads((DATA_DIR / "sessions" / f"{session_id}.slots.json").read_text(encoding="utf-8"))
+    prescribed = [i for i in items if i.status == "prescribed"]
+    used, rows = set(), []
+    for sl in slots["prescribed"]:
+        m = next((i for i in prescribed if i.exercise_id == sl["exercise_id"] and i.item_id not in used), None)
+        if m:
+            used.add(m.item_id)
+        cautions = " ".join(m.cautions).lower() if m else ""
+        rows.append({
+            "slot": sl["slot"], "found": m is not None,
+            "side": bool(m) and (m.side or None) == (sl["side"] or None),
+            "dose": bool(m) and numbers_in(m.dose or "") == numbers_in(sl["dose"] or "")
+            and (m.dose is None) == (sl["dose"] is None),
+            "frequency": bool(m) and _same_frequency(m.frequency, sl["frequency"])
+            and (m.frequency is None) == (sl["frequency"] is None),
+            "cautions": bool(m) and all(c.rstrip(".").lower()[:25] in cautions for c in sl["cautions"]),
+        })
+    traps = [{"slot": t["slot"], "kept_out": not any(i.exercise_id == t["exercise_id"] for i in prescribed)}
+             for t in slots["traps"]]
+    invented = [i.item_id for i in prescribed if i.item_id not in used]
+    fields = [r[f] for r in rows for f in ("side", "dose", "frequency", "cautions")]
+    return {"session": session_id, "slots": rows, "traps": traps, "invented": invented,
+            "slot_recall": sum(r["found"] for r in rows) / len(rows), "field_accuracy": sum(fields) / len(fields)}
 
 
 def write_plan(path: Path) -> str:

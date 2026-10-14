@@ -18,6 +18,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from asprescribed.config import ROOT, settings
 from asprescribed.evaluation import (
+    extraction_report,
+    gates,
     injected_items,
     mutate_translation,
     observe,
@@ -75,16 +77,45 @@ async def run(only: set[str] | None, rounds: int) -> None:
         print(f"{r['run']} {r['session']} {r['type']}: {o} ({result.seconds:.0f} s)")
 
 
+async def e2e(rounds: int, reps: int) -> None:
+    """S1-S3 end to end with extraction: the latency gate, and extraction against the answer key."""
+    _, s = load_sealed()
+    cfg = settings()
+    out_dir = ROOT / "runs" / "eval" / s[:12]
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for rep in range(1, reps + 1):
+        for sid in ("S1", "S2", "S3"):
+            path = out_dir / f"e2e-{sid}-{rep}.json"
+            if path.exists():
+                continue
+            result = await run_session(sid, cfg.generator, cfg.falsifier, max_rounds=rounds)
+            report = extraction_report(sid, result.items)
+            path.write_text(json.dumps({
+                "session": sid, "rep": rep, "seconds": round(result.seconds, 1), "summary": result.summary(),
+                "extraction": report, "calls": result.calls, "notes": result.notes,
+                "lines": [x.model_dump(mode="json") for x in result.lines],
+                "models": {"generator": cfg.generator.model, "falsifier": cfg.falsifier.model}},
+                ensure_ascii=False, indent=1), encoding="utf-8")
+            print(f"e2e {sid} #{rep}: {result.seconds:.0f} s, slots {report['slot_recall']:.2f}, "
+                  f"fields {report['field_accuracy']:.2f}, traps {report['traps']}, invented {report['invented']}")
+
+
 def do_score() -> None:
     _, s = load_sealed()
-    files = sorted((ROOT / "runs" / "eval" / s[:12]).glob("*.json"))
+    folder = ROOT / "runs" / "eval" / s[:12]
+    files = sorted(f for f in folder.glob("*.json") if not f.name.startswith("e2e-"))
+    e2e_runs = [json.loads(f.read_text(encoding="utf-8")) for f in sorted(folder.glob("e2e-*.json"))]
     data = [json.loads(f.read_text(encoding="utf-8")) for f in files]
     obs = [d["observation"] for d in data if d["observation"]]
     clean = [c for d in data for c in d["clean"]]
     runs = [{"objections_per_round": d["summary"]["objections_per_round"], "seconds": d["summary"]["seconds"],
              "calls": d["calls"]} for d in data]
-    res = {"seal": s, "runs_scored": len(data), "models": data[0]["models"] if data else None,
-           **score(obs, clean, runs)}
+    sc = score(obs, clean, runs)
+    res = {"seal": s, "runs_scored": len(data), "models": data[0]["models"] if data else None, **sc,
+           "e2e": [{"session": r["session"], "rep": r["rep"], "seconds": r["seconds"],
+                    "slot_recall": r["extraction"]["slot_recall"], "field_accuracy": r["extraction"]["field_accuracy"],
+                    "traps": r["extraction"]["traps"], "invented": r["extraction"]["invented"]} for r in e2e_runs],
+           "gates": gates(sc, e2e_runs)}
     out = ROOT / "eval" / f"results-{s[:12]}.json"
     out.write_text(json.dumps(res, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(json.dumps(res, ensure_ascii=False, indent=1))
@@ -92,15 +123,18 @@ def do_score() -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["plan", "run", "score"])
+    ap.add_argument("cmd", choices=["plan", "run", "e2e", "score"])
     ap.add_argument("--only", default="")
     ap.add_argument("--rounds", type=int, default=3)
+    ap.add_argument("--reps", type=int, default=1)
     a = ap.parse_args()
     if a.cmd == "plan":
         s = write_plan(PLAN)
         print(f"wrote {PLAN.relative_to(ROOT)}\nsha256 {s}\nRecord it in eval/SEAL and the ENNAKKO before any run.")
     elif a.cmd == "run":
         asyncio.run(run({x for x in a.only.split(",") if x} or None, a.rounds))
+    elif a.cmd == "e2e":
+        asyncio.run(e2e(a.rounds, a.reps))
     else:
         do_score()
 

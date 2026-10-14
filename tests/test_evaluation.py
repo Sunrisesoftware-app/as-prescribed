@@ -94,3 +94,24 @@ async def test_deterministic_injections_are_caught_without_a_falsifier():
     for rid in [r for r, *_ in INJECTIONS if r not in FALSIFIER_ONLY]:
         obs, _ = await _observe(rid)
         assert obs.detected, rid
+
+
+def test_extraction_report_on_the_gold_items_is_perfect_and_flags_a_trap():
+    from asprescribed.evaluation import extraction_report
+    from asprescribed.schemas import Item
+    rep = extraction_report("S3", gold_items("S3"))
+    assert rep["slot_recall"] == 1.0 and rep["field_accuracy"] == 1.0 and rep["invented"] == []
+    assert all(t["kept_out"] for t in rep["traps"])
+    bad = [*gold_items("S3"), Item(item_id="i9", exercise="sit-ups", exercise_id="ex.sit_up")]
+    rep = extraction_report("S3", bad)
+    assert not next(t for t in rep["traps"] if t["slot"] == "T3.2")["kept_out"] and rep["invented"] == ["i9"]
+
+
+def test_gates():
+    from asprescribed.evaluation import gates
+    s = {"recall_overall": 0.84, "recall_falsifier_only": 0.61, "false_alarms": {"rate": 0.12},
+         "objections_per_round_mean": {0: 1.2, 1: 0.4}}
+    g = gates(s, [{"seconds": 70.0}, {"seconds": 88.0}])
+    assert g["recall"] and g["false_alarms"] and g["objections_fall"] and g["latency"]
+    s["recall_falsifier_only"] = 0.55
+    assert gates(s, [])["recall"] is False and gates(s, [])["latency"] is None
