@@ -1,0 +1,221 @@
+{
+ "run": "B2",
+ "summary": {
+  "session": "S1",
+  "states": {
+   "supported": 5
+  },
+  "rounds": 2,
+  "objections_per_round": [
+   2,
+   0
+  ],
+  "seconds": 32.9
+ },
+ "observation": {
+  "run": "B2",
+  "session": "S1",
+  "type": "wrong_side",
+  "item_id": "S1.5",
+  "injected": true,
+  "detected": true,
+  "primary_kind": true,
+  "by_checks": true,
+  "by_falsifier": true,
+  "final_state": "supported"
+ },
+ "clean": [
+  {
+   "run": "B2",
+   "session": "S1",
+   "item_id": "S1.1",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "B2",
+   "session": "S1",
+   "item_id": "S1.2",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "B2",
+   "session": "S1",
+   "item_id": "S1.3",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "B2",
+   "session": "S1",
+   "item_id": "S1.4",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  }
+ ],
+ "lines": [
+  {
+   "item_id": "S1.1",
+   "language": "ar",
+   "text": "الجلوس والوقوف من كرسي (الجانبين). قف من الكرسي دون استخدام يديك، ثم اجلس ببطء. 3 × 10، كل يوم.",
+   "source_en": "Sit-to-stand from a chair (both sides). Stand up from a chair without using your hands, then sit down slowly. 3 × 10, every day.",
+   "back_translation": "Sitting and standing from a chair (both sides). Stand up from the chair without using your hands, then sit slowly. 3 × 10, every day.",
+   "span_ids": [
+    "s012",
+    "s013"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S1.2",
+   "language": "ar",
+   "text": "تقويم الركبة جالسًا مع شريط (اليمين). اجلس على كرسي والشريط حول الكاحل، ثم قوّم الركبة ببطء. 3 × 12، كل يومين. زفر الهواء عند تقويم الركبة.",
+   "source_en": "Seated knee straightening with a band (right). Sit on a chair with the band around the ankle and straighten the knee slowly. 3 × 12, every other day. Breathe out as you straighten the knee.",
+   "back_translation": "Knee straightening seated with a band (right). Sit on a chair with the band around the ankle, then straighten the knee slowly. 3 × 12, every two days. Exhale the air when straightening the knee.",
+   "span_ids": [
+    "s016",
+    "s018",
+    "s019"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S1.3",
+   "language": "ar",
+   "text": "الخطوة للأعلى (اليمين). اخطُ للأعلى على الدرجة السفلى مع تقديم ساقك اليمنى، ثم انزل. 2 × 10، كل يوم. امسك درابزين الدرج.",
+   "source_en": "Step-up (right). Step up onto the bottom stair leading with your right leg, then step down. 2 × 10, every day. Hold the stair rail.",
+   "back_translation": "Step up (right). Step up onto the lower step with your right leg forward, then step down. 2 × 10, every day. Hold the handrail of the stairs.",
+   "span_ids": [
+    "s024",
+    "s025"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S1.4",
+   "language": "ar",
+   "text": "المشي. امشِ بسرعة مريحة. 20 دقيقة، 5 أيام في الأسبوع. بعض ألم الركض أثناء المشي مقبول إذا زال بحلول الصباح التالي.",
+   "source_en": "Walking. Walk at a comfortable pace. 20 minutes, 5 days a week. Some knee pain while walking is acceptable if it has settled by the next morning.",
+   "back_translation": "Walking. Walk at a comfortable speed. 20 minutes, 5 days a week. Some knee pain while walking is acceptable if it disappears by the next morning.",
+   "span_ids": [
+    "s028",
+    "s031"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S1.5",
+   "language": "ar",
+   "text": "تمطيط الساق الخلفية ضد الحائط (الأيمن). انحنِ ضد الحائط مع ساقك اليمنى خلفك، كعبك لأسفل، وتمسك. 3 × 30 ثانية، كل يوم.",
+   "source_en": "Calf stretch against a wall (right). Lean against a wall with your right leg behind you, heel down, and hold. 3 × 30 seconds, every day.",
+   "back_translation": "Stretch the back leg against the wall (right). Bend against the wall with your right leg behind you, your heel down, and hold. 3 x 30 seconds, every day.",
+   "span_ids": [
+    "s034",
+    "s035",
+    "s037"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  }
+ ],
+ "rounds": [
+  {
+   "round": 0,
+   "objections": {
+    "wrong_side": 2
+   },
+   "correctable": 2,
+   "seconds": 20.81,
+   "raised": [
+    {
+     "item_id": "S1.5",
+     "kind": "wrong_side",
+     "detail": "side left is not stated in the cited spans",
+     "blocking": true,
+     "source": "checks"
+    },
+    {
+     "item_id": "S1.5",
+     "kind": "wrong_side",
+     "detail": "The therapist stated 'Only the right.' (s037)",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "round": 1,
+   "objections": {},
+   "correctable": 0,
+   "seconds": 8.76,
+   "raised": []
+  }
+ ],
+ "calls": {
+  "generator": [
+   {
+    "what": "translate r0",
+    "seconds": 5.59,
+    "tokens": 313,
+    "tokens_per_s": 66.1
+   },
+   {
+    "what": "correct r0",
+    "seconds": 3.3,
+    "tokens": 143,
+    "tokens_per_s": 65.8
+   },
+   {
+    "what": "translate r1",
+    "seconds": 1.55,
+    "tokens": 71,
+    "tokens_per_s": 65.5
+   }
+  ],
+  "falsifier": [
+   {
+    "what": "check items r0",
+    "seconds": 4.95,
+    "tokens": 195,
+    "tokens_per_s": 53.4
+   },
+   {
+    "what": "check translations r0",
+    "seconds": 10.27,
+    "tokens": 492,
+    "tokens_per_s": 54.9
+   },
+   {
+    "what": "check items r1",
+    "seconds": 4.59,
+    "tokens": 169,
+    "tokens_per_s": 53.2
+   },
+   {
+    "what": "check translations r1",
+    "seconds": 2.61,
+    "tokens": 118,
+    "tokens_per_s": 56.2
+   }
+  ]
+ },
+ "notes": [],
+ "models": {
+  "generator": "Qwen3.5-35B-A3B-Q4_K_M.gguf",
+  "falsifier": "gemma-3-12b-it-Q4_K_M.gguf"
+ }
+}

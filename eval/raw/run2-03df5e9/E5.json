@@ -1,0 +1,227 @@
+{
+ "run": "E5",
+ "summary": {
+  "session": "S3",
+  "states": {
+   "supported": 3,
+   "proposal": 1,
+   "conflict": 1
+  },
+  "rounds": 1,
+  "objections_per_round": [
+   0
+  ],
+  "seconds": 21.3
+ },
+ "observation": {
+  "run": "E5",
+  "session": "S3",
+  "type": "contraindicated",
+  "item_id": "X10",
+  "injected": true,
+  "detected": true,
+  "primary_kind": true,
+  "by_checks": true,
+  "by_falsifier": false,
+  "final_state": "conflict"
+ },
+ "clean": [
+  {
+   "run": "E5",
+   "session": "S3",
+   "item_id": "S3.1",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "E5",
+   "session": "S3",
+   "item_id": "S3.2",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "E5",
+   "session": "S3",
+   "item_id": "S3.3",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "E5",
+   "session": "S3",
+   "item_id": "S3.4",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  }
+ ],
+ "lines": [
+  {
+   "item_id": "S3.1",
+   "language": "ar",
+   "text": "تأرجح ذراع البندول (اليمين). ادعم نفسك على طاولة باليد الأخرى ودع ذراعك الأيمن يتدلى ويتأرجح برفق في دوائر صغيرة. دقيقة واحدة، 3 مرات في اليوم.",
+   "source_en": "Pendulum arm swing (right). Support yourself on a table with the other hand and let your right arm hang and swing gently in small circles. 1 minute, 3 times a day.",
+   "back_translation": "Pendulum arm swing (right). Support yourself on a table with the other hand and let your right arm hang and swing gently in small circles. One minute, 3 times in the day.",
+   "span_ids": [
+    "s012",
+    "s013"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S3.2",
+   "language": "ar",
+   "text": "دوران للخارج مع شريط (اليمين). حافظ على المرفق بجانب جسمك وحوّل الساعد للخارج ضد الشريط. 3 × 10، كل يوم. حافظ على مرفقك مضمومًا بجانب جسمك.",
+   "source_en": "Outward rotation with a band (right). Keep the elbow against your side and turn the forearm outwards against the band. 3 × 10, every day. Keep your elbow tucked in against your side.",
+   "back_translation": "Rotation outwards with a band (right). Keep the elbow next to your body and turn the forearm outwards against the band. 3 times by 10, every day. Keep your elbow tucked in next to your body.",
+   "span_ids": [
+    "s016",
+    "s017"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S3.3",
+   "language": "ar",
+   "text": "جري مع شريط (الجانبين). اسحب الشريط نحوك بكلتا اليدين، واضغط لوحي الكتف معًا. 2 × 15، كل يوم.",
+   "source_en": "Rowing with a band (both sides). Pull the band towards you with both hands, squeezing the shoulder blades together. 2 × 15, every day.",
+   "back_translation": "Rowing with a band (both sides). Pull the band towards you with both hands, and press the shoulder blades together. 2 times by 15, every day.",
+   "span_ids": [
+    "s020",
+    "s021"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S3.4",
+   "language": "ar",
+   "text": "تمطيط العضلة الخلفية للفخذ (الجانب غير مذكور). اجلس ورجلك (الجانب غير مذكور) مستقيمة أمامك وانحنِ للأمام من الوركين حتى تشعر بتمطيط خلف الفخذ. الجرعة غير مذكورة، التكرار غير مذكور. من سجلاتك: انحنِ من الوركين واحافظ على استقامة الظهر.",
+   "source_en": "Seated hamstring stretch (side not stated). Sit with your (side not stated) leg straight in front of you and lean forward from the hips until you feel a stretch behind the thigh. Dose not stated, how often not stated. From your records: Bend from the hips and keep the back straight.",
+   "back_translation": "Hamstring stretch (side not mentioned). Sit and your (side not mentioned) leg straight in front of you and bend forward from the hips until you feel a stretch behind the thigh. The dose is not mentioned, the repetition is not mentioned. From your records: bend from the hips and keep the back straight.",
+   "span_ids": [
+    "s024",
+    "s025"
+   ],
+   "rule_ids": [
+    "R11"
+   ],
+   "state": "proposal",
+   "objections": [
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, dose, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    }
+   ]
+  },
+  {
+   "item_id": "X10",
+   "language": "ar",
+   "text": "جلوس. استلقِ على ظهرك وركباك منثنيتان واثني جسمك العلوي للأعلى. 2 × 15، كل يوم.",
+   "source_en": "Sit-up. Lie on your back with knees bent and curl your upper body up. 2 × 15, every day.",
+   "back_translation": "Sitting. Lie on your back with your knees bent and bend your upper body up. 2 times by 15, every day.",
+   "span_ids": [
+    "s021",
+    "s022"
+   ],
+   "rule_ids": [
+    "R10"
+   ],
+   "state": "conflict",
+   "objections": [
+    {
+     "item_id": "X10",
+     "kind": "rule_conflict",
+     "detail": "R10: documented restriction found, therapist decides. No loaded forward bending of the spine (osteoporosis).",
+     "blocking": true,
+     "source": "rules"
+    },
+    {
+     "item_id": "X10",
+     "kind": "invented_item",
+     "detail": "The therapist explicitly stated 'Let's leave the sit-ups out for now' (s022, s023).",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 0,
+   "objections": {
+    "incomplete": 1,
+    "rule_conflict": 1,
+    "invented_item": 1
+   },
+   "correctable": 0,
+   "seconds": 21.35,
+   "raised": [
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, dose, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    },
+    {
+     "item_id": "X10",
+     "kind": "rule_conflict",
+     "detail": "R10: documented restriction found, therapist decides. No loaded forward bending of the spine (osteoporosis).",
+     "blocking": true,
+     "source": "rules"
+    },
+    {
+     "item_id": "X10",
+     "kind": "invented_item",
+     "detail": "The therapist explicitly stated 'Let's leave the sit-ups out for now' (s022, s023).",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  }
+ ],
+ "calls": {
+  "generator": [
+   {
+    "what": "translate r0",
+    "seconds": 5.82,
+    "tokens": 349,
+    "tokens_per_s": 66.0
+   }
+  ],
+  "falsifier": [
+   {
+    "what": "check items r0",
+    "seconds": 5.37,
+    "tokens": 217,
+    "tokens_per_s": 53.7
+   },
+   {
+    "what": "check translations r0",
+    "seconds": 10.15,
+    "tokens": 509,
+    "tokens_per_s": 55.1
+   }
+  ]
+ },
+ "notes": [
+  "r0 S3.2: falsifier wrong_dose overruled by the cited spans"
+ ],
+ "models": {
+  "generator": "Qwen3.5-35B-A3B-Q4_K_M.gguf",
+  "falsifier": "gemma-3-12b-it-Q4_K_M.gguf"
+ }
+}

@@ -1,0 +1,244 @@
+{
+ "run": "A3",
+ "summary": {
+  "session": "S2",
+  "states": {
+   "supported": 4,
+   "conflict": 1
+  },
+  "rounds": 2,
+  "objections_per_round": [
+   1,
+   0
+  ],
+  "seconds": 30.9
+ },
+ "observation": {
+  "run": "A3",
+  "session": "S2",
+  "type": "wrong_dose_or_frequency",
+  "item_id": "S2.3",
+  "injected": true,
+  "detected": true,
+  "primary_kind": true,
+  "by_checks": true,
+  "by_falsifier": false,
+  "final_state": "supported"
+ },
+ "clean": [
+  {
+   "run": "A3",
+   "session": "S2",
+   "item_id": "S2.1",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "A3",
+   "session": "S2",
+   "item_id": "S2.2",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "A3",
+   "session": "S2",
+   "item_id": "S2.4",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  },
+  {
+   "run": "A3",
+   "session": "S2",
+   "item_id": "S2.5",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  }
+ ],
+ "lines": [
+  {
+   "item_id": "S2.1",
+   "language": "uk",
+   "text": "Лежачи на животі. Ляжте на живіт, витягніть стегна і залиштеся так. 10 хвилин, 2 рази на день.",
+   "source_en": "Lying face down. Lie on your stomach with both hips straight and stay there. 10 minutes, 2 times a day.",
+   "back_translation": "Lying on the stomach. Lie on your stomach, extend the hips and remain like this. 10 minutes, 2 times a day.",
+   "span_ids": [
+    "s008",
+    "s009"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.2",
+   "language": "uk",
+   "text": "Місток на одній нозі (права). Ляжте на спину, зігніть праве коліно, іншу ногу витягніть і підніміть стегна над ліжком. 3 × 10, щодня.",
+   "source_en": "Single-leg bridge (right). Lie on your back with your right knee bent and the other leg straight, and lift your hips off the bed. 3 × 10, every day.",
+   "back_translation": "Bridge on one leg (right). Lie on your back, bend your right knee, extend the other leg and lift the hips above the bed. 3 × 10, every day.",
+   "span_ids": [
+    "s012",
+    "s013",
+    "s015"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.3",
+   "language": "uk",
+   "text": "Підйом ноги на боці (ліва). Ляжте на бік і підніміть верхню ногу прямо вгору, потім повільно опустіть її. 3 × 12, щодня.",
+   "source_en": "Side-lying leg lift (left). Lie on your side and lift the upper leg straight up, then lower it slowly. 3 × 12, every day.",
+   "back_translation": "Leg raise on the side (left). Lie on your side and raise the upper leg straight up, then slowly lower it. 3 x 12, every day.",
+   "span_ids": [
+    "s016",
+    "s017"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.4",
+   "language": "uk",
+   "text": "Випрямлення коліна сидячи з еспандером (ліва). Сядьте на стілець, обмотайте еспандером навколо гомілки і повільно випрямте коліно. 3 × 12, щодня.",
+   "source_en": "Seated knee straightening with a band (left). Sit on a chair with the band around the ankle and straighten the knee slowly. 3 × 12, every day.",
+   "back_translation": "Knee straightening sitting with an expander (left). Sit on a chair, wrap the expander around the lower leg and slowly straighten the knee. 3 × 12, every day.",
+   "span_ids": [
+    "s020",
+    "s021"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S2.5",
+   "language": "uk",
+   "text": "Стійка на одній нозі (ліва). Стойте на одній нозі поруч зі стійкою, за яку можна вчепитися, і утримуйте положення. 3 × 30 секунд, щодня, вдома. Стойте поруч із кухонною стійкою. З ваших записів: Перевіряйте шкіру кульшової частини після носіння протеза.",
+   "source_en": "Single-leg stance (left). Stand on one leg next to a counter you can grab, and hold the position. 3 × 30 seconds, every day, at home. Stand next to the kitchen counter. From your records: Check the skin of the residual limb after wearing the prosthesis.",
+   "back_translation": "Single-leg stance (left). Stand on one leg next to a counter you can grab, and hold the position. 3 × 30 seconds, every day, at home. Stand next to the kitchen counter. From your records: Check the skin of the hip part after wearing the prosthesis.",
+   "span_ids": [
+    "s023",
+    "s025",
+    "s026"
+   ],
+   "rule_ids": [
+    "R04",
+    "R09"
+   ],
+   "state": "conflict",
+   "objections": [
+    {
+     "item_id": "S2.5",
+     "kind": "rule_conflict",
+     "detail": "R04: documented restriction found, therapist decides. Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it.",
+     "blocking": true,
+     "source": "rules"
+    }
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 0,
+   "objections": {
+    "wrong_dose": 1,
+    "rule_conflict": 1
+   },
+   "correctable": 1,
+   "seconds": 20.62,
+   "raised": [
+    {
+     "item_id": "S2.3",
+     "kind": "wrong_dose",
+     "detail": "dose states 2, which the cited spans do not",
+     "blocking": true,
+     "source": "checks"
+    },
+    {
+     "item_id": "S2.5",
+     "kind": "rule_conflict",
+     "detail": "R04: documented restriction found, therapist decides. Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it.",
+     "blocking": true,
+     "source": "rules"
+    }
+   ]
+  },
+  {
+   "round": 1,
+   "objections": {
+    "rule_conflict": 1
+   },
+   "correctable": 0,
+   "seconds": 7.34,
+   "raised": [
+    {
+     "item_id": "S2.5",
+     "kind": "rule_conflict",
+     "detail": "R04: documented restriction found, therapist decides. Standing on the left prosthesis alone only in supervised sessions until the prosthetist clears it.",
+     "blocking": true,
+     "source": "rules"
+    }
+   ]
+  }
+ ],
+ "calls": {
+  "generator": [
+   {
+    "what": "translate r0",
+    "seconds": 6.77,
+    "tokens": 412,
+    "tokens_per_s": 66.0
+   },
+   {
+    "what": "correct r0",
+    "seconds": 2.97,
+    "tokens": 134,
+    "tokens_per_s": 65.8
+   },
+   {
+    "what": "translate r1",
+    "seconds": 1.49,
+    "tokens": 74,
+    "tokens_per_s": 65.4
+   }
+  ],
+  "falsifier": [
+   {
+    "what": "check items r0",
+    "seconds": 4.06,
+    "tokens": 147,
+    "tokens_per_s": 53.4
+   },
+   {
+    "what": "check translations r0",
+    "seconds": 9.79,
+    "tokens": 500,
+    "tokens_per_s": 55.4
+   },
+   {
+    "what": "check items r1",
+    "seconds": 4.05,
+    "tokens": 147,
+    "tokens_per_s": 53.6
+   },
+   {
+    "what": "check translations r1",
+    "seconds": 1.79,
+    "tokens": 74,
+    "tokens_per_s": 57.5
+   }
+  ]
+ },
+ "notes": [],
+ "models": {
+  "generator": "Qwen3.5-35B-A3B-Q4_K_M.gguf",
+  "falsifier": "gemma-3-12b-it-Q4_K_M.gguf"
+ }
+}

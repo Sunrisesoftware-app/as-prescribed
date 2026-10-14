@@ -126,6 +126,21 @@ async def _drive(q: asyncio.Queue, request: Request, sid: str, mode: str, inject
     async def emit(kind: str, data: dict) -> None:
         await q.put(("stage", {"stage": kind, **data}))
 
+    recorded = RECORDED / f"{key}.json"
+    if os.getenv("AP_REPLAY") == "1":
+        # Replay only: serve the recorded run without calling a model (the public demo while no hosted
+        # endpoint is available). The view labels it as recorded.
+        if not recorded.is_file():
+            await q.put(("failure", {"message": "No recorded run exists for this case, and live models are off."}))
+            return
+        if mode == "live":
+            for chunk in chunks(spans, 3):
+                await asyncio.sleep(max(0.0, (chunk[-1].ts - chunk[0].ts + 4) / speed))
+                for s in chunk:
+                    await q.put(("span", s.model_dump()))
+        await q.put(("result", {**json.loads(recorded.read_text(encoding="utf-8")), "recorded": True}))
+        return
+
     ttl = float(os.getenv("AP_CACHE_S", "1800"))
     hit = _cache.get(key)
     if hit and time.time() - hit[0] < ttl:

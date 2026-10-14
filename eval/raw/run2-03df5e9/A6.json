@@ -1,0 +1,276 @@
+{
+ "run": "A6",
+ "summary": {
+  "session": "S3",
+  "states": {
+   "supported": 3,
+   "proposal": 1
+  },
+  "rounds": 2,
+  "objections_per_round": [
+   7,
+   0
+  ],
+  "seconds": 48.4
+ },
+ "observation": {
+  "run": "A6",
+  "session": "S3",
+  "type": "wrong_dose_or_frequency",
+  "item_id": "S3.1",
+  "injected": true,
+  "detected": true,
+  "primary_kind": true,
+  "by_checks": true,
+  "by_falsifier": true,
+  "final_state": "supported"
+ },
+ "clean": [
+  {
+   "run": "A6",
+   "session": "S3",
+   "item_id": "S3.2",
+   "false_alarm": true,
+   "kinds": [
+    "dropped_caution"
+   ],
+   "sources": [
+    "falsifier"
+   ]
+  },
+  {
+   "run": "A6",
+   "session": "S3",
+   "item_id": "S3.3",
+   "false_alarm": true,
+   "kinds": [
+    "dropped_caution"
+   ],
+   "sources": [
+    "falsifier"
+   ]
+  },
+  {
+   "run": "A6",
+   "session": "S3",
+   "item_id": "S3.4",
+   "false_alarm": true,
+   "kinds": [
+    "wrong_dose",
+    "wrong_frequency"
+   ],
+   "sources": [
+    "falsifier"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "item_id": "S3.1",
+   "language": "ar",
+   "text": "تأرجح ذراع البندول (اليمين). ادعم نفسك على طاولة باليد الأخرى ودع ذراعك الأيمن يتدلى ويتأرجح برفق في دوائر صغيرة. دقيقة واحدة، 3 مرات في اليوم. صغير ومسترخٍ. الذراع يتدلى فقط.",
+   "source_en": "Pendulum arm swing (right). Support yourself on a table with the other hand and let your right arm hang and swing gently in small circles. 1 minute, 3 times a day. Small and relaxed. The arm just hangs.",
+   "back_translation": "Pendulum arm swing (right). Support yourself on a table with the other hand and let your right arm hang and swing gently in small circles. One minute, 3 times a day. Small and relaxed. The arm only hangs.",
+   "span_ids": [
+    "s012",
+    "s013"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S3.2",
+   "language": "ar",
+   "text": "دوران للخارج مع شريط (اليمين). حافظ على المرفق ملاصقًا لجانبك وحوّل الساعد للخارج ضد الشريط. 3 × 10، كل يوم. حافظ على مرفقك مطويًا ملاصقًا لجانبك. قريب من جسمك، كما لو كنت تمسك صحيفة تحت إبطك.",
+   "source_en": "Outward rotation with a band (right). Keep the elbow against your side and turn the forearm outwards against the band. 3 × 10, every day. Keep your elbow tucked in against your side. Close to your body, as if you were holding a newspaper under your arm.",
+   "back_translation": "Rotation outwards with a band (right). Keep the elbow close to your side and turn the forearm outwards against the band. 3 times by 10, every day. Keep your elbow folded close to your side. Close to your body, as if you were holding a newspaper under your arm.",
+   "span_ids": [
+    "s016",
+    "s017"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S3.3",
+   "language": "ar",
+   "text": "جري مع شريط (الجانبين). اسحب الشريط نحوك بكلتا اليدين، واضغط على شفرات الكتف معًا. 2 × 15، كل يوم. اضغط على شفرات الكتف معًا.",
+   "source_en": "Rowing with a band (both sides). Pull the band towards you with both hands, squeezing the shoulder blades together. 2 × 15, every day. Squeezing the shoulder blades together.",
+   "back_translation": "Rowing with a band (both sides). Pull the band towards you with both hands, pressing the shoulder blades together. 2 times by 15, every day. Press the shoulder blades together.",
+   "span_ids": [
+    "s020",
+    "s021"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S3.4",
+   "language": "ar",
+   "text": "تمدد لعضلة الفخذ الخلفية (الجانب غير مذكور). اجلس ورجلك (الجانب غير مذكور) مستقيمة أمامك وانحنِ للأمام من الوركين حتى تشعر بتمدد خلف الفخذ. امسكه لبعض الوقت، التكرار غير مذكور. من سجلاتك: انحنِ من الوركين واحافظ على استقامة الظهر.",
+   "source_en": "Seated hamstring stretch (side not stated). Sit with your (side not stated) leg straight in front of you and lean forward from the hips until you feel a stretch behind the thigh. Hold it for a while, how often not stated. From your records: Bend from the hips and keep the back straight.",
+   "back_translation": "Seated hamstring stretch (side not stated). Sit with your (side not stated) leg straight in front of you and lean forward from the hips until you feel a stretch behind the thigh. Hold it for a while, how often not stated. From your records: Bend from the hips and keep the back straight.",
+   "span_ids": [
+    "s024",
+    "s025"
+   ],
+   "rule_ids": [
+    "R11"
+   ],
+   "state": "proposal",
+   "objections": [
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    }
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 0,
+   "objections": {
+    "wrong_dose": 3,
+    "incomplete": 1,
+    "dropped_caution": 3,
+    "wrong_frequency": 1
+   },
+   "correctable": 7,
+   "seconds": 18.22,
+   "raised": [
+    {
+     "item_id": "S3.1",
+     "kind": "wrong_dose",
+     "detail": "dose states 5, which the cited spans do not",
+     "blocking": true,
+     "source": "checks"
+    },
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, dose, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    },
+    {
+     "item_id": "S3.1",
+     "kind": "dropped_caution",
+     "detail": "the therapist said: Small and relaxed. The arm just hangs.",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.1",
+     "kind": "wrong_dose",
+     "detail": "The transcript states 'One minute, three times a day.'",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.2",
+     "kind": "dropped_caution",
+     "detail": "the therapist said: Close to your body, as if you were holding a newspaper under your arm.",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.3",
+     "kind": "dropped_caution",
+     "detail": "the therapist said: Squeezing the shoulder blades together.",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.4",
+     "kind": "wrong_dose",
+     "detail": "The transcript states 'hold it for a while.'",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.4",
+     "kind": "wrong_frequency",
+     "detail": "The transcript states nothing about frequency.",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "round": 1,
+   "objections": {
+    "incomplete": 1
+   },
+   "correctable": 0,
+   "seconds": 20.92,
+   "raised": [
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    }
+   ]
+  }
+ ],
+ "calls": {
+  "generator": [
+   {
+    "what": "translate r0",
+    "seconds": 5.27,
+    "tokens": 305,
+    "tokens_per_s": 66.0
+   },
+   {
+    "what": "correct r0",
+    "seconds": 9.31,
+    "tokens": 533,
+    "tokens_per_s": 66.2
+   },
+   {
+    "what": "translate r1",
+    "seconds": 5.71,
+    "tokens": 345,
+    "tokens_per_s": 66.1
+   }
+  ],
+  "falsifier": [
+   {
+    "what": "check items r0",
+    "seconds": 5.31,
+    "tokens": 223,
+    "tokens_per_s": 54.0
+   },
+   {
+    "what": "check translations r0",
+    "seconds": 7.65,
+    "tokens": 367,
+    "tokens_per_s": 55.5
+   },
+   {
+    "what": "check items r1",
+    "seconds": 6.27,
+    "tokens": 232,
+    "tokens_per_s": 53.7
+   },
+   {
+    "what": "check translations r1",
+    "seconds": 8.94,
+    "tokens": 449,
+    "tokens_per_s": 55.1
+   }
+  ]
+ },
+ "notes": [],
+ "models": {
+  "generator": "Qwen3.5-35B-A3B-Q4_K_M.gguf",
+  "falsifier": "gemma-3-12b-it-Q4_K_M.gguf"
+ }
+}

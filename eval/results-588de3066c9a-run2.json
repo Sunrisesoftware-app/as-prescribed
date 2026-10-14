@@ -1,0 +1,254 @@
+{
+ "seal": "588de3066c9ac5ac2d10ad538d7116487cded1729889f505d51b8c3dba7c4628",
+ "tag": "run2",
+ "code_commit": "03df5e9",
+ "runs_scored": 41,
+ "models": {
+  "generator": "Qwen3.5-35B-A3B-Q4_K_M.gguf",
+  "falsifier": "gemma-3-12b-it-Q4_K_M.gguf"
+ },
+ "injections": {
+  "planned": 32,
+  "applied": 32,
+  "not_applied": []
+ },
+ "recall_overall": 0.719,
+ "recall_falsifier_only": 0.5,
+ "recall_deterministic": 1.0,
+ "by_type": {
+  "wrong_dose_or_frequency": {
+   "ar": {
+    "n": 4,
+    "recall": 0.75,
+    "primary_kind": 0.75,
+    "falsifier_caught": 3,
+    "only_checks_caught": 0
+   },
+   "uk": {
+    "n": 2,
+    "recall": 1.0,
+    "primary_kind": 1.0,
+    "falsifier_caught": 1,
+    "only_checks_caught": 1
+   },
+   "all": {
+    "n": 6,
+    "recall": 0.833,
+    "primary_kind": 0.833,
+    "falsifier_caught": 4,
+    "only_checks_caught": 1
+   },
+   "final_states": {
+    "supported": 6
+   }
+  },
+  "wrong_side": {
+   "ar": {
+    "n": 3,
+    "recall": 1.0,
+    "primary_kind": 1.0,
+    "falsifier_caught": 2,
+    "only_checks_caught": 1
+   },
+   "uk": {
+    "n": 2,
+    "recall": 0.0,
+    "primary_kind": 0.0,
+    "falsifier_caught": 0,
+    "only_checks_caught": 0
+   },
+   "all": {
+    "n": 5,
+    "recall": 0.6,
+    "primary_kind": 0.6,
+    "falsifier_caught": 2,
+    "only_checks_caught": 1
+   },
+   "final_states": {
+    "supported": 5
+   }
+  },
+  "invented_item": {
+   "ar": {
+    "n": 3,
+    "recall": 0.667,
+    "primary_kind": 0.667,
+    "falsifier_caught": 2,
+    "only_checks_caught": 0
+   },
+   "uk": {
+    "n": 2,
+    "recall": 0.5,
+    "primary_kind": 0.5,
+    "falsifier_caught": 1,
+    "only_checks_caught": 0
+   },
+   "all": {
+    "n": 5,
+    "recall": 0.6,
+    "primary_kind": 0.6,
+    "falsifier_caught": 3,
+    "only_checks_caught": 0
+   },
+   "final_states": {
+    "removed": 4,
+    "supported": 1
+   }
+  },
+  "dropped_caution": {
+   "ar": {
+    "n": 4,
+    "recall": 0.75,
+    "primary_kind": 0.75,
+    "falsifier_caught": 3,
+    "only_checks_caught": 0
+   },
+   "uk": {
+    "n": 1,
+    "recall": 0.0,
+    "primary_kind": 0.0,
+    "falsifier_caught": 0,
+    "only_checks_caught": 0
+   },
+   "all": {
+    "n": 5,
+    "recall": 0.6,
+    "primary_kind": 0.6,
+    "falsifier_caught": 3,
+    "only_checks_caught": 0
+   },
+   "final_states": {
+    "supported": 4,
+    "conflict": 1
+   }
+  },
+  "contraindicated": {
+   "ar": {
+    "n": 1,
+    "recall": 1.0,
+    "primary_kind": 1.0,
+    "falsifier_caught": 0,
+    "only_checks_caught": 1
+   },
+   "uk": {
+    "n": 4,
+    "recall": 1.0,
+    "primary_kind": 1.0,
+    "falsifier_caught": 0,
+    "only_checks_caught": 4
+   },
+   "all": {
+    "n": 5,
+    "recall": 1.0,
+    "primary_kind": 1.0,
+    "falsifier_caught": 0,
+    "only_checks_caught": 5
+   },
+   "final_states": {
+    "conflict": 5
+   }
+  },
+  "mistranslation": {
+   "ar": {
+    "n": 4,
+    "recall": 0.5,
+    "primary_kind": 0.5,
+    "falsifier_caught": 2,
+    "only_checks_caught": 0
+   },
+   "uk": {
+    "n": 2,
+    "recall": 1.0,
+    "primary_kind": 1.0,
+    "falsifier_caught": 1,
+    "only_checks_caught": 1
+   },
+   "all": {
+    "n": 6,
+    "recall": 0.667,
+    "primary_kind": 0.667,
+    "falsifier_caught": 3,
+    "only_checks_caught": 1
+   },
+   "final_states": {
+    "supported": 6
+   }
+  }
+ },
+ "false_alarms": {
+  "line_observations": 173,
+  "rate": 0.069,
+  "distinct_lines_ever_flagged": 7,
+  "distinct_lines": 14,
+  "kinds": {
+   "wrong_dose": 3,
+   "wrong_frequency": 3,
+   "dropped_caution": 5,
+   "wrong_side": 1,
+   "mistranslation": 3
+  }
+ },
+ "objections_per_round_mean": {
+  "0": 0.95,
+  "1": 0.2,
+  "2": 1.25
+ },
+ "seconds": {
+  "median": 28.6,
+  "max": 54.7
+ },
+ "tokens_per_s_median": {
+  "generator": 65.9,
+  "falsifier": 54.0
+ },
+ "e2e": [
+  {
+   "session": "S1",
+   "rep": 1,
+   "seconds": 33.4,
+   "slot_recall": 1.0,
+   "field_accuracy": 0.9,
+   "traps": [],
+   "invented": []
+  },
+  {
+   "session": "S2",
+   "rep": 1,
+   "seconds": 43.8,
+   "slot_recall": 1.0,
+   "field_accuracy": 1.0,
+   "traps": [],
+   "invented": []
+  },
+  {
+   "session": "S3",
+   "rep": 1,
+   "seconds": 31.4,
+   "slot_recall": 1.0,
+   "field_accuracy": 0.875,
+   "traps": [
+    {
+     "slot": "T3.1",
+     "kept_out": true
+    },
+    {
+     "slot": "T3.2",
+     "kept_out": true
+    }
+   ],
+   "invented": []
+  }
+ ],
+ "gates": {
+  "recall": false,
+  "false_alarms": true,
+  "objections_fall": true,
+  "latency": true,
+  "thresholds": {
+   "recall_overall_min": 0.8,
+   "recall_falsifier_only_min": 0.6,
+   "false_alarm_rate_max": 0.15,
+   "latency_s_max": 90.0
+  }
+ }
+}

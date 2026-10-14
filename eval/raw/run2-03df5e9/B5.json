@@ -1,0 +1,249 @@
+{
+ "run": "B5",
+ "summary": {
+  "session": "S3",
+  "states": {
+   "supported": 3,
+   "proposal": 1
+  },
+  "rounds": 2,
+  "objections_per_round": [
+   4,
+   0
+  ],
+  "seconds": 46.5
+ },
+ "observation": {
+  "run": "B5",
+  "session": "S3",
+  "type": "wrong_side",
+  "item_id": "S3.2",
+  "injected": true,
+  "detected": true,
+  "primary_kind": true,
+  "by_checks": true,
+  "by_falsifier": true,
+  "final_state": "supported"
+ },
+ "clean": [
+  {
+   "run": "B5",
+   "session": "S3",
+   "item_id": "S3.1",
+   "false_alarm": true,
+   "kinds": [
+    "dropped_caution"
+   ],
+   "sources": [
+    "falsifier"
+   ]
+  },
+  {
+   "run": "B5",
+   "session": "S3",
+   "item_id": "S3.3",
+   "false_alarm": true,
+   "kinds": [
+    "dropped_caution"
+   ],
+   "sources": [
+    "falsifier"
+   ]
+  },
+  {
+   "run": "B5",
+   "session": "S3",
+   "item_id": "S3.4",
+   "false_alarm": false,
+   "kinds": [],
+   "sources": []
+  }
+ ],
+ "lines": [
+  {
+   "item_id": "S3.1",
+   "language": "ar",
+   "text": "تأرجح ذراع البندول (اليمين). ادعم نفسك على طاولة باليد الأخرى ودع ذراعك الأيمن يتدلى ويتأرجح برفق في دوائر صغيرة. دقيقة واحدة، 3 مرات في اليوم. صغير ومسترخٍ. الذراع يتدلى فقط.",
+   "source_en": "Pendulum arm swing (right). Support yourself on a table with the other hand and let your right arm hang and swing gently in small circles. 1 minute, 3 times a day. Small and relaxed. The arm just hangs.",
+   "back_translation": "Pendulum arm swing (right). Support yourself on a table with the other hand and let your right arm hang and swing gently in small circles. One minute, 3 times a day. Small and relaxed. The arm only hangs.",
+   "span_ids": [
+    "s012",
+    "s013"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S3.2",
+   "language": "ar",
+   "text": "دوران للخارج مع شريط (اليمين). حافظ على المرفق ملاصقًا لجانبك وحوّل الساعد للخارج ضد الشريط. 3 × 10، كل يوم. حافظ على مرفقك مغروسًا في جانبك. قريب من جسمك، كما لو كنت تمسك صحيفة تحت إبطك.",
+   "source_en": "Outward rotation with a band (right). Keep the elbow against your side and turn the forearm outwards against the band. 3 × 10, every day. Keep your elbow tucked in against your side. Close to your body, as if you were holding a newspaper under your arm.",
+   "back_translation": "Rotation outwards with a band (right). Keep the elbow attached to your side and turn the forearm outwards against the band. 3 times by 10, every day. Keep your elbow planted in your side. Near to your body, as if you were holding a newspaper under your arm.",
+   "span_ids": [
+    "s016",
+    "s017"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S3.3",
+   "language": "ar",
+   "text": "جريّ مع شريط (الجانبين). اسحب الشريط نحوك بكلتا اليدين، واضغط لوحي الكتف معًا. 2 × 15، كل يوم. اضغط لوحي الكتف معًا.",
+   "source_en": "Rowing with a band (both sides). Pull the band towards you with both hands, squeezing the shoulder blades together. 2 × 15, every day. Squeezing the shoulder blades together.",
+   "back_translation": "Running with a band (both sides). Pull the band towards you with both hands, pressing the shoulder blades together. 2 times by 15, every day. Press the shoulder blades together.",
+   "span_ids": [
+    "s020",
+    "s021"
+   ],
+   "rule_ids": [],
+   "state": "supported",
+   "objections": []
+  },
+  {
+   "item_id": "S3.4",
+   "language": "ar",
+   "text": "تمدد لعضلة الفخذ الخلفية (لم يُذكر الجانب). اجلس ورجلك (لم يُذكر الجانب) مستقيمة أمامك وانحنِ للأمام من الوركين حتى تشعر بتمدد خلف الفخذ. لم يُذكر الجرعة، ولم يُذكر التكرار. من سجلاتك: انحنِ من الوركين واحافظ على استقامة الظهر.",
+   "source_en": "Seated hamstring stretch (side not stated). Sit with your (side not stated) leg straight in front of you and lean forward from the hips until you feel a stretch behind the thigh. Dose not stated, how often not stated. From your records: Bend from the hips and keep the back straight.",
+   "back_translation": "Stretch for the hamstring muscle (side not mentioned). Sit with your (side not mentioned) leg straight in front of you and bend forward from the hips until you feel a stretch behind the thigh. Dose not mentioned, how often not mentioned. From your records: bend from the hips and keep the back straight.",
+   "span_ids": [
+    "s024",
+    "s025"
+   ],
+   "rule_ids": [
+    "R11"
+   ],
+   "state": "proposal",
+   "objections": [
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, dose, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    }
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "round": 0,
+   "objections": {
+    "wrong_side": 2,
+    "incomplete": 1,
+    "dropped_caution": 2
+   },
+   "correctable": 4,
+   "seconds": 18.41,
+   "raised": [
+    {
+     "item_id": "S3.2",
+     "kind": "wrong_side",
+     "detail": "side left is not stated in the cited spans",
+     "blocking": true,
+     "source": "checks"
+    },
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, dose, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    },
+    {
+     "item_id": "S3.1",
+     "kind": "dropped_caution",
+     "detail": "the therapist said: Small and relaxed. The arm just hangs.",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.2",
+     "kind": "wrong_side",
+     "detail": "The therapist said 'for the right arm' (s016)",
+     "blocking": true,
+     "source": "falsifier"
+    },
+    {
+     "item_id": "S3.3",
+     "kind": "dropped_caution",
+     "detail": "the therapist said: Squeezing the shoulder blades together.",
+     "blocking": true,
+     "source": "falsifier"
+    }
+   ]
+  },
+  {
+   "round": 1,
+   "objections": {
+    "incomplete": 1
+   },
+   "correctable": 0,
+   "seconds": 17.77,
+   "raised": [
+    {
+     "item_id": "S3.4",
+     "kind": "incomplete",
+     "detail": "not stated in the session: side, dose, frequency; the therapist completes it",
+     "blocking": true,
+     "source": "checks"
+    }
+   ]
+  }
+ ],
+ "calls": {
+  "generator": [
+   {
+    "what": "translate r0",
+    "seconds": 5.2,
+    "tokens": 299,
+    "tokens_per_s": 66.0
+   },
+   {
+    "what": "correct r0",
+    "seconds": 10.27,
+    "tokens": 424,
+    "tokens_per_s": 46.4
+   },
+   {
+    "what": "translate r1",
+    "seconds": 5.46,
+    "tokens": 238,
+    "tokens_per_s": 47.0
+   }
+  ],
+  "falsifier": [
+   {
+    "what": "check items r0",
+    "seconds": 4.33,
+    "tokens": 166,
+    "tokens_per_s": 53.9
+   },
+   {
+    "what": "check translations r0",
+    "seconds": 8.88,
+    "tokens": 441,
+    "tokens_per_s": 54.6
+   },
+   {
+    "what": "check items r1",
+    "seconds": 4.88,
+    "tokens": 157,
+    "tokens_per_s": 53.7
+   },
+   {
+    "what": "check translations r1",
+    "seconds": 7.43,
+    "tokens": 341,
+    "tokens_per_s": 55.5
+   }
+  ]
+ },
+ "notes": [],
+ "models": {
+  "generator": "Qwen3.5-35B-A3B-Q4_K_M.gguf",
+  "falsifier": "gemma-3-12b-it-Q4_K_M.gguf"
+ }
+}
