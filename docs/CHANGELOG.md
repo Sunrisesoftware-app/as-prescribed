@@ -30,10 +30,19 @@ tokenfactory key pursued for a live public demo (DECISIONS row 20, dec_4df9557bb
 - A live replay streams spans every 2-4 s through the Worker, so it is not buffered.
 - The app's resident memory on the machine: 60 MB.
 
-**Seen in passing (BACKLOG DEMO-1, DEMO-4):**
-- The replay banner blames an endpoint that did not answer.
-- S2's recorded conflict line has a Ukrainian caution that says "hip part" where the English says
-  "residual limb". The falsifier did not object.
+**Seen in passing (BACKLOG DEMO-4):** S2's recorded conflict line has a Ukrainian caution that says
+"hip part" where the English says "residual limb". The falsifier did not object.
+
+**Demo polish: a recorded run names its hardware** (DECISIONS row 20). The replay banner blamed an
+endpoint that did not answer, which is wrong when the public demo runs no model by design.
+- `data/recorded/recording.json` says when and on what the runs were made: 14.10.2026,
+  Qwen3.5-35B-A3B on the Radeon AI PRO R9700, Gemma 3 12B on the Radeon RX 7900 XT, llama.cpp with
+  ROCm.
+- `GET /api/demo` serves it. In replay mode the page header says so before any run, and the banner
+  and the model facts name the GPUs after a run. The fallback case (an endpoint that did not answer)
+  keeps its own wording.
+- Two tests: replay mode labels the run, and all 38 recordings were made on the models the label
+  names (88 tests).
 
 ## Session 1, 14.10.2026 (continued): Atlas PR #477 merged and deployed
 

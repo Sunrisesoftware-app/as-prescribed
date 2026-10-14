@@ -1,5 +1,6 @@
 """Record real runs of every demo case through the running app (AP_RECORD=1 on the server), so the public
-demo can replay them when no model endpoint is available (AP_REPLAY=1). One case at a time.
+demo can replay them when no model endpoint is available (AP_REPLAY=1). One case at a time. After a new
+recording, update data/recorded/recording.json (date, models, GPUs): the page names the hardware from it.
 
     uv run python scripts/record.py http://127.0.0.1:8301 [--only S1-live,S2-prescription-E1]
 """

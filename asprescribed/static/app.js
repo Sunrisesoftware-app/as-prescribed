@@ -39,6 +39,14 @@ async function getJSON(url) {
 // ---------- session and transcript ----------
 async function init() {
   state.sessions = await getJSON("/api/sessions");
+  const demo = await getJSON("/api/demo");
+  if (demo.replay && demo.recording) {
+    const r = demo.recording;
+    $("#replay-note").textContent = `This public demo runs no model: it replays real runs recorded on ${day(r.date)} `
+      + `on AMD Radeon GPUs, ${r.generator.name} on a ${r.generator.gpu.replace(/^AMD /, "")} drafting and `
+      + `${r.falsifier.name} on a ${r.falsifier.gpu.replace(/^AMD /, "")} checking.`;
+    $("#replay-note").hidden = false;
+  }
   const seg = $("#sessions");
   for (const s of state.sessions) {
     const b = el("button", { type: "button", "aria-pressed": "false", text: `${s.id} · ${LANG[s.language]}`,
@@ -173,6 +181,26 @@ function banner(kind, text) {
   $("#banner").replaceChildren(el("div", { class: `banner ${kind}`, role: "status", text }));
 }
 
+function day(iso) {
+  return new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+}
+
+// A recorded run always says so, and names the models and GPUs it was recorded on.
+function recordedText(d) {
+  const r = d.recording;
+  const origin = r ? ` Recorded on ${day(r.date)}: ${r.generator.name} on an ${r.generator.gpu} drafted, `
+    + `${r.falsifier.name} on an ${r.falsifier.gpu} checked (${r.runtime}).` : "";
+  return (d.replay ? "A recorded run, replayed: no model runs on this public demo."
+    : "The model endpoint did not answer: this is a recorded run, shown as recorded.") + origin;
+}
+
+// The model name, with the GPU when this is a recorded run made on that model.
+function modelFact(d, role) {
+  const name = d.models[role] || "-";
+  const r = d.recording && d.recording[role];
+  return d.recorded && r && r.model === name ? `${name} · ${r.gpu}` : name;
+}
+
 // ---------- the result ----------
 function renderResult() {
   const d = state.result;
@@ -181,12 +209,12 @@ function renderResult() {
   if (d.seconds !== undefined) facts.push(["Verification", `${d.seconds} s`]);
   facts.push(["Rounds", String(d.summary.rounds)]);
   for (const [role, tps] of Object.entries(d.tokens_per_s || {})) facts.push([`${role} tok/s`, String(tps)]);
-  facts.push(["Generator", d.models.generator || "-"], ["Falsifier", d.models.falsifier || "-"]);
+  facts.push(["Generator", modelFact(d, "generator")], ["Falsifier", modelFact(d, "falsifier")]);
   const bars = el("span", { class: "bars", title: "Objections to correct, per round" },
     ...d.summary.objections_per_round.map((n) => { const b = el("span"); b.style.height = `${Math.max(2, n * 5)}px`; return b; }));
   $("#facts").replaceChildren(...facts.map(([k, v]) => el("span", {}, `${k} `, el("b", { text: v }))),
     el("span", {}, "Objections per round ", bars, ` ${d.summary.objections_per_round.join(" → ")}`));
-  if (d.recorded) banner("warn", "The model endpoint did not answer: this is a recorded run, shown as recorded.");
+  if (d.recorded) banner(d.replay ? "info" : "warn", recordedText(d));
   else if (d.cached_at) banner("info", `Served from a run at ${new Date(d.cached_at * 1000).toLocaleTimeString()} (identical case).`);
   if (d.injection) renderInjection(d.injection);
   renderLines();

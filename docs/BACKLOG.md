@@ -56,10 +56,6 @@ application URL. Judged on application of technology, presentation, business val
 
 ## DEMO
 
-- **DEMO-1** The replay banner says "The model endpoint did not answer: this is a recorded run",
-  which is wrong for the public demo (the models are off by design) and does not name the hardware.
-  It should say the run was recorded on the Radeon AI PRO R9700 and RX 7900 XT, and when
-  (DECISIONS row 20).
 - **DEMO-2** *check* the patient sheet's three fixed headings in Arabic and Ukrainian (written by Code;
   nobody on the team reads them): a native speaker, or mark them in the sheet as machine-written.
 - **DEMO-4** S2's recorded conflict line carries a caution whose Ukrainian says "the skin of the hip

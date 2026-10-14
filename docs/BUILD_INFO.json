@@ -5,7 +5,7 @@
   "phaseName": "AMD Developer Hackathon ACT III, Health and Wellbeing track: build 14.-17.10.2026, submission by Sun 18.10.2026 13:00 EEST at the latest (the live dashboard's countdown; the event page was read as 18:00), target Sat 17.10.",
   "session": 2,
   "updated": "2026-10-14",
-  "state": "Session 2 (chain 2) 14.10.2026 evening (Code). The public demo is up at https://asprescribed.sunrisesoftware.app in replay mode: a systemd unit on the ultragravel machine behind a Cloudflare Worker (custom domain) and Workers VPC over the machine's tunnel; the gate passed in the browser (S2 recorded run with the conflict on the prosthesis line, the patient sheet opens). Decided: how AMD is shown to the judges (DECISIONS row 20: recordings labelled as Radeon runs, a live run on the box in the video, the tokenfactory key pursued). The lablab rules read; the deadline in the docs moved to Sun 13:00 EEST. Still from session 1: the pipeline, the desk and the patient sheet, the approved synthetic content, the sealed evaluation (run 1 failed recall 0.594 and false alarms 16.2 %; run 2 after fixes failed recall 0.719, passed false alarms 6.9 %), 38 recorded demo cases. The tokenfactory key is still refused for the owner's email. 86 tests green; CI green.",
+  "state": "Session 2 (chain 2) 14.10.2026 evening (Code). The public demo is up at https://asprescribed.sunrisesoftware.app in replay mode: a systemd unit on the ultragravel machine behind a Cloudflare Worker (custom domain) and Workers VPC over the machine's tunnel; the gate passed in the browser (S2 recorded run with the conflict on the prosthesis line, the patient sheet opens). Decided: how AMD is shown to the judges (DECISIONS row 20: recordings labelled as Radeon runs, a live run on the box in the video, the tokenfactory key pursued); the page now names the date, models and GPUs of every replayed run. The lablab rules read; the deadline in the docs moved to Sun 13:00 EEST. Still from session 1: the pipeline, the desk and the patient sheet, the approved synthetic content, the sealed evaluation (run 1 failed recall 0.594 and false alarms 16.2 %; run 2 after fixes failed recall 0.719, passed false alarms 6.9 %), 38 recorded demo cases. The tokenfactory key is still refused for the owner's email. 86 tests green; CI green.",
   "github": "github.com/Sunrisesoftware-app/as-prescribed (public, MIT)",
   "machines": {
     "windows": "E:\\projects\\sunrisesoftware\\AMD act3 on the owner's machine (PowerShell 5.1 for the owner; Git Bash for the agent; uv with Python 3.12). The Atlas checkout is E:\\projects\\sunrisesoftware\\quaesitor atlas; the worktree E:\\projects\\sunrisesoftware\\atlas-apply-as-prescribed (detached at Atlas main) and the merged local branches apply-approved/as-prescribed and as-prescribed/model-sync-1 can be removed (ask before deleting).",
@@ -49,7 +49,7 @@
     ],
     "scope": [
       "The tokenfactory answer (BACKLOG P-1)",
-      "Demo polish (BACKLOG DEMO-1..4), redeployed per deploy/README.md",
+      "Demo polish (BACKLOG DEMO-2..4), redeployed per deploy/README.md",
       "Submission material (BACKLOG SUB-1..5)"
     ],
     "gate": "A complete draft of every submission item by Fri 16.10.; submitted on lablab on Sat 17.10., before Sun 18.10.2026 13:00 EEST at the latest",

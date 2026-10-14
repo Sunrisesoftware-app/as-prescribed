@@ -1,0 +1,7 @@
+{
+  "date": "2026-10-14",
+  "runtime": "llama.cpp with ROCm",
+  "generator": {"name": "Qwen3.5-35B-A3B", "model": "Qwen3.5-35B-A3B-Q4_K_M.gguf", "gpu": "AMD Radeon AI PRO R9700"},
+  "falsifier": {"name": "Gemma 3 12B", "model": "gemma-3-12b-it-Q4_K_M.gguf", "gpu": "AMD Radeon RX 7900 XT"},
+  "how": "Local mode on the Somnus box; scripts/record.py through the app with AP_RECORD=1, all 38 demo cases. Update this file whenever the runs are recorded again."
+}

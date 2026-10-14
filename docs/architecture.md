@@ -48,7 +48,7 @@ reports the latency after the last chunk) and **prescription** (the approved slo
 injection from the evaluation). One model run at a time (a lock: the box has 16 GB of host RAM), a
 short cache for identical runs, and recorded runs (`data/recorded/`, written with `AP_RECORD=1` via
 `scripts/record.py`) served when no model answers, or always with `AP_REPLAY=1`, labelled as
-recorded. There is no free-text input. The patient sheet receives the approved program in the URL
+recorded with the date, models and GPUs from `data/recorded/recording.json` (also `GET /api/demo`). There is no free-text input. The patient sheet receives the approved program in the URL
 fragment, which the browser never sends to the server.
 
 ## 4. Modes and where they run

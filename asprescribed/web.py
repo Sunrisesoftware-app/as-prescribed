@@ -53,6 +53,13 @@ def _conditions() -> dict[str, dict]:
     return {c["id"]: c for c in json.loads((DATA_DIR / "rules.json").read_text(encoding="utf-8"))["conditions"]}
 
 
+def recording() -> dict | None:
+    """When, with which models and on which GPUs the recorded runs were made (data/recorded/recording.json),
+    so a replayed run names the hardware it came from."""
+    path = RECORDED / "recording.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.is_file() else None
+
+
 def _describe(inj: dict) -> str:
     if inj["op"] == "translation":
         return {"change_number": "a number", "swap_side": "left and right swapped",
@@ -61,6 +68,12 @@ def _describe(inj: dict) -> str:
         f = inj["fields"]
         return f"adds {load_catalog()[f['exercise_id']]['en']}" + (f" ({f['side']})" if f.get("side") else "")
     return f"{inj['item_id']}: " + ", ".join(f"{k} {v if v else 'removed'}" for k, v in inj["fields"].items())
+
+
+@router.get("/demo")
+def demo() -> dict:
+    """What the page says before any run: whether this server only replays recorded runs, and their origin."""
+    return {"replay": os.getenv("AP_REPLAY") == "1", "recording": recording()}
 
 
 @router.get("/sessions")
@@ -138,7 +151,8 @@ async def _drive(q: asyncio.Queue, request: Request, sid: str, mode: str, inject
                 await asyncio.sleep(max(0.0, (chunk[-1].ts - chunk[0].ts + 4) / speed))
                 for s in chunk:
                     await q.put(("span", s.model_dump()))
-        await q.put(("result", {**json.loads(recorded.read_text(encoding="utf-8")), "recorded": True}))
+        await q.put(("result", {**json.loads(recorded.read_text(encoding="utf-8")), "recorded": True,
+                                "replay": True, "recording": recording()}))
         return
 
     ttl = float(os.getenv("AP_CACHE_S", "1800"))
@@ -210,7 +224,8 @@ async def _drive(q: asyncio.Queue, request: Request, sid: str, mode: str, inject
         except LLMError as e:
             recorded = RECORDED / f"{key}.json"
             if recorded.is_file():
-                await q.put(("result", {**json.loads(recorded.read_text(encoding="utf-8")), "recorded": True}))
+                await q.put(("result", {**json.loads(recorded.read_text(encoding="utf-8")), "recorded": True,
+                                        "recording": recording()}))
             else:
                 await q.put(("failure", {"message": f"The model endpoint did not answer ({e}). No recorded run "
                                                   "exists for this case."}))

@@ -81,6 +81,28 @@ def test_prescription_run_with_an_injection_reports_the_catch(client):
     assert inj["id"] == "E1" and inj["observation"]["detected"] and inj["observation"]["final_state"] == "conflict"
 
 
+def test_replay_mode_serves_the_recorded_run_and_names_its_gpus(client, monkeypatch):
+    monkeypatch.delenv("AP_REPLAY", raising=False)
+    assert client.get("/api/demo").json()["replay"] is False
+    monkeypatch.setenv("AP_REPLAY", "1")
+    demo = client.get("/api/demo").json()
+    assert demo["replay"] and demo["recording"]["generator"]["gpu"] == "AMD Radeon AI PRO R9700"
+    assert demo["recording"]["falsifier"]["gpu"] == "AMD Radeon RX 7900 XT"
+    result = next(d for k, d in events(client.get("/api/sessions/S2/run").text) if k == "result")
+    assert result["recorded"] and result["replay"] and result["recording"] == demo["recording"]
+    assert [line["state"] for line in result["lines"]].count("conflict") == 1
+
+
+def test_every_recorded_run_was_made_on_the_models_its_label_names():
+    rec = web.recording()
+    runs = [p for p in web.RECORDED.glob("*.json") if p.name != "recording.json"]
+    assert len(runs) == 38
+    for p in runs:
+        m = json.loads(p.read_text(encoding="utf-8"))["models"]
+        assert (m["mode"], m["generator"], m["falsifier"]) == \
+            ("local", rec["generator"]["model"], rec["falsifier"]["model"]), p.name
+
+
 def test_injection_is_refused_in_live_mode_and_unknown_injection_fails(client):
     assert client.get("/api/sessions/S1/run", params={"mode": "live", "injection": "A1"}).status_code == 400
     app.state.chat_fn = FakeLLM()

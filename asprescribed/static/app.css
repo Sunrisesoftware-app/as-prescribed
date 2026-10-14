@@ -32,6 +32,7 @@ button, select { font: inherit; color: inherit; }
 .rx { font: 700 15px/1 var(--mono); background: var(--accent); color: var(--accent-ink); border-radius: 6px; padding: 7px 7px 5px; }
 .brand h1 { margin: 0; font-size: 19px; }
 .brand .tag { color: var(--muted); font-size: 13px; }
+.replay-note { margin: 0; padding: 6px 10px; border-radius: 8px; background: var(--accent-soft); font-size: 13px; }
 .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
 .seg button { border: 0; background: transparent; padding: 8px 12px; cursor: pointer; }
