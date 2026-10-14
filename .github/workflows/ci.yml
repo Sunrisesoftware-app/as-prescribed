@@ -24,6 +24,11 @@ jobs:
       - name: Secret scan
         run: bash scripts/check-secrets.sh
 
+      - name: BUILD_INFO.json parses, scripts parse
+        run: |
+          python3 -c "import json; json.load(open('docs/BUILD_INFO.json', encoding='utf-8'))"
+          node --check scripts/adr-from-model.mjs
+
       - uses: astral-sh/setup-uv@v6
         with:
           python-version: "3.12"

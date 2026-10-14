@@ -59,6 +59,12 @@ uv run uvicorn asprescribed.main:app --port 8300
 
 or with Docker: `docker compose up --build`. List the models your endpoints serve with `uv run python scripts/models.py`.
 
+Without any model endpoint, `AP_REPLAY=1` serves the runs recorded on the Somnus box (`data/recorded/`, every demo case), and the page says it is a recorded run. Run one session end to end from the command line with `uv run python scripts/run_session.py S2`, and the evaluation with `uv run python scripts/eval.py run`.
+
+## Documentation
+
+The product ([`docs/product.md`](docs/product.md)), the architecture ([`docs/architecture.md`](docs/architecture.md)), the decisions ([`docs/adr/`](docs/adr/README.md), rendered from the Atlas model), and the working practice ([`CLAUDE.md`](CLAUDE.md)).
+
 ## Safety
 
 The boundary above is the first safety measure: the system verifies a prescription a clinician made and never produces clinical advice of its own. The track's five questions:
