@@ -8,7 +8,7 @@
   "demonstrates": "Conflict: one prescribed item collides with a documented restriction (R04), the program halts and the therapist decides. The system makes no clinical call.",
   "prescribed": [
     {"slot": "S2.1", "exercise_id": "ex.prone_lying", "side": "none", "dose": "10 minutes", "frequency": "twice a day", "cautions": [], "extra_tags": [], "stated": "explicit", "expected_state": "supported"},
-    {"slot": "S2.2", "exercise_id": "ex.bridge", "side": "both", "dose": "3 x 10", "frequency": "every day", "cautions": [], "extra_tags": [], "stated": "explicit", "expected_state": "supported"},
+    {"slot": "S2.2", "exercise_id": "ex.bridge_single", "side": "right", "dose": "3 x 10", "frequency": "every day", "cautions": [], "extra_tags": [], "stated": "explicit", "expected_state": "supported", "note": "Changed 14.10.2026 on Petri's review comment: early prosthetic phase, so the bridge is done on the intact (right) leg only."},
     {"slot": "S2.3", "exercise_id": "ex.hip_abd_side", "side": "left", "dose": "3 x 12", "frequency": "every day", "cautions": [], "extra_tags": [], "stated": "explicit", "expected_state": "supported"},
     {"slot": "S2.4", "exercise_id": "ex.knee_ext_band", "side": "left", "dose": "3 x 12", "frequency": "every day", "cautions": [], "extra_tags": [], "stated": "explicit", "expected_state": "supported"},
     {"slot": "S2.5", "exercise_id": "ex.single_leg_stance", "side": "left", "dose": "3 x 30 seconds", "frequency": "every day, at home", "cautions": ["Stand next to the kitchen counter."], "extra_tags": ["prosthesis_on"], "stated": "explicit", "expected_state": "conflict", "note": "Collides with R04 (prosthetist's restriction). R09's caution also applies."}
