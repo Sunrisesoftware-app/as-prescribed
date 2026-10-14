@@ -61,7 +61,13 @@ ObjectionKind = Literal[
     "dropped_caution",
     "mistranslation",     # back-translation diverges from the item
     "rule_conflict",      # a documented restriction blocks it (raised by the rule engine, not a model)
+    "incomplete",         # side, dose or frequency not stated: only the therapist can complete it
+    "no_catalogue_match", # not a catalogued exercise, so its tags and the rule check are unknown
 ]
+
+# Kinds the generator may try to correct in a round. A rule conflict and an incomplete prescription are
+# never corrected by a model: the therapist decides.
+CORRECTABLE = {"not_entailed", "wrong_dose", "wrong_frequency", "wrong_side", "invented_item", "dropped_caution"}
 
 
 class Objection(BaseModel):
@@ -76,6 +82,9 @@ class PatientLine(BaseModel):
     item_id: str
     language: Language
     text: str
+    source_en: str = ""             # the English line it translates, composed from the item
     back_translation: str | None = None
+    span_ids: list[str] = []        # the "prescribed by therapist" link
+    rule_ids: list[str] = []        # documented restrictions that fired (block or caution)
     state: LineState = LineState.supported
     objections: list[Objection] = []
