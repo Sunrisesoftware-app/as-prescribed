@@ -5,6 +5,36 @@ sub-entries. What changed and *why*, with what was measured, so a later reader c
 decision from a habit. The canonical state is [`BUILD_INFO.json`](BUILD_INFO.json): refer to it,
 do not copy it here.
 
+## Session 2, 14.10.2026 evening: the public demo is up
+
+**Decided (the owner):** the order of the remaining work (deploy first, then the lablab rules, demo
+polish, texts, video, submission); the Cloudflare part handed to Code; how AMD is shown to the
+judges: the recordings labelled as Radeon runs and a live run on the box in the video, with the
+tokenfactory key pursued for a live public demo (DECISIONS row 20, dec_4df9557bb0ad458e).
+
+**Done:**
+- https://asprescribed.sunrisesoftware.app in replay mode ([`deploy/`](../deploy/README.md)). The
+  app is a systemd unit on the ultragravel machine (uvicorn on 127.0.0.1:8300, an ephemeral user, a
+  read-only system, no access log). The edge is a Cloudflare Worker on the custom domain, so
+  Cloudflare made the DNS record and the certificate. It reaches the app through a Workers VPC
+  service over the machine's existing tunnel, so no port is opened and no certificate lives on the
+  machine. Wrangler's login cannot edit DNS records, and this route needed none. An nginx vhost made
+  first was removed once the Worker answered.
+- The lablab rules read: the submission form, the judging criteria, the AMD requirement, and the
+  Google prize (no criteria published). The live dashboard's countdown ends Sun 18.10. 13:00 EEST,
+  five hours before the deadline the docs held; the docs now use 13:00.
+
+**Measured:**
+- The gate passed in the browser: the S2 recorded run shows four supported lines and the conflict on
+  the prosthesis line, and the patient sheet opens in Ukrainian with the four approved lines.
+- A live replay streams spans every 2-4 s through the Worker, so it is not buffered.
+- The app's resident memory on the machine: 60 MB.
+
+**Seen in passing (BACKLOG DEMO-1, DEMO-4):**
+- The replay banner blames an endpoint that did not answer.
+- S2's recorded conflict line has a Ukrainian caution that says "hip part" where the English says
+  "residual limb". The falsifier did not object.
+
 ## Session 1, 14.10.2026 (continued): Atlas PR #477 merged and deployed
 
 **Decided (the owner):** PR #477 merged; the name asprescribed.sunrisesoftware.app confirmed (Atlas

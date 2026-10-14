@@ -7,8 +7,9 @@ fidelity to the transcript, documented restrictions, and the translation. It nev
 recommends or judges suitability. MIT. Repository `github.com/Sunrisesoftware-app/as-prescribed`
 (public). Atlas system `as-prescribed`. All data is synthetic.
 
-**Submission deadline: Sun 18.10.2026 18:00 EEST** (lablab event page, verified 14.10.2026); the
-target is Sat 17.10. After the hackathon the repository is the base for Since AI Turku (6.-8.11.2026).
+**Submission deadline: Sun 18.10.2026 13:00 EEST at the latest**: the lablab live dashboard's
+countdown ends 18.10. 10:00 UTC (read 14.10.2026 20:52), while the event page was read earlier as
+18:00 EEST; the earlier one binds until the organisers say otherwise. The target is Sat 17.10. After the hackathon the repository is the base for Since AI Turku (6.-8.11.2026).
 
 ## Where the truth is
 

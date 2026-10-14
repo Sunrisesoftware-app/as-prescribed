@@ -12,3 +12,6 @@ __pycache__/
 
 # Run outputs (eval runs write here; the sealed keys and reports that matter are copied to eval/results)
 runs/
+
+# Wrangler writes its local cache (account id, email) next to the config
+.wrangler/

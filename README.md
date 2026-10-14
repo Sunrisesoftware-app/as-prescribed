@@ -4,6 +4,8 @@ The home program, exactly as your therapist prescribed it. Verified line by line
 
 > Status: under construction for the AMD Developer Hackathon ACT III (Health and Wellbeing track), 14–18 October 2026. All data in this repository is synthetic.
 
+**Demo:** https://asprescribed.sunrisesoftware.app replays runs recorded on the AMD Radeon cards in local mode (see *How it works*); every person and session in it is synthetic.
+
 ## What it does
 
 During a physiotherapy visit, As Prescribed reads the session transcript as it arrives, extracts what the therapist prescribed, and drafts the patient's home program in the patient's own language (Arabic and Ukrainian in the demo). The program is ready when the visit ends, and nothing reaches the patient until the therapist approves it.

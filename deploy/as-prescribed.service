@@ -1,7 +1,7 @@
 # /etc/systemd/system/as-prescribed.service
 # The public demo on the ultragravel machine: replays the recorded runs (adr.ap.010), so no model
-# endpoint and no key are needed. Binds 127.0.0.1 only; nginx fronts it (deploy/nginx.conf).
-# Nothing about a session is logged: no access log here or in nginx.
+# endpoint and no key are needed. Binds 127.0.0.1 only; the edge Worker reaches it over the
+# machine's Cloudflare tunnel (deploy/README.md). Nothing about a session is logged: no access log.
 [Unit]
 Description=As Prescribed public demo (recorded runs, synthetic data)
 After=network.target

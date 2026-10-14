@@ -1,0 +1,14 @@
+// The public demo's edge Worker (deploy/README.md). No build step; deploy with wrangler 4.124+.
+{
+  "name": "as-prescribed-edge",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "asprescribed.sunrisesoftware.app", "custom_domain": true }],
+  // `wrangler vpc service create as-prescribed-app --type http --tunnel-id <the machine's tunnel>
+  //  --ipv4 127.0.0.1 --http-port 8300`
+  "vpc_services": [{ "binding": "APP", "service_id": "01a13b87-952e-7ac3-a845-1a5bf440c2b3" }],
+  // Nothing about a session is logged (CLAUDE.md).
+  "observability": { "enabled": false }
+}

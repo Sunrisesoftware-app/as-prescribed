@@ -2,10 +2,10 @@
   "name": "as-prescribed",
   "version": "0.1.0",
   "phase": "hackathon",
-  "phaseName": "AMD Developer Hackathon ACT III, Health and Wellbeing track: build 14.-17.10.2026, submission deadline Sun 18.10.2026 18:00 EEST (target Sat 17.10.)",
-  "session": 1,
+  "phaseName": "AMD Developer Hackathon ACT III, Health and Wellbeing track: build 14.-17.10.2026, submission by Sun 18.10.2026 13:00 EEST at the latest (the live dashboard's countdown; the event page was read as 18:00), target Sat 17.10.",
+  "session": 2,
   "updated": "2026-10-14",
-  "state": "Session 1 (chain 1) closed 14.10.2026 (Code). Built and pushed: the pipeline (ingest, extract, tags and rules, the composed English line, translation, the falsifier, falsification rounds with sticky conflicts and code-settled falsifier claims), the therapist's review desk and the patient sheet (FastAPI + plain JS, server-sent events), the approved synthetic content (99 rows and three dialogues, approved by the owner on the review page), and the pre-registered evaluation. Evaluation on the Somnus box (Qwen3.5-35B-A3B on the R9700 generating, gemma-3-12b-it on the 7900 XT falsifying): run 1 (pre-registered, 34530da) failed recall (0.594; falsifier-only 0.278) and false alarms (16.2 %), passed rounds and latency (40 s); run 2 after fixes (03df5e9, not pre-registered) passed false alarms (6.9 %), rounds and latency (44 s) and failed recall (0.719; falsifier-only 0.50). All 38 demo cases recorded for replay. Not deployed; the tokenfactory key is refused for the owner's email (he emailed community@lablab.ai on 14.10.). Atlas PR #477 merged and deployed. 86 tests green; CI green.",
+  "state": "Session 2 (chain 2) 14.10.2026 evening (Code). The public demo is up at https://asprescribed.sunrisesoftware.app in replay mode: a systemd unit on the ultragravel machine behind a Cloudflare Worker (custom domain) and Workers VPC over the machine's tunnel; the gate passed in the browser (S2 recorded run with the conflict on the prosthesis line, the patient sheet opens). Decided: how AMD is shown to the judges (DECISIONS row 20: recordings labelled as Radeon runs, a live run on the box in the video, the tokenfactory key pursued). The lablab rules read; the deadline in the docs moved to Sun 13:00 EEST. Still from session 1: the pipeline, the desk and the patient sheet, the approved synthetic content, the sealed evaluation (run 1 failed recall 0.594 and false alarms 16.2 %; run 2 after fixes failed recall 0.719, passed false alarms 6.9 %), 38 recorded demo cases. The tokenfactory key is still refused for the owner's email. 86 tests green; CI green.",
   "github": "github.com/Sunrisesoftware-app/as-prescribed (public, MIT)",
   "machines": {
     "windows": "E:\\projects\\sunrisesoftware\\AMD act3 on the owner's machine (PowerShell 5.1 for the owner; Git Bash for the agent; uv with Python 3.12). The Atlas checkout is E:\\projects\\sunrisesoftware\\quaesitor atlas; the worktree E:\\projects\\sunrisesoftware\\atlas-apply-as-prescribed (detached at Atlas main) and the merged local branches apply-approved/as-prescribed and as-prescribed/model-sync-1 can be removed (ask before deleting).",
@@ -26,7 +26,8 @@
     }
   },
   "deploy": {
-    "public": "not deployed; planned: the ultragravel Hetzner machine 135.181.157.185, uvicorn on 127.0.0.1 as a systemd unit behind nginx and certbot, Cloudflare DNS, asprescribed.sunrisesoftware.app (name confirmed by the owner 14.10.2026; DNS record not yet made), AP_REPLAY=1 until a hosted endpoint exists",
+    "public": "https://asprescribed.sunrisesoftware.app (deploy/README.md): /opt/as-prescribed/app on the ultragravel machine 135.181.157.185, systemd unit as-prescribed (uvicorn 127.0.0.1:8300, AP_REPLAY=1, DynamicUser, no access log); Cloudflare Worker as-prescribed-edge on the custom domain, VPC service as-prescribed-app (01a13b87-952e-7ac3-a845-1a5bf440c2b3) over the machine's tunnel ca8faa27-55ac-4da4-9bf6-87d0b1753055; deployed 14.10.2026 from main",
+    "update": "ssh quaesitor; git pull --ff-only; uv sync --frozen --no-dev; systemctl restart as-prescribed (deploy/README.md)",
     "local": "uv run uvicorn asprescribed.main:app --port 8300 (.env from .env.example)"
   },
   "ci": ".github/workflows/ci.yml: secret scan, uv sync --frozen, ruff, pytest (86 tests on 14.10.2026)",
@@ -37,22 +38,21 @@
     "energy": "Somnus telemetry run as-prescribed-eval-20261014: 304 Wh over 74.5 min (7900 XT 195 Wh, R9700 109 Wh)"
   },
   "next_session": {
-    "id": "session-2",
-    "name": "Deploy and the submission: the public demo on the ultragravel machine in replay mode, then the video, slides, cover and texts; the tokenfactory key if the organisers answer",
+    "id": "session-3",
+    "name": "Demo polish and the submission texts: the replay banner, the patient sheet headings, the docker run; title, descriptions, tags, slides and cover; then the video on the box",
     "read_first": [
       "CLAUDE.md",
       "docs/BUILD_INFO.json (this file)",
       "docs/BACKLOG.md (the owner's actions first)",
-      "Atlas AS-PRESCRIBED-KETJUNVAIHTO-1 (the chain handover)",
+      "Atlas as-prescribed.STATUS (the newest)",
       "Atlas AS-PRESCRIBED-SOMNUS-BOKSI (before any use of the box)"
     ],
     "scope": [
-      "The tokenfactory answer from the organisers (BACKLOG P-1); the DNS record (P-3)",
-      "Public deploy (BACKLOG DEPLOY-1..3)",
-      "Submission material (BACKLOG SUB-1..5)",
-      "AMD-ACT3-HEALTH-RAPORTTI in Atlas"
+      "The tokenfactory answer (BACKLOG P-1)",
+      "Demo polish (BACKLOG DEMO-1..4), redeployed per deploy/README.md",
+      "Submission material (BACKLOG SUB-1..5)"
     ],
-    "gate": "The public URL answers with a recorded S2 run (conflict on the prosthesis line) and the patient sheet opens; the submission is in on lablab before Sun 18.10.2026 18:00 EEST",
-    "previous": "session 1 (chain 1), 14.10.2026"
+    "gate": "A complete draft of every submission item by Fri 16.10.; submitted on lablab on Sat 17.10., before Sun 18.10.2026 13:00 EEST at the latest",
+    "previous": "session 2 (chain 2), 14.10.2026 evening"
   }
 }

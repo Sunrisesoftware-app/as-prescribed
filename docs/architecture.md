@@ -56,8 +56,8 @@ fragment, which the browser never sends to the server.
 | Mode | Generator | Falsifier | Where |
 |---|---|---|---|
 | Local | Qwen3.5-35B-A3B, llama-agent `:8091`, R9700 | gemma-3-12b-it, llama-theta `:8080`, 7900 XT | Somnus box over Tailscale, per `AS-PRESCRIBED-SOMNUS-BOKSI` |
-| Public (planned) | from the AMD tokenfactory list | another family from the list | ultragravel Hetzner machine, systemd + nginx; blocked on the tokenfactory key |
-| Replay | none | none | the same server with `AP_REPLAY=1`, serving `data/recorded/` |
+| Public (planned) | from the AMD tokenfactory list | another family from the list | the public demo's server; blocked on the tokenfactory key |
+| Replay (the public demo now) | none | none | https://asprescribed.sunrisesoftware.app: a systemd unit with `AP_REPLAY=1` on the ultragravel Hetzner machine, reached from a Cloudflare Worker over Workers VPC and the machine's tunnel ([`deploy/`](../deploy/README.md)) |
 
 Configuration is environment only (`.env.example`); the tokenfactory key goes only to URLs under
 `TOKENFACTORY_BASE_URL` and is never printed.
@@ -79,7 +79,5 @@ and the results in Atlas.
 
 ## 7. Open points
 
-- Public deploy: the nginx vhost, the systemd unit and DNS for asprescribed.sunrisesoftware.app on
-  the ultragravel machine; replay mode until a hosted endpoint exists.
 - The tokenfactory key (the owner's email is not on the distribution list).
 - The falsifier's recall on the model-only errors (0.50 in run 2): a larger model or several judges.
