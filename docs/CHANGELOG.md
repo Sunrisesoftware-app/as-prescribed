@@ -80,6 +80,15 @@ made it a conflict.
   the Somnus worker's own use of the shared Qwen.
 - 95 tests.
 
+**Atlas:** PR Sunrisesoftware-app/atlas#482 adds adr.ap.011 (outside the catalogue: a proposal) and
+`ap.edge` with its connection to `ap.api`. `validate:models` and `review` were clean, and
+`model:guard` showed +1 module, +1 connection and +1 decision, nothing gone.
+- Merged as 3628084 after a conflict in the bundled model was re-bundled.
+- Deployed from merged main: atlas-mcp 93f59736, viewer 93cfadc6. Migration 0033 from #483 was
+  already in the production database.
+- `atlas_get_system` shows 14 modules and 11 ADRs.
+- `docs/adr/` is rendered from it (11 ADRs).
+
 ## Session 2, 14.10.2026 evening: the public demo is up, and Token Factory works
 
 **Decided (the owner):**

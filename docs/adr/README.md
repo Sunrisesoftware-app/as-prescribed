@@ -21,3 +21,4 @@ A new decision is added to the model (a PR against the Atlas repository, see CLA
 - [ADR-0008](0008-the-english-line-is-composed-from-the-item-and-t.md): The English line is composed from the item and the approved catalogue sentence; the generator only translates *(accepted)*
 - [ADR-0009](0009-the-evaluation-is-pre-registered-and-sealed-run-.md): The evaluation is pre-registered and sealed; run 1 is the reported result and every later run is labelled *(accepted)*
 - [ADR-0010](0010-the-public-demo-replays-recorded-runs-while-no-h.md): The public demo replays recorded runs while no hosted AMD endpoint is available, labelled as recorded *(accepted)*
+- [ADR-0011](0011-an-exercise-outside-the-approved-catalogue-is-al.md): An exercise outside the approved catalogue is always a proposal, never a supported line *(accepted)*

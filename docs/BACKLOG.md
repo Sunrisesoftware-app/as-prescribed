@@ -67,8 +67,6 @@ application URL. Judged on application of technology, presentation, business val
 - **REP-2** The whitepaper §5c entry: R9700 + 7900 XT against tokenfactory (tok/s, Wh), when the
   tokenfactory comparison exists, otherwise the local numbers alone.
 - **REP-3** What carries over to Since AI Turku (6.-8.11.2026).
-- **REP-4** The Atlas model PR:
-  - the public demo's edge (Cloudflare Worker and Workers VPC over the ultragravel machine's tunnel) as
-    a connection;
-  - ADR adr.ap.011 "an exercise outside the catalogue is always a proposal" (DECISIONS row 24);
-  - render `docs/adr/` after the merge.
+- **REP-5** The Atlas model's system description of `as-prescribed` still says the public demo is
+  planned behind nginx and not deployed (14.10.2026); rewrite it in the next Atlas PR (live on
+  Token Factory, clinic recordings as fallback, the edge in `ap.edge`).
