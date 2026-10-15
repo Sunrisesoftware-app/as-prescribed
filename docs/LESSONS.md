@@ -4,6 +4,19 @@ Newest first. The **root cause** is the heading, not the symptom, because the ro
 elsewhere. Only lessons whose price was actually paid. A lesson that becomes a permanent rule moves
 into `CLAUDE.md`; a lesson that becomes a decision becomes an ADR.
 
+## 15.10.2026: a background job with no time limit hides a hang
+
+### The final video sat stalled for two hours while the owner was away
+
+`scripts/video/final.py` ran in the background and stopped at scene 05: two `atrim` branches cut sentence
+blocks from one shared ffmpeg input. When the first branch ended, the second waited forever, and the job
+had no timeout, so nothing failed and nothing reported. Scenes 01-04 had passed by luck of their block
+order. It was found only when the owner asked how far the video was.
+
+**The rule:** every encode in a background job gets `-nostdin` and a timeout, so a hang fails loudly;
+each cut of a long source is read from its own input, and a scene's voice is rendered before it meets
+the picture.
+
 ## 15.10.2026: a check that cannot run must not read as a pass
 
 ### A live run showed a contraindicated exercise as supported

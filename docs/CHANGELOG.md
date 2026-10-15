@@ -89,6 +89,13 @@ made it a conflict.
 - `atlas_get_system` shows 14 modules and 11 ADRs.
 - `docs/adr/` is rendered from it (11 ADRs).
 
+### Session 3, closing: captions, backups, and the submission set
+
+The captioned video (`as-prescribed-demo-captioned.mp4`, 4:23, 15.9 MB) is the one to submit. The
+sentences were split into cues of at most 88 characters on two lines, white on a dark box. Both
+versions are backed up on another drive than the project, with checksums verified. BACKLOG SUB-5 maps
+every lablab field to its file. LESSONS: a background job with no time limit hides a hang.
+
 ### Session 3, evening: the final video
 
 The owner voiced the narration with HeyGen (one 3:05 track; its picture is not used).

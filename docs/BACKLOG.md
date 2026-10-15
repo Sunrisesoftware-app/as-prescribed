@@ -11,11 +11,10 @@ before listing a row as open, verify it is not already done (an uncertain row is
 Codes: **P** the owner's own actions · **DEPLOY** the public demo · **SUB** the submission ·
 **DEMO** the demo itself · **REP** reporting.
 
-Updated 15.10.2026 afternoon (session 3).
+Updated 15.10.2026 evening (session 3 closed).
 
 ## P: the owner's own actions
 
-- **P-4 Video voice-over or presence** in the demo video, if wanted (SUB-1).
 - **P-5 Confirm the deadline** with the organisers if convenient: the live dashboard's countdown ends
   Sun 18.10. 13:00 EEST, the event page was read as 18:00 EEST; the docs use 13:00.
 
@@ -37,26 +36,29 @@ tags, cover image, video, slide presentation, public GitHub repository, demo app
 application URL. Judged on application of technology, presentation, business value, originality.
 "The AMD component must be part of the working product shown to the judges" (DECISIONS row 20).
 
-- **SUB-1** Demo video: done, 4:23 at 1080p, 15 MB, `video/final/as-prescribed-demo.mp4`, with captions
-  in `as-prescribed-demo.srt` (not in git). It was recorded live on the box and narrated by the owner's
-  HeyGen voice, fitted per sentence (`scripts/video/align.py`, `final.py`). The captioned version,
-  `as-prescribed-demo-captioned.mp4` (15.9 MB), is the one to upload with the submission (SUB-5). Backups
-  of both versions are in the owner's Videos folder (As Prescribed), on another drive than the project.
-- **SUB-2** Slide deck: drafted, 11 slides, clinic first, as a Slides artifact in the owner's claude.ai
-  ("As Prescribed: pitch deck"; speaker notes double as the video's narration). The owner reviews it
-  and exports a PDF for the form (Share › Export).
-- **SUB-3** Cover image: [`submission/cover.png`](submission/cover.png) (1920×1080, rendered from
-  `cover.html` with headless Edge); the owner's look.
-- **SUB-4** Title, short and long description, track and technology tags: the draft is
-  [`submission/texts.md`](submission/texts.md), for the owner's review.
-- **SUB-5** Submit from the team page "Submit Project" with the public repo and the demo URL.
+- **SUB-5 Submit on Sat 17.10.** from the team page "Submit Project". Every item is ready; the field map:
+
+  | Field | What |
+  |---|---|
+  | Title, short and long description, tags | [`submission/texts.md`](submission/texts.md) (the owner's last read) |
+  | Cover image | [`submission/cover.png`](submission/cover.png) |
+  | Video presentation | `video/final/as-prescribed-demo-captioned.mp4` (4:23, 15.9 MB, captions burned in; a backup in the owner's Videos folder, As Prescribed) |
+  | Slide presentation | [`submission/deck.pdf`](submission/deck.pdf) |
+  | Public GitHub repository | https://github.com/Sunrisesoftware-app/as-prescribed |
+  | Demo application platform | self-hosted: a systemd service behind a Cloudflare Worker; models on AMD Radeon Cloud (Token Factory), and on the clinic's AMD Radeon GPUs in local mode |
+  | Application URL | https://asprescribed.sunrisesoftware.app |
+
+  Before submitting, check that the public URL answers and an S2 run finishes or falls back with its
+  label.
 
 ## DEMO
 
-- **DEMO-4** S2's recorded conflict line carries a caution whose Ukrainian says "the skin of the hip
-  part" where the English says "the residual limb"; the back-translation shows it and the falsifier
-  did not object. A real miss, reported as it fell; do not show that Ukrainian line as correct in the
-  video, and name it if it is shown.
+- **DEMO-4** S2's conflict line carries a caution whose Ukrainian says "the skin of the hip part" where
+  the English says "the residual limb". The back-translation shows it, and Gemma 3 did not object, in
+  the recording of 14.10. and the live take of 15.10. alike; Token Factory translated it right. A real
+  miss, reported as it fell; the video does not call that line correct. For Since AI Turku.
+- **DEMO-5** Constrain the extraction to catalogue ids (DECISIONS row 24, option b). It complements the
+  fail-safe that makes an item outside the catalogue a proposal. For Since AI Turku.
 
 ## REP: reporting
 
