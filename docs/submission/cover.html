@@ -1,0 +1,52 @@
+<!doctype html>
+<!-- The submission's cover image (16:9). Render: msedge --headless --screenshot=cover.png --window-size=1920,1080 cover.html
+     The patient lines are from the recorded clinic runs (S1 Arabic, S2 Ukrainian); their back-translations matched. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>As Prescribed cover</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600&family=IBM+Plex+Sans:wght@400;600&family=Noto+Naskh+Arabic:wght@500&display=swap">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body { width: 1920px; height: 1080px; background: #0F2B26; color: #F4F6F2; font-family: 'IBM Plex Sans', Arial, sans-serif;
+         display: grid; grid-template-columns: 1fr 800px; gap: 96px; align-items: center; padding: 120px 128px; overflow: hidden; }
+  .eyebrow { font-size: 28px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7FD1C3; }
+  h1 { font-family: 'Source Serif 4', Georgia, serif; font-size: 150px; font-weight: 600; line-height: 1.0; margin: 28px 0 32px; }
+  .tag { font-size: 46px; line-height: 1.3; color: #D5E6E1; }
+  .amd { margin-top: 40px; font-size: 32px; color: #A9C7BF; }
+  .amd b { color: #F4F6F2; font-weight: 600; }
+  .cards { display: flex; flex-direction: column; gap: 24px; }
+  .card { background: #FBFBF8; color: #12201B; border-radius: 18px; padding: 30px 36px; display: grid; gap: 12px; }
+  .chip { justify-self: start; font-size: 24px; font-weight: 600; padding: 6px 16px; border-radius: 999px; }
+  .ok { color: #1E6B43; background: #E1F1E7; } .conflict { color: #9E2A1F; background: #F9E2DF; }
+  .pl { font-size: 34px; line-height: 1.45; }
+  .ar { font-family: 'Noto Naskh Arabic', 'IBM Plex Sans', serif; direction: rtl; text-align: right; font-size: 36px; }
+  .en { font-size: 22px; color: #4A5A53; }
+</style>
+</head>
+<body>
+<div>
+  <p class="eyebrow">AMD Developer Hackathon ACT III · Health</p>
+  <h1>As Prescribed</h1>
+  <p class="tag">The home program, exactly as the therapist prescribed it. Verified line by line, in the patient’s own language.</p>
+  <p class="amd">Runs on the clinic’s own <b>AMD Radeon</b> cards.<br>Try it on <b>AMD Radeon Cloud</b>.</p>
+</div>
+<div class="cards">
+  <div class="card">
+    <span class="chip ok">Supported · Arabic</span>
+    <p class="pl ar" lang="ar">الخطوة للأعلى (اليمين). 2 × 10، كل يوم. امسك درابزين الدرج.</p>
+    <p class="en">Step-up (right). 2 × 10, every day. Hold the stair rail.</p>
+  </div>
+  <div class="card">
+    <span class="chip ok">Supported · Ukrainian</span>
+    <p class="pl" lang="uk">Місток на одній нозі (права). 3 × 10, щодня.</p>
+    <p class="en">Single-leg bridge (right). 3 × 10, every day.</p>
+  </div>
+  <div class="card">
+    <span class="chip conflict">Conflict: the therapist decides</span>
+    <p class="pl">Single-leg stance on the prosthesis, at home.</p>
+    <p class="en">Documented restriction: supervised sessions only.</p>
+  </div>
+</div>
+</body>
+</html>

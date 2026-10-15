@@ -23,7 +23,11 @@ do not copy it here.
   `.env` over ssh without printing it.
 - README and architecture tell the clinic-first story and say that Token Factory keeps prompts about two
   days.
-- Submission texts drafted ([`submission.md`](submission.md)). 94 tests.
+- Submission texts drafted ([`submission/texts.md`](submission/texts.md)). 94 tests.
+- The slide deck drafted as a Slides artifact in the owner's claude.ai, 11 slides, clinic first, with
+  speaker notes. The cover image is [`submission/cover.png`](submission/cover.png), 1920×1080,
+  rendered from `cover.html` with headless Edge. It carries an Arabic and a Ukrainian line from the
+  recorded clinic runs whose back-translations matched.
 
 **Measured:**
 - Token Factory is much slower in the morning. S2 prescription took 36 s at 21:30 EEST on 14.10. and

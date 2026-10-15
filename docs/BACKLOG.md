@@ -41,11 +41,13 @@ application URL. Judged on application of technology, presentation, business val
   load on screen (rocm-smi or the Somnus telemetry), S2 (the conflict), S3 (the proposal and the
   traps), one injection caught and one missed, the patient sheet in Arabic, the evaluation table.
   Needs the box (lease and Gemma per AS-PRESCRIBED-SOMNUS-BOKSI).
-- **SUB-2** Slide deck: problem, user, the boundary, how it works, the evaluation as it fell, AMD
-  hardware and energy, what is next.
-- **SUB-3** Cover image 16:9.
+- **SUB-2** Slide deck: drafted, 11 slides, clinic first, as a Slides artifact in the owner's claude.ai
+  ("As Prescribed: pitch deck"; speaker notes double as the video's narration). The owner reviews it
+  and exports a PDF for the form (Share › Export).
+- **SUB-3** Cover image: [`submission/cover.png`](submission/cover.png) (1920×1080, rendered from
+  `cover.html` with headless Edge); the owner's look.
 - **SUB-4** Title, short and long description, track and technology tags: the draft is
-  [`submission.md`](submission.md), for the owner's review.
+  [`submission/texts.md`](submission/texts.md), for the owner's review.
 - **SUB-5** Submit from the team page "Submit Project" with the public repo and the demo URL.
 
 ## DEMO
