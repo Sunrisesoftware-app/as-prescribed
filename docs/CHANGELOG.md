@@ -5,6 +5,44 @@ sub-entries. What changed and *why*, with what was measured, so a later reader c
 decision from a habit. The canonical state is [`BUILD_INFO.json`](BUILD_INFO.json): refer to it,
 do not copy it here.
 
+## Session 3, 15.10.2026: the public demo runs live on AMD's cloud, the clinic first
+
+**Decided (the owner):**
+- The live cloud demo shows each run against the clinic-hardware recording, and the story rests on the
+  clinic's own Radeon cards (DECISIONS row 23, dec_dd9e359fc7fa420c).
+- The Google prize is not pursued further.
+
+**Done:**
+- The public demo runs each case live on Token Factory (Qwen3.8-27B + Gemma-4-31B-IT). After the run it
+  says whether the same case gave the same line states on the clinic hardware, and for an injected error
+  whether both caught it.
+- A live run that misses `AP_LIVE_BUDGET_S` (90 s) or fails serves the recording, with a neutral note
+  saying why.
+- The client retries a 429 or a saturated gateway when Retry-After is short.
+- The key reaches the service through a root-only systemd `EnvironmentFile`, written from the local
+  `.env` over ssh without printing it.
+- README and architecture tell the clinic-first story and say that Token Factory keeps prompts about two
+  days.
+- Submission texts drafted ([`submission.md`](submission.md)). 94 tests.
+
+**Measured:**
+- Token Factory is much slower in the morning. S2 prescription took 36 s at 21:30 EEST on 14.10. and
+  176 s at 10:00 EEST on 15.10.
+- The public S2 run at 10:25 missed the 90 s budget and served the recording, labelled.
+- One transcript-sized request at 10:30:
+
+  | Model | Time | Speed |
+  |---|---|---|
+  | Gemma-4-31B-IT | 81 s | 3 tok/s |
+  | Qwen3.8-27B | 35 s | 7 tok/s |
+  | Qwen3.8-Flash-Next | 19 s | 13 tok/s |
+  | DeepSeek-V4-Flash | 17 s | 10 tok/s |
+
+- A "faster" pair, Qwen3.8-Flash-Next + DeepSeek-V4-Flash, on the six clean cases took 66-172 s.
+  - S2 live lost a prescribed exercise (3 supported instead of 4).
+  - S3 kept an objection open through three rounds.
+- So the pair stays Qwen3.8-27B + Gemma-4-31B-IT, the families of the clinic pair.
+
 ## Session 2, 14.10.2026 evening: the public demo is up, and Token Factory works
 
 **Decided (the owner):**

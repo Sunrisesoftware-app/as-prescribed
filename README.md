@@ -4,7 +4,7 @@ The home program, exactly as your therapist prescribed it. Verified line by line
 
 > Status: under construction for the AMD Developer Hackathon ACT III (Health and Wellbeing track), 14–18 October 2026. All data in this repository is synthetic.
 
-**Demo:** https://asprescribed.sunrisesoftware.app replays runs recorded on the AMD Radeon cards in local mode (see *How it works*); every person and session in it is synthetic.
+**Demo:** https://asprescribed.sunrisesoftware.app runs each case live on AMD Radeon Cloud (Token Factory) and compares it with the same case run on the clinic's AMD Radeon cards. When the shared cloud is too busy to finish within 90 s, it shows the clinic run instead and says so. Every person and session in it is synthetic.
 
 ## What it does
 
@@ -33,8 +33,11 @@ A generator model drafts; a model of a different family falsifies each line in r
 
 Both modes run on AMD:
 
-- **Public mode:** AMD tokenfactory (the public demo).
-- **Local mode:** two llama.cpp servers on AMD Radeon GPUs with ROCm (Radeon AI PRO R9700 and RX 7900 XT): patient data never leaves the clinic.
+- **In the clinic (local mode), the product:** two llama.cpp servers on the clinic's own AMD Radeon GPUs with ROCm. Qwen3.5-35B-A3B on a Radeon AI PRO R9700 drafts, and Gemma 3 12B on a Radeon RX 7900 XT checks. Patient data never leaves the clinic.
+- **To try it (public mode):** AMD Radeon Cloud's Token Factory, with Qwen3.8-27B drafting and Gemma-4-31B-IT checking.
+  - Each run is compared on the page with the same case recorded on the clinic hardware: the line states, and for an injected error whether both caught it.
+  - A run that misses `AP_LIVE_BUDGET_S` (90 s on the demo) shows that recording instead.
+  - In a trial on 14.10.2026 all six clean cases gave the same line states in both places.
 
 ## Evaluation (pre-registered)
 
@@ -61,7 +64,7 @@ uv run uvicorn asprescribed.main:app --port 8300
 
 or with Docker: `docker compose up --build`. List the models your endpoints serve with `uv run python scripts/models.py`.
 
-Without any model endpoint, `AP_REPLAY=1` serves the runs recorded on the Somnus box (`data/recorded/`, every demo case), and the page says it is a recorded run. Run one session end to end from the command line with `uv run python scripts/run_session.py S2`, and the evaluation with `uv run python scripts/eval.py run`.
+Without any model endpoint, `AP_REPLAY=1` serves the runs recorded on the clinic hardware (`data/recorded/`, every demo case), and the page says it is a recorded run. With `AP_LIVE_BUDGET_S=90` a live run that takes longer serves its recording instead. The public demo's setup is in [`deploy/`](deploy/README.md). Run one session end to end from the command line with `uv run python scripts/run_session.py S2`, and the evaluation with `uv run python scripts/eval.py run`.
 
 ## Documentation
 
@@ -72,7 +75,7 @@ The product ([`docs/product.md`](docs/product.md)), the architecture ([`docs/arc
 The boundary above is the first safety measure: the system verifies a prescription a clinician made and never produces clinical advice of its own. The track's five questions:
 
 - **Incorrect or unsupported responses:** a line no transcript span supports is a *proposal*, visible only to the therapist; the falsifier checks every line against its cited spans.
-- **Sensitive information:** the demo uses synthetic data only. Local mode keeps everything on hardware inside the clinic. Public mode has no free-text input, so no real patient data can be entered, and transcripts are not logged.
+- **Sensitive information:** the demo uses synthetic data only. Local mode keeps everything on hardware inside the clinic. Public mode has no free-text input, so no real patient data can be entered, and our server logs nothing about a session. Token Factory keeps prompts for about two days and its terms forbid real health data, which is why a clinic runs local mode.
 - **Uncertain results:** *uncertain translation* and the falsifier's remaining objections are shown, never hidden.
 - **High-risk decisions:** a documented restriction halts the program; the therapist decides.
 - **Human review:** nothing reaches the patient without the therapist's approval.

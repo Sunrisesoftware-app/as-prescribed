@@ -56,8 +56,8 @@ fragment, which the browser never sends to the server.
 | Mode | Generator | Falsifier | Where |
 |---|---|---|---|
 | Local | Qwen3.5-35B-A3B, llama-agent `:8091`, R9700 | gemma-3-12b-it, llama-theta `:8080`, 7900 XT | Somnus box over Tailscale, per `AS-PRESCRIBED-SOMNUS-BOKSI` |
-| Public (planned) | from the AMD tokenfactory list | another family from the list | the public demo's server; blocked on the tokenfactory key |
-| Replay (the public demo now) | none | none | https://asprescribed.sunrisesoftware.app: a systemd unit with `AP_REPLAY=1` on the ultragravel Hetzner machine, reached from a Cloudflare Worker over Workers VPC and the machine's tunnel ([`deploy/`](../deploy/README.md)) |
+| Public (the demo) | Qwen3.8-27B on AMD Token Factory | Gemma-4-31B-IT on Token Factory | https://asprescribed.sunrisesoftware.app: a systemd unit on the ultragravel Hetzner machine, reached from a Cloudflare Worker over Workers VPC and the machine's tunnel ([`deploy/`](../deploy/README.md)). Each run is compared with the clinic-hardware recording of the same case; past `AP_LIVE_BUDGET_S` (90 s) or on an error, that recording is served |
+| Replay | none | none | `AP_REPLAY=1`: only the recordings (`data/recorded/`) |
 
 Configuration is environment only (`.env.example`); the tokenfactory key goes only to URLs under
 `TOKENFACTORY_BASE_URL` and is never printed.
