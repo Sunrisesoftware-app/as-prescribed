@@ -16,7 +16,11 @@ The app scenes were recorded live on the box by a scripted browser, not by hand:
 
 The owner voiced the narration (HeyGen, one track). `scripts/video/align.py` finds each sentence in the track,
 and `scripts/video/final.py` fits the scenes to the voice and writes `video/final/as-prescribed-demo.mp4`
-(4:23) and its captions `.srt`.
+(4:23) and its captions `.srt`. The captioned version `as-prescribed-demo-captioned.mp4` burns in
+`captions-burn.srt` (the sentences split into cues of at most 88 characters on two balanced lines) with ffmpeg's
+subtitles filter, style `FontName=Segoe UI,FontSize=11,Bold=1,PrimaryColour=&H00FFFFFF,OutlineColour=&H18141A16,
+BorderStyle=3,Outline=7,Shadow=0,MarginV=20,Alignment=2`. Backups of both versions are in the owner's
+`C:\Users\Koti\Videos\As Prescribed\`, a different drive from the project.
 
 | Scene | Starts | Length |
 |---|---|---|

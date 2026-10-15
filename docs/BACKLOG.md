@@ -39,8 +39,9 @@ application URL. Judged on application of technology, presentation, business val
 
 - **SUB-1** Demo video: done, 4:23 at 1080p, 15 MB, `video/final/as-prescribed-demo.mp4`, with captions
   in `as-prescribed-demo.srt` (not in git). It was recorded live on the box and narrated by the owner's
-  HeyGen voice, fitted per sentence (`scripts/video/align.py`, `final.py`). The owner watches it and
-  uploads it with the submission (SUB-5); captions are optional, burned in or uploaded.
+  HeyGen voice, fitted per sentence (`scripts/video/align.py`, `final.py`). The captioned version,
+  `as-prescribed-demo-captioned.mp4` (15.9 MB), is the one to upload with the submission (SUB-5). Backups
+  of both versions are in `C:\Users\Koti\Videos\As Prescribed\`.
 - **SUB-2** Slide deck: drafted, 11 slides, clinic first, as a Slides artifact in the owner's claude.ai
   ("As Prescribed: pitch deck"; speaker notes double as the video's narration). The owner reviews it
   and exports a PDF for the form (Share › Export).
