@@ -85,6 +85,18 @@ async def test_s2_conflict_halts_the_prosthesis_line_only():
     assert line.rule_ids == ["R04", "R09"]
 
 
+async def test_an_exercise_outside_the_catalogue_is_never_supported():
+    # The live run of 15.10.2026: the prosthesis stance extracted under a name the catalogue does not know,
+    # so no tags and no restriction check. It must halt for the therapist, not pass as supported.
+    items = gold_items("S2")
+    items[4] = items[4].model_copy(update={"exercise": "standing on the prosthesis", "exercise_id": None})
+    r = await run_session("S2", GEN, FAL, chat_fn=FakeLLM(), items=items)
+    line = next(x for x in r.lines if x.item_id == "S2.5")
+    assert line.state == LineState.proposal
+    assert any(o.kind == "no_catalogue_match" and o.blocking for o in line.objections)
+    assert {k for k, v in states(r).items() if v != LineState.supported} == {"S2.5"}
+
+
 async def test_s3_incomplete_stretch_is_a_proposal_with_the_records_caution():
     r = await run_session("S3", GEN, FAL, chat_fn=FakeLLM(), items=gold_items("S3"))
     assert states(r)["S3.4"] == LineState.proposal

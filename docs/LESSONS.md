@@ -4,6 +4,21 @@ Newest first. The **root cause** is the heading, not the symptom, because the ro
 elsewhere. Only lessons whose price was actually paid. A lesson that becomes a permanent rule moves
 into `CLAUDE.md`; a lesson that becomes a decision becomes an ADR.
 
+## 15.10.2026: a check that cannot run must not read as a pass
+
+### A live run showed a contraindicated exercise as supported
+
+Recording the video on the Somnus box, the S2 live visit extracted the prosthesis stance as "standing on
+the prosthesis". No catalogue entry matched, so the item had no tags. The restriction R04, unsupervised
+single-leg weight-bearing on the prosthesis, could not fire, and the line came out supported: only a
+non-blocking note said the exercise was not catalogued. The recordings of 14.10. had matched the name.
+The sealed evaluation started from the approved slots, which are all catalogued, so it never exercised
+this path.
+
+**The rule:** when a deterministic check cannot run, the line halts for the therapist; an item outside
+the catalogue is a proposal, never supported (DECISIONS row 24). Test the live extraction path, not only
+the approved slots.
+
 ## 14.10.2026: a gated page's refusal can mean "no session yet", not "no access"
 
 ### "Your email is not registered for API key distribution" for most of a day

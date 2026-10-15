@@ -51,6 +51,35 @@ do not copy it here.
   - S3 kept an objection open through three rounds.
 - So the pair stays Qwen3.8-27B + Gemma-4-31B-IT, the families of the clinic pair.
 
+### Session 3, afternoon: the video recorded live on the box, and a safety gap closed
+
+**Decided (the owner):** the video is produced by script and assembled by Code, and the owner adds the
+voice. An exercise outside the catalogue is always a proposal (DECISIONS row 24, dec_244efd80ece4488b).
+
+**Done:**
+- `scripts/video/`:
+  - `stage.py` + `stage.html`: the desk beside the box's two GPUs, read from rocm-smi once a second
+    over ssh.
+  - `record.py`: Playwright drives Edge and keeps the DevTools screencast frames with their timestamps.
+  - `slides.ps1`: the deck's PDF to PNGs with Windows' own renderer.
+  - `assemble.py`: scene clips plus a silent rough cut, with the model waits sped up 3×.
+- All stage scenes recorded live on the box (Qwen3.5 on the R9700, Gemma 3 on the 7900 XT), then the
+  box restored (Laya up, lease released, a line in the somnus thread).
+- The rough cut is 4:48, 1080p, 17 MB.
+- The deck PDFs moved to `docs/submission/`.
+
+**Found and fixed:** in the first live S2 take the extraction named the prosthesis stance "standing on
+the prosthesis". No catalogue entry matched, R04 never ran, and the line showed as supported. Such a
+line is now a proposal, with a test. The re-recorded take matched "Single-leg stance (left)", and R04
+made it a conflict.
+
+**Measured:**
+- Live on the box, S2: 37 s visit (15× replay), ready 41-50 s after the visit.
+- S2 injections: F4 caught by the falsifier (3 rounds), B3 missed, as in the recordings.
+- Energy of the 30.75 min recording period: 7900 XT 13.2 Wh, R9700 22.0 Wh, 35.2 Wh in all. This includes
+  the Somnus worker's own use of the shared Qwen.
+- 95 tests.
+
 ## Session 2, 14.10.2026 evening: the public demo is up, and Token Factory works
 
 **Decided (the owner):**

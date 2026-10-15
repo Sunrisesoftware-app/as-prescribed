@@ -15,3 +15,6 @@ runs/
 
 # Wrangler writes its local cache (account id, email) next to the config
 .wrangler/
+
+# Demo video takes and frames (scripts/video/record.py)
+/video/

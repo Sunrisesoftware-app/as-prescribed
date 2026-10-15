@@ -5,6 +5,33 @@ own Radeon cards (the Somnus box), with the GPUs' load on screen. Narration in E
 or as captions (BACKLOG P-4). The slides are the deck "As Prescribed: pitch deck"; its speaker notes
 are the long form of the narration below.
 
+## How it was made (15.10.2026)
+
+The app scenes were recorded live on the box by a scripted browser, not by hand:
+- `scripts/video/stage.py`: the stage, with the desk beside the GPUs' rocm-smi readings.
+- `record.py`: the scenes, one clip each.
+- `slides.ps1`: the deck's slides as stills.
+- `assemble.py`: the scene clips and a silent rough cut in `video/cut/`, not in git. `cut.json` gives each
+  scene's start and length; the model waits are sped up 3×.
+
+The owner records the narration per scene to those lengths, and Code fits the cut to the voice.
+
+| Scene | Starts | Length |
+|---|---|---|
+| 01 cover | 0:00 | 20 s |
+| 02 problem, boundary | 0:20 | 25 s |
+| 03 clinic hardware | 0:45 | 11 s |
+| 04 S2 live, conflict | 0:56 | 65 s |
+| 05 release, Ukrainian sheet | 2:01 | 19 s |
+| 06 S3 proposal | 2:20 | 23 s |
+| 07 injections F4, B3 | 2:43 | 44 s |
+| 08 Arabic sheet | 3:27 | 21 s |
+| 09 clinic, evaluation | 3:48 | 30 s |
+| 10 cloud (slide 7) | 4:18 | 20 s |
+| 11 close | 4:38 | 10 s |
+
+The recording setup below was the manual plan; it is kept for a retake by hand.
+
 ## Recording setup
 
 - Screen 1920×1080, the browser at 100 % zoom, the desk at `http://localhost:8300/?speed=15` (local

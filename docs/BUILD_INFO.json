@@ -5,7 +5,7 @@
   "phaseName": "AMD Developer Hackathon ACT III, Health and Wellbeing track: build 14.-17.10.2026, submission by Sun 18.10.2026 13:00 EEST at the latest (the live dashboard's countdown; the event page was read as 18:00), target Sat 17.10.",
   "session": 3,
   "updated": "2026-10-15",
-  "state": "Session 3 (chain 3) 15.10.2026 (Code). The public demo https://asprescribed.sunrisesoftware.app runs each case live on AMD Token Factory (Qwen3.8-27B + Gemma-4-31B-IT) and shows after the run whether the same case gave the same line states on the clinic hardware (the Radeon AI PRO R9700 + RX 7900 XT recording). A live run past 90 s or failing serves that recording, labelled; Token Factory was slow on 15.10. morning (S2 176 s against 36 s the evening before), so the demo often shows the recording in the morning. The story is clinic-first (DECISIONS row 23): real patient data cannot go to the cloud. Submission texts drafted in docs/submission/texts.md for the owner. From sessions 1-2: the pipeline, the desk, the approved synthetic content, the sealed evaluation (run 1 failed recall 0.594 and false alarms 16.2 %; run 2 after fixes failed recall 0.719, passed false alarms 6.9 %), 38 recorded cases, the edge (Cloudflare Worker + Workers VPC over the machine's tunnel). 94 tests green; CI green.",
+  "state": "Session 3 (chain 3) 15.10.2026 (Code). The public demo https://asprescribed.sunrisesoftware.app runs each case live on AMD Token Factory (Qwen3.8-27B + Gemma-4-31B-IT) and shows after the run whether the same case gave the same line states on the clinic hardware (the Radeon AI PRO R9700 + RX 7900 XT recording). A live run past 90 s or failing serves that recording, labelled; Token Factory was slow on 15.10. morning (S2 176 s against 36 s the evening before), so the demo often shows the recording in the morning. The story is clinic-first (DECISIONS row 23): real patient data cannot go to the cloud. Submission texts drafted in docs/submission/texts.md for the owner. From sessions 1-2: the pipeline, the desk, the approved synthetic content, the sealed evaluation (run 1 failed recall 0.594 and false alarms 16.2 %; run 2 after fixes failed recall 0.719, passed false alarms 6.9 %), 38 recorded cases, the edge (Cloudflare Worker + Workers VPC over the machine's tunnel). 95 tests green; CI green.",
   "github": "github.com/Sunrisesoftware-app/as-prescribed (public, MIT)",
   "machines": {
     "windows": "E:\\projects\\sunrisesoftware\\AMD act3 on the owner's machine (PowerShell 5.1 for the owner; Git Bash for the agent; uv with Python 3.12). The Atlas checkout is E:\\projects\\sunrisesoftware\\quaesitor atlas; the worktree E:\\projects\\sunrisesoftware\\atlas-apply-as-prescribed (detached at Atlas main) and the merged local branches apply-approved/as-prescribed and as-prescribed/model-sync-1 can be removed (ask before deleting).",
@@ -49,10 +49,10 @@
       "Atlas AS-PRESCRIBED-SOMNUS-BOKSI (before the video run on the box)"
     ],
     "scope": [
-      "SUB-2 slides and SUB-3 cover, clinic-first",
-      "SUB-4 texts after the owner's review",
-      "SUB-1 the video on Fri 16.10. per docs/submission/video.md (box lease, Gemma, GPU load on screen)",
-      "Optional: DEPLOY-5 cache warming at a quiet hour"
+      "SUB-1: fit the rough cut to the owner's narration and join it (scripts/video/assemble.py)",
+      "REP-4: the Atlas model PR (the edge connection, ADR adr.ap.011 for DECISIONS row 24), docs/adr rendered",
+      "SUB-5: submit on lablab on Sat 17.10.",
+      "Optional: a cloud scene for the video; DEPLOY-5 cache warming"
     ],
     "gate": "A complete draft of every submission item by the end of Fri 16.10.; submitted on Sat 17.10., before Sun 18.10.2026 13:00 EEST at the latest",
     "previous": "session 3 (chain 3), 15.10.2026"

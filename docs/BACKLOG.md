@@ -11,7 +11,7 @@ before listing a row as open, verify it is not already done (an uncertain row is
 Codes: **P** the owner's own actions · **DEPLOY** the public demo · **SUB** the submission ·
 **DEMO** the demo itself · **REP** reporting.
 
-Updated 15.10.2026 (session 3).
+Updated 15.10.2026 afternoon (session 3).
 
 ## P: the owner's own actions
 
@@ -37,11 +37,13 @@ tags, cover image, video, slide presentation, public GitHub repository, demo app
 application URL. Judged on application of technology, presentation, business value, originality.
 "The AMD component must be part of the working product shown to the judges" (DECISIONS row 20).
 
-- **SUB-1** Demo video, at most 5 min and under 300 MB, on Fri 16.10.: the script, the recording setup
-  and the box run are in [`submission/video.md`](submission/video.md). The live run is on the box with
-  the GPUs' load on screen. Scenes: S2 live (the conflict), S3 (the proposal), injections S2-F4 (caught)
-  and S2-B3 (missed), the Arabic sheet, the evaluation, the cloud demo. The owner records and narrates
-  or captions (P-4); Code runs the box and restores it.
+- **SUB-1** Demo video. The scenes were recorded live on the box on 15.10.2026 by a scripted browser
+  (`scripts/video/`; script and workflow in [`submission/video.md`](submission/video.md)). A silent rough
+  cut, 4:48 at 1080p, and one clip per scene are in `video/cut/` (not in git); `cut.json` gives each
+  scene's start and length. Next:
+  1. The owner records the narration per scene (ElevenLabs or HeyGen) and returns one audio file per scene.
+  2. Code fits the cut to the voice and joins it; captions are burned in or added by the owner.
+  3. Optional: a cloud scene from the public demo, if Token Factory is quiet (scene 10 is slide 7 now).
 - **SUB-2** Slide deck: drafted, 11 slides, clinic first, as a Slides artifact in the owner's claude.ai
   ("As Prescribed: pitch deck"; speaker notes double as the video's narration). The owner reviews it
   and exports a PDF for the form (Share › Export).
@@ -64,5 +66,8 @@ application URL. Judged on application of technology, presentation, business val
 - **REP-2** The whitepaper §5c entry: R9700 + 7900 XT against tokenfactory (tok/s, Wh), when the
   tokenfactory comparison exists, otherwise the local numbers alone.
 - **REP-3** What carries over to Since AI Turku (6.-8.11.2026).
-- **REP-4** The Atlas model: the public demo's edge (Cloudflare Worker and Workers VPC over the
-  ultragravel machine's tunnel) is not yet a connection in the model; add it in the next Atlas PR.
+- **REP-4** The Atlas model PR:
+  - the public demo's edge (Cloudflare Worker and Workers VPC over the ultragravel machine's tunnel) as
+    a connection;
+  - ADR adr.ap.011 "an exercise outside the catalogue is always a proposal" (DECISIONS row 24);
+  - render `docs/adr/` after the merge.

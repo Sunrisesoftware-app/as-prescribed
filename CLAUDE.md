@@ -144,6 +144,9 @@ gh run list --repo Sunrisesoftware-app/as-prescribed --limit 3
 
 Full stories in [`docs/LESSONS.md`](docs/LESSONS.md). The short forms:
 
+- **A check that cannot run must not read as a pass** (15.10.2026): an exercise outside the catalogue
+  has no tags for the rule engine, so its line is a proposal, never supported (DECISIONS row 24).
+
 - **A correction loop can undo a safety halt** (14.10.2026): a fired restriction is sticky and never
   corrected by a model (adr.ap.005).
 - **A same-family falsifier passes its own family's errors** (14.10.2026): keep the falsifier in

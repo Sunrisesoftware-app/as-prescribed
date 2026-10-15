@@ -40,7 +40,7 @@ PRIMARY = {"wrong_dose_or_frequency": {"wrong_dose", "wrong_frequency"}, "wrong_
 
 # Objections the approved slots are expected to raise; anything else on a clean line is a false alarm.
 EXPECTED = {("S2.5", "rule_conflict"), ("S3.4", "incomplete")}
-EXPECTED_KINDS_ANYWHERE = {"no_catalogue_match"}  # non-blocking, informational
+EXPECTED_KINDS_ANYWHERE = {"no_catalogue_match"}  # the extraction's doing, not a false alarm on the line
 
 LANG = {"S1": "ar", "S2": "uk", "S3": "ar"}
 

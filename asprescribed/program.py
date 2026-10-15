@@ -48,8 +48,12 @@ def completeness(item: Item) -> list[Objection]:
     entry = load_catalog().get(item.exercise_id or "")
     out = []
     if entry is None:
-        out.append(Objection(item_id=item.item_id, kind="no_catalogue_match", source="checks", blocking=False,
-                             detail="not a catalogued exercise: its tags, and so the rule check, are unknown"))
+        # Blocking: without catalogue tags the documented restrictions cannot be checked, so the line can never
+        # be supported; it is a proposal the therapist decides (DECISIONS row 24). A live run on 15.10.2026
+        # named the prosthesis stance "standing on the prosthesis" and it passed the restriction as supported.
+        out.append(Objection(item_id=item.item_id, kind="no_catalogue_match", source="checks", blocking=True,
+                             detail="not a catalogued exercise: its tags are unknown, so the documented "
+                                    "restrictions could not be checked; the therapist decides"))
     missing = [f for f in ("dose", "frequency") if not getattr(item, f)]
     if entry and entry["side_mode"] == "per_side" and item.side in (None, "none"):
         missing.insert(0, "side")
