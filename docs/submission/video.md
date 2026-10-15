@@ -14,7 +14,9 @@ The app scenes were recorded live on the box by a scripted browser, not by hand:
 - `assemble.py`: the scene clips and a silent rough cut in `video/cut/`, not in git. `cut.json` gives each
   scene's start and length; the model waits are sped up 3×.
 
-The owner records the narration per scene to those lengths, and Code fits the cut to the voice.
+The owner voiced the narration (HeyGen, one track). `scripts/video/align.py` finds each sentence in the track,
+and `scripts/video/final.py` fits the scenes to the voice and writes `video/final/as-prescribed-demo.mp4`
+(4:23) and its captions `.srt`.
 
 | Scene | Starts | Length |
 |---|---|---|

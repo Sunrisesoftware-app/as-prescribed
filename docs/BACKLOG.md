@@ -37,14 +37,10 @@ tags, cover image, video, slide presentation, public GitHub repository, demo app
 application URL. Judged on application of technology, presentation, business value, originality.
 "The AMD component must be part of the working product shown to the judges" (DECISIONS row 20).
 
-- **SUB-1** Demo video. The scenes were recorded live on the box on 15.10.2026 by a scripted browser
-  (`scripts/video/`; script and workflow in [`submission/video.md`](submission/video.md)). A silent rough
-  cut, 4:48 at 1080p, and one clip per scene are in `video/cut/` (not in git); `cut.json` gives each
-  scene's start and length. Next:
-  1. The owner records the narration per scene from [`submission/narration.md`](submission/narration.md)
-     (ElevenLabs or HeyGen) and returns one audio file per scene, `01.mp3`-`11.mp3`.
-  2. Code fits the cut to the voice and joins it; captions are burned in or added by the owner.
-  3. Optional: a cloud scene from the public demo, if Token Factory is quiet (scene 10 is slide 7 now).
+- **SUB-1** Demo video: done, 4:23 at 1080p, 15 MB, `video/final/as-prescribed-demo.mp4`, with captions
+  in `as-prescribed-demo.srt` (not in git). It was recorded live on the box and narrated by the owner's
+  HeyGen voice, fitted per sentence (`scripts/video/align.py`, `final.py`). The owner watches it and
+  uploads it with the submission (SUB-5); captions are optional, burned in or uploaded.
 - **SUB-2** Slide deck: drafted, 11 slides, clinic first, as a Slides artifact in the owner's claude.ai
   ("As Prescribed: pitch deck"; speaker notes double as the video's narration). The owner reviews it
   and exports a PDF for the form (Share › Export).

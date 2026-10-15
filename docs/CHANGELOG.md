@@ -89,6 +89,26 @@ made it a conflict.
 - `atlas_get_system` shows 14 modules and 11 ADRs.
 - `docs/adr/` is rendered from it (11 ADRs).
 
+### Session 3, evening: the final video
+
+The owner voiced the narration with HeyGen (one 3:05 track; its picture is not used).
+- `scripts/video/align.py` finds each of the 49 sentences in the track. Ffmpeg's pauses go through a
+  dynamic programme over word counts at one speaking rate (3.27 words per speech second). Every scene
+  boundary fell in a pause of 0.5-0.9 s.
+- `scripts/video/final.py` places each sentence block where the picture shows what it says. "The visit
+  ends" lands at the visit's end, "Four lines are supported" at the result, "Second, move the bridge" at
+  the second injection.
+- A slide lasts as long as its sentences, and a clip shorter than its speech holds its last frame.
+- The track is levelled to -16 LUFS, and the captions are written from the same sentence times.
+
+Two ffmpeg hangs were paid for; the second cost two hours unnoticed in the background.
+- Two atrim branches on one shared input deadlocked once the first branch ended. Every sentence block
+  now has its own input, and the voice is rendered before it meets the picture.
+- Every encode now has `-nostdin` and a timeout, so a hang fails instead of waiting.
+
+**Measured:** the final video is 4:23 at 1080p and 15.2 MB. All 49 caption cues fall inside detected
+speech, and no speech lies outside a cue. Frames at six key sentences show what the sentence says.
+
 ## Session 2, 14.10.2026 evening: the public demo is up, and Token Factory works
 
 **Decided (the owner):**
