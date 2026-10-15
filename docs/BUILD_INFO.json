@@ -5,7 +5,7 @@
   "phaseName": "AMD Developer Hackathon ACT III, Health and Wellbeing track: build 14.-17.10.2026, submission by Sun 18.10.2026 13:00 EEST at the latest (the live dashboard's countdown; the event page was read as 18:00), target Sat 17.10.",
   "session": 3,
   "updated": "2026-10-15",
-  "state": "Session 3 (chain 3) closed 15.10.2026 evening (Code). Every submission item is ready; the submission itself is left for Sat 17.10. (BACKLOG SUB-5 has the field map). Public demo https://asprescribed.sunrisesoftware.app runs each case live on AMD Token Factory (Qwen3.8-27B + Gemma-4-31B-IT) and compares it with the same case recorded on the clinic hardware (R9700 + 7900 XT); past 90 s or on an error it serves that recording, labelled. Story clinic-first (DECISIONS row 23). Video: recorded live on the Somnus box by script (scripts/video/), narrated by the owner's HeyGen voice fitted per sentence, captions burned in: video/final/as-prescribed-demo-captioned.mp4 (4:23, 15.9 MB), backups in the owner's Videos folder (As Prescribed). Deck docs/submission/deck.pdf, cover docs/submission/cover.png, texts docs/submission/texts.md. Found while recording and fixed: an exercise outside the catalogue passed the restriction check as supported; now always a proposal (DECISIONS row 24, adr.ap.011, Atlas PR #482 merged and deployed). Evaluation unchanged (run 1 failed recall 0.594 and false alarms 16.2 %; run 2 after fixes failed recall 0.719, passed false alarms 6.9 %). 95 tests green; CI green.",
+  "state": "Session 3 (chain 3) closed 15.10.2026 evening (Code). Every submission item is ready; the submission itself is on Fri 16.10. (the owner's choice) (BACKLOG SUB-5 has the field map). Public demo https://asprescribed.sunrisesoftware.app runs each case live on AMD Token Factory (Qwen3.8-27B + Gemma-4-31B-IT) and compares it with the same case recorded on the clinic hardware (R9700 + 7900 XT); past 90 s or on an error it serves that recording, labelled. Story clinic-first (DECISIONS row 23). Video: recorded live on the Somnus box by script (scripts/video/), narrated by the owner's HeyGen voice fitted per sentence, captions burned in: video/final/as-prescribed-demo-captioned.mp4 (4:23, 15.9 MB), backups in the owner's Videos folder (As Prescribed). Deck docs/submission/deck.pdf, cover docs/submission/cover.png, texts docs/submission/texts.md. Found while recording and fixed: an exercise outside the catalogue passed the restriction check as supported; now always a proposal (DECISIONS row 24, adr.ap.011, Atlas PR #482 merged and deployed). Evaluation unchanged (run 1 failed recall 0.594 and false alarms 16.2 %; run 2 after fixes failed recall 0.719, passed false alarms 6.9 %). 95 tests green; CI green.",
   "github": "github.com/Sunrisesoftware-app/as-prescribed (public, MIT)",
   "machines": {
     "windows": "E:\\projects\\sunrisesoftware\\AMD act3 on the owner's machine (PowerShell 5.1 for the owner; Git Bash for the agent; uv with Python 3.12). The Atlas checkout is E:\\projects\\sunrisesoftware\\quaesitor atlas; the worktree E:\\projects\\sunrisesoftware\\atlas-apply-as-prescribed (detached at Atlas main) and the merged local branches apply-approved/as-prescribed and as-prescribed/model-sync-1 can be removed (ask before deleting).",
@@ -39,7 +39,7 @@
   },
   "next_session": {
     "id": "session-4",
-    "name": "The submission on lablab (Sat 17.10.), then reporting",
+    "name": "The submission on lablab (Fri 16.10.), then reporting",
     "read_first": [
       "CLAUDE.md",
       "docs/BUILD_INFO.json (this file)",
@@ -52,7 +52,7 @@
       "After the submission: REP-1 AMD-ACT3-HEALTH-RAPORTTI in Atlas, REP-2 whitepaper entry, REP-5 the Atlas model's system description",
       "Optional: DEPLOY-5 cache warming at a quiet hour"
     ],
-    "gate": "Submitted on lablab on Sat 17.10.2026, before Sun 18.10. 13:00 EEST at the latest",
+    "gate": "Submitted on lablab on Fri 16.10.2026; Sat-Sun stay buffer (Sun 18.10. 13:00 EEST at the latest)",
     "previous": "session 3 (chain 3), 15.10.2026"
   }
 }

@@ -29,14 +29,14 @@ Updated 15.10.2026 evening (session 3 closed).
   the demo changes often; until then an update is the three commands in
   [`deploy/README.md`](../deploy/README.md).
 
-## SUB: the submission (lablab, before Sun 18.10. 13:00 EEST; target Sat 17.10.)
+## SUB: the submission (lablab, on Fri 16.10.; before Sun 18.10. 13:00 EEST at the latest)
 
 The form (event page, read 14.10.2026): title, short and long description, technology and category
 tags, cover image, video, slide presentation, public GitHub repository, demo application platform,
 application URL. Judged on application of technology, presentation, business value, originality.
 "The AMD component must be part of the working product shown to the judges" (DECISIONS row 20).
 
-- **SUB-5 Submit on Sat 17.10.** from the team page "Submit Project". Every item is ready; the field map:
+- **SUB-5 Submit on Fri 16.10.** (the owner's choice) from the team page "Submit Project". Every item is ready; the field map:
 
   | Field | What |
   |---|---|
