@@ -20,7 +20,7 @@ and `scripts/video/final.py` fits the scenes to the voice and writes `video/fina
 `captions-burn.srt` (the sentences split into cues of at most 88 characters on two balanced lines) with ffmpeg's
 subtitles filter, style `FontName=Segoe UI,FontSize=11,Bold=1,PrimaryColour=&H00FFFFFF,OutlineColour=&H18141A16,
 BorderStyle=3,Outline=7,Shadow=0,MarginV=20,Alignment=2`. Backups of both versions are in the owner's
-`C:\Users\Koti\Videos\As Prescribed\`, a different drive from the project.
+Videos folder (As Prescribed), on another drive than the project.
 
 | Scene | Starts | Length |
 |---|---|---|
