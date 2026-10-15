@@ -3,8 +3,14 @@
 Adapted from somnus shared/llama.py: thinking is switched per endpoint (Qwen takes
 chat_template_kwargs, Gemma rejects it), and JSON is recovered defensively because reasoning
 models wrap their answer in <think>, cut it short, or repeat it.
+
+Tokenfactory's shared key is throttled (20 requests a minute per account, 8 concurrent): a 429 or a
+saturated gateway with a short Retry-After is retried, a long one is not, so the run falls back to its
+recording instead of keeping a judge waiting.
 """
+import asyncio
 import json
+import random
 import re
 import time
 from dataclasses import dataclass
@@ -12,6 +18,21 @@ from dataclasses import dataclass
 import httpx
 
 from .config import Endpoint
+
+RETRYABLE = {429, 502, 503}
+MAX_ATTEMPTS = 3
+MAX_WAIT_S = 5.0  # a per-minute limit answers Retry-After: 60, which is not worth waiting for in a demo
+
+
+def retry_wait(r: httpx.Response, attempt: int) -> float | None:
+    """Seconds to wait before retrying this answer, or None when it is final or not worth the wait."""
+    if r.status_code not in RETRYABLE or attempt >= MAX_ATTEMPTS:
+        return None
+    try:
+        wait = float(r.headers.get("retry-after", ""))
+    except ValueError:
+        wait = float(2 ** (attempt - 1))
+    return None if wait > MAX_WAIT_S else wait + random.uniform(0, 0.5)
 
 
 class LLMError(RuntimeError):
@@ -50,7 +71,12 @@ async def chat(
     t0 = time.perf_counter()
     try:
         async with httpx.AsyncClient(timeout=ep.timeout_s) as client:
-            r = await client.post(f"{ep.base_url}/chat/completions", json=payload, headers=headers)
+            for attempt in range(1, MAX_ATTEMPTS + 1):
+                r = await client.post(f"{ep.base_url}/chat/completions", json=payload, headers=headers)
+                wait = retry_wait(r, attempt)
+                if wait is None:
+                    break
+                await asyncio.sleep(wait)
     except httpx.HTTPError as e:
         raise LLMError(f"{ep.role}: {type(e).__name__}") from e
     seconds = time.perf_counter() - t0

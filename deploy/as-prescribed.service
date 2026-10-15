@@ -1,17 +1,20 @@
 # /etc/systemd/system/as-prescribed.service
-# The public demo on the ultragravel machine: replays the recorded runs (adr.ap.010), so no model
-# endpoint and no key are needed. Binds 127.0.0.1 only; the edge Worker reaches it over the
-# machine's Cloudflare tunnel (deploy/README.md). Nothing about a session is logged: no access log.
+# The public demo on the ultragravel machine: runs each case live on AMD Token Factory and compares it with
+# the run recorded on the clinic hardware; serves that recording when the cloud fails or misses the budget
+# (DECISIONS rows 22-23). Binds 127.0.0.1 only; the edge Worker reaches it over the machine's Cloudflare
+# tunnel (deploy/README.md). Nothing about a session is logged: no access log.
 [Unit]
-Description=As Prescribed public demo (recorded runs, synthetic data)
+Description=As Prescribed public demo (synthetic data)
 After=network.target
 
 [Service]
 Type=simple
 WorkingDirectory=/opt/as-prescribed/app
-Environment=AP_REPLAY=1
 Environment=AP_MODE=public
 Environment=PYTHONDONTWRITEBYTECODE=1
+# Endpoints, models, the live budget and the Token Factory key: root-only (0600), read by systemd before
+# the service drops to its ephemeral user. AP_REPLAY=1 there switches the demo back to replay only.
+EnvironmentFile=-/etc/as-prescribed/env
 ExecStart=/opt/as-prescribed/app/.venv/bin/uvicorn asprescribed.main:app --host 127.0.0.1 --port 8300 --no-access-log
 # The app only reads its checkout: an ephemeral user and a read-only system.
 DynamicUser=yes

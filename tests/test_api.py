@@ -1,5 +1,6 @@
 """The views' API with a fake LLM: session data, the streamed live replay and the prescription run
 with an injected error, as server-sent events."""
+import asyncio
 import json
 
 import pytest
@@ -91,6 +92,39 @@ def test_replay_mode_serves_the_recorded_run_and_names_its_gpus(client, monkeypa
     result = next(d for k, d in events(client.get("/api/sessions/S2/run").text) if k == "result")
     assert result["recorded"] and result["replay"] and result["recording"] == demo["recording"]
     assert [line["state"] for line in result["lines"]].count("conflict") == 1
+
+
+def test_a_cloud_run_is_compared_with_the_clinic_recording(client, monkeypatch):
+    monkeypatch.setenv("AP_MODE", "public")
+    monkeypatch.setenv("TOKENFACTORY_BASE_URL", "http://gen")
+    cloud = "AMD Radeon Cloud (Token Factory)"
+    assert client.get("/api/demo").json()["live"] == {"where": cloud, "generator": "gen", "falsifier": "fal"}
+    app.state.chat_fn = FakeLLM()
+    result = next(d for k, d in events(client.get("/api/sessions/S2/run").text) if k == "result")
+    assert result["models"]["where"] == cloud and not result.get("recorded")
+    c = result["clinic"]
+    assert c["recording"]["falsifier"]["gpu"] == "AMD Radeon RX 7900 XT"
+    assert c["recorded_states"] == {"supported": 4, "conflict": 1} and isinstance(c["same_states"], bool)
+    c = next(d for k, d in events(client.get("/api/sessions/S2/run", params={"injection": "E1"}).text)
+             if k == "result")["clinic"]
+    assert c["caught"] and c["recorded_caught"]
+    monkeypatch.setenv("AP_MODE", "local")  # a run on the clinic's own cards is not compared with itself
+    result = next(d for k, d in events(client.get("/api/sessions/S2/run").text) if k == "result")
+    assert result["clinic"] is None and result["models"]["where"] is None
+
+
+class SlowFake(FakeLLM):
+    async def __call__(self, ep, messages, **kw):
+        await asyncio.sleep(0.3)
+        return await super().__call__(ep, messages, **kw)
+
+
+def test_a_cloud_run_over_its_budget_serves_the_clinic_recording(client, monkeypatch):
+    monkeypatch.setenv("AP_LIVE_BUDGET_S", "0.2")
+    app.state.chat_fn = SlowFake()
+    result = next(d for k, d in events(client.get("/api/sessions/S2/run").text) if k == "result")
+    assert result["recorded"] and result["fallback"] == "slow" and result["budget_s"] == 0.2
+    assert result["recording"]["generator"]["gpu"] == "AMD Radeon AI PRO R9700"
 
 
 def test_every_recorded_run_was_made_on_the_models_its_label_names():

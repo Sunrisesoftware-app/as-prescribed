@@ -15,13 +15,14 @@ import asyncio
 import json
 import os
 import time
+from collections import Counter
 from dataclasses import asdict
 from pathlib import Path
 
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import StreamingResponse
 
-from .config import DATA_DIR, settings
+from .config import DATA_DIR, Settings, settings
 from .evaluation import INJECTIONS, injected_items, mutate_translation, observe
 from .extract import extract
 from .ingest import chunks, load_spans, session_path
@@ -70,10 +71,44 @@ def _describe(inj: dict) -> str:
     return f"{inj['item_id']}: " + ", ".join(f"{k} {v if v else 'removed'}" for k, v in inj["fields"].items())
 
 
+def budget() -> float | None:
+    """Seconds a live run may take after the visit before the recording is served instead (AP_LIVE_BUDGET_S;
+    unset or 0: no limit). A shared cloud endpoint under load took 36 s one evening and 176 s the next morning."""
+    v = float(os.getenv("AP_LIVE_BUDGET_S", "0") or 0)
+    return v if v > 0 else None
+
+
+def where(cfg: Settings) -> str | None:
+    """Where a live run's models run, for the page; None in local mode (the clinic's own cards)."""
+    tf = os.getenv("TOKENFACTORY_BASE_URL", "").rstrip("/")
+    if cfg.mode == "public" and tf and cfg.generator.base_url.startswith(tf):
+        return "AMD Radeon Cloud (Token Factory)"
+    return "a hosted endpoint" if cfg.mode == "public" else None
+
+
+def clinic(key: str, payload: dict) -> dict | None:
+    """The same case as recorded on the clinic hardware, against this cloud run: the line states, and for an
+    injected error whether each caught it. Only for a run that did not itself run on the clinic's cards."""
+    path = RECORDED / f"{key}.json"
+    if payload.get("models", {}).get("mode") != "public" or not path.is_file():
+        return None
+    rec = json.loads(path.read_text(encoding="utf-8"))
+    here, there = Counter(x["state"] for x in payload["lines"]), Counter(x["state"] for x in rec["lines"])
+    out = {"recording": recording(), "states": dict(here), "recorded_states": dict(there), "same_states": here == there}
+    if payload.get("injection") and rec.get("injection"):
+        out["caught"] = payload["injection"]["observation"]["detected"]
+        out["recorded_caught"] = rec["injection"]["observation"]["detected"]
+    return out
+
+
 @router.get("/demo")
 def demo() -> dict:
-    """What the page says before any run: whether this server only replays recorded runs, and their origin."""
-    return {"replay": os.getenv("AP_REPLAY") == "1", "recording": recording()}
+    """What the page says before any run: whether this server replays recorded runs or runs live (and where),
+    and where the recordings were made."""
+    replay, cfg = os.getenv("AP_REPLAY") == "1", settings()
+    live = None if replay or not cfg.generator.configured else {
+        "where": where(cfg), "generator": cfg.generator.model, "falsifier": cfg.falsifier.model}
+    return {"replay": replay, "live": live, "recording": recording()}
 
 
 @router.get("/sessions")
@@ -111,7 +146,8 @@ def _payload(result: SessionResult, *, extra: dict) -> dict:
         "summary": result.summary(), "lines": [x.model_dump(mode="json") for x in result.lines],
         "heard_not_prescribed": [x.model_dump() for x in result.heard_not_prescribed],
         "rounds": [asdict(r) for r in result.rounds], "notes": result.notes,
-        "models": {"mode": cfg.mode, "generator": cfg.generator.model, "falsifier": cfg.falsifier.model},
+        "models": {"mode": cfg.mode, "generator": cfg.generator.model, "falsifier": cfg.falsifier.model,
+                   "where": where(cfg)},
         "tokens_per_s": {role: round(sorted(v)[len(v) // 2], 1) for role, v in tps.items() if v},
         "calls": {role: len(v) for role, v in result.calls.items()},
         **extra,
@@ -163,7 +199,7 @@ async def _drive(q: asyncio.Queue, request: Request, sid: str, mode: str, inject
                 await asyncio.sleep(min(2.0, (chunk[-1].ts - chunk[0].ts + 4) / speed))
                 for s in chunk:
                     await q.put(("span", s.model_dump()))
-        await q.put(("result", {**hit[1], "cached_at": hit[0]}))
+        await q.put(("result", {**hit[1], "cached_at": hit[0], "clinic": clinic(key, hit[1])}))
         return
 
     if _lock.locked():
@@ -193,12 +229,16 @@ async def _drive(q: asyncio.Queue, request: Request, sid: str, mode: str, inject
                         task = asyncio.create_task(run_extract(list(seen)))
                 t_last = time.perf_counter()
                 await q.put(("stage", {"stage": "visit_ended"}))
-                if task:
-                    await task
-                if done < len(seen):
-                    await run_extract(list(seen))
-                result = await run_session(sid, cfg.generator, cfg.falsifier, chat_fn=chat_fn, items=items,
-                                           on_event=emit)
+
+                async def after_visit():
+                    if task:
+                        await task
+                    if done < len(seen):
+                        await run_extract(list(seen))
+                    return await run_session(sid, cfg.generator, cfg.falsifier, chat_fn=chat_fn, items=items,
+                                             on_event=emit)
+
+                result = await asyncio.wait_for(after_visit(), budget())
                 payload = _payload(result, extra={"mode": mode,
                                                   "latency_after_last_chunk_s": round(time.perf_counter() - t_last, 1)})
             else:
@@ -213,28 +253,31 @@ async def _drive(q: asyncio.Queue, request: Request, sid: str, mode: str, inject
                         applied["value"] = new is not None
                         return new if new is not None else text
                 items = injected_items(run) if run else gold_items(sid)
-                result = await run_session(sid, cfg.generator, cfg.falsifier, chat_fn=chat_fn, items=items,
-                                           translation_hook=hook, on_event=emit)
+                result = await asyncio.wait_for(run_session(sid, cfg.generator, cfg.falsifier, chat_fn=chat_fn,
+                                                            items=items, translation_hook=hook, on_event=emit),
+                                                budget())
                 extra = {"mode": mode, "seconds": round(result.seconds, 1)}
                 if run:
                     obs, _ = observe(run, result, injected=applied["value"])
                     extra["injection"] = {"id": run["run"], "type": run["type"], "label": INJECTION_LABELS[run["type"]],
                                           "detail": _describe(run["injection"]), "observation": asdict(obs)}
                 payload = _payload(result, extra=extra)
-        except LLMError as e:
+        except (LLMError, TimeoutError) as e:
+            slow = isinstance(e, TimeoutError)
             recorded = RECORDED / f"{key}.json"
             if recorded.is_file():
                 await q.put(("result", {**json.loads(recorded.read_text(encoding="utf-8")), "recorded": True,
-                                        "recording": recording()}))
+                                        "recording": recording(), "fallback": "slow" if slow else "error",
+                                        "budget_s": budget()}))
             else:
-                await q.put(("failure", {"message": f"The model endpoint did not answer ({e}). No recorded run "
-                                                  "exists for this case."}))
+                why = f"did not finish within {budget():.0f} s" if slow else f"did not answer ({e})"
+                await q.put(("failure", {"message": f"The model endpoint {why}. No recorded run exists for this case."}))
             return
     _cache[key] = (time.time(), payload)
     if os.getenv("AP_RECORD") == "1":
         RECORDED.mkdir(exist_ok=True)
         Path(RECORDED / f"{key}.json").write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
-    await q.put(("result", payload))
+    await q.put(("result", {**payload, "clinic": clinic(key, payload)}))
 
 
 @router.get("/sessions/{sid}/run")

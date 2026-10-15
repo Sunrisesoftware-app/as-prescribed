@@ -40,13 +40,20 @@ async function getJSON(url) {
 async function init() {
   state.sessions = await getJSON("/api/sessions");
   const demo = await getJSON("/api/demo");
-  if (demo.replay && demo.recording) {
-    const r = demo.recording;
-    $("#replay-note").textContent = `This public demo runs no model: it replays real runs recorded on ${day(r.date)} `
-      + `on AMD Radeon GPUs, ${r.generator.name} on a ${r.generator.gpu.replace(/^AMD /, "")} drafting and `
+  const r = demo.recording;
+  const cards = r && `a ${r.generator.gpu.replace(/^AMD /, "")} and a ${r.falsifier.gpu.replace(/^AMD /, "")}`;
+  let note = "";
+  if (demo.replay && r) {
+    note = `This public demo runs no model: it replays real runs recorded on ${day(r.date)} on AMD Radeon GPUs, `
+      + `${r.generator.name} on a ${r.generator.gpu.replace(/^AMD /, "")} drafting and `
       + `${r.falsifier.name} on a ${r.falsifier.gpu.replace(/^AMD /, "")} checking.`;
-    $("#replay-note").hidden = false;
+  } else if (demo.live && demo.live.where && r) {
+    note = `Runs live on ${demo.live.where}: ${demo.live.generator} drafts, ${demo.live.falsifier} checks. `
+      + `Real patient data stays in the clinic, on the clinic's own AMD Radeon cards, so every run here is `
+      + `compared with the same case run on ${cards}.`;
   }
+  $("#replay-note").textContent = note;
+  $("#replay-note").hidden = !note;
   const seg = $("#sessions");
   for (const s of state.sessions) {
     const b = el("button", { type: "button", "aria-pressed": "false", text: `${s.id} · ${LANG[s.language]}`,
@@ -190,8 +197,32 @@ function recordedText(d) {
   const r = d.recording;
   const origin = r ? ` Recorded on ${day(r.date)}: ${r.generator.name} on an ${r.generator.gpu} drafted, `
     + `${r.falsifier.name} on an ${r.falsifier.gpu} checked (${r.runtime}).` : "";
-  return (d.replay ? "A recorded run, replayed: no model runs on this public demo."
-    : "The model endpoint did not answer: this is a recorded run, shown as recorded.") + origin;
+  const why = d.replay ? "A recorded run, replayed: no model runs on this public demo."
+    : d.fallback === "slow" ? `The cloud did not finish this case within ${d.budget_s} s (a shared endpoint under load), `
+      + "so this is the same case as recorded on the clinic hardware."
+    : "The model endpoint did not answer, so this is the same case as recorded, shown as recorded.";
+  return why + origin;
+}
+
+const countStates = (s) => Object.entries(s).map(([k, n]) => `${n} ${STATE_LABEL[k].split(":")[0].toLowerCase()}`).join(", ");
+
+// A live run, and how the same case went on the clinic hardware (the recording), said either way.
+function liveText(d) {
+  const parts = [];
+  if (d.models.where) parts.push(`Live on ${d.models.where}: ${d.models.generator} drafted, ${d.models.falsifier} checked.`);
+  if (d.cached_at) parts.push(`Served from a run at ${new Date(d.cached_at * 1000).toLocaleTimeString()} (identical case).`);
+  const c = d.clinic;
+  if (c && c.recording) {
+    const r = c.recording;
+    const there = `On the clinic hardware (${r.generator.gpu.replace(/^AMD /, "")} + ${r.falsifier.gpu.replace(/^AMD /, "")}, recorded ${day(r.date)})`;
+    parts.push(c.same_states ? `${there} the same case gave the same line states (${countStates(c.states)}).`
+      : `${there} the same case gave different line states: here ${countStates(c.states)}, there ${countStates(c.recorded_states)}.`);
+    if (c.caught !== undefined) {
+      parts.push(c.caught === c.recorded_caught ? `The injected error was ${c.caught ? "caught" : "missed"} in both places.`
+        : `The injected error was ${c.caught ? "caught here and missed there" : "missed here and caught there"}.`);
+    }
+  }
+  return parts.join(" ");
 }
 
 // The model name, with the GPU when this is a recorded run made on that model.
@@ -214,8 +245,8 @@ function renderResult() {
     ...d.summary.objections_per_round.map((n) => { const b = el("span"); b.style.height = `${Math.max(2, n * 5)}px`; return b; }));
   $("#facts").replaceChildren(...facts.map(([k, v]) => el("span", {}, `${k} `, el("b", { text: v }))),
     el("span", {}, "Objections per round ", bars, ` ${d.summary.objections_per_round.join(" → ")}`));
-  if (d.recorded) banner(d.replay ? "info" : "warn", recordedText(d));
-  else if (d.cached_at) banner("info", `Served from a run at ${new Date(d.cached_at * 1000).toLocaleTimeString()} (identical case).`);
+  if (d.recorded) banner(d.replay || d.fallback === "slow" ? "info" : "warn", recordedText(d));
+  else if (liveText(d)) banner("info", liveText(d));
   if (d.injection) renderInjection(d.injection);
   renderLines();
   const heard = d.heard_not_prescribed || [];
