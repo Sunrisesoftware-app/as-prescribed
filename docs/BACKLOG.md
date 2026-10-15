@@ -41,7 +41,8 @@ application URL. Judged on application of technology, presentation, business val
   (`scripts/video/`; script and workflow in [`submission/video.md`](submission/video.md)). A silent rough
   cut, 4:48 at 1080p, and one clip per scene are in `video/cut/` (not in git); `cut.json` gives each
   scene's start and length. Next:
-  1. The owner records the narration per scene (ElevenLabs or HeyGen) and returns one audio file per scene.
+  1. The owner records the narration per scene from [`submission/narration.md`](submission/narration.md)
+     (ElevenLabs or HeyGen) and returns one audio file per scene, `01.mp3`-`11.mp3`.
   2. Code fits the cut to the voice and joins it; captions are burned in or added by the owner.
   3. Optional: a cloud scene from the public demo, if Token Factory is quiet (scene 10 is slide 7 now).
 - **SUB-2** Slide deck: drafted, 11 slides, clinic first, as a Slides artifact in the owner's claude.ai
