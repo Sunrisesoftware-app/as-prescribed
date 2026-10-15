@@ -37,10 +37,11 @@ tags, cover image, video, slide presentation, public GitHub repository, demo app
 application URL. Judged on application of technology, presentation, business value, originality.
 "The AMD component must be part of the working product shown to the judges" (DECISIONS row 20).
 
-- **SUB-1** Demo video, at most 5 min and under 300 MB: a live run on the Somnus box with the GPUs'
-  load on screen (rocm-smi or the Somnus telemetry), S2 (the conflict), S3 (the proposal and the
-  traps), one injection caught and one missed, the patient sheet in Arabic, the evaluation table.
-  Needs the box (lease and Gemma per AS-PRESCRIBED-SOMNUS-BOKSI).
+- **SUB-1** Demo video, at most 5 min and under 300 MB, on Fri 16.10.: the script, the recording setup
+  and the box run are in [`submission/video.md`](submission/video.md). The live run is on the box with
+  the GPUs' load on screen. Scenes: S2 live (the conflict), S3 (the proposal), injections S2-F4 (caught)
+  and S2-B3 (missed), the Arabic sheet, the evaluation, the cloud demo. The owner records and narrates
+  or captions (P-4); Code runs the box and restores it.
 - **SUB-2** Slide deck: drafted, 11 slides, clinic first, as a Slides artifact in the owner's claude.ai
   ("As Prescribed: pitch deck"; speaker notes double as the video's narration). The owner reviews it
   and exports a PDF for the form (Share › Export).

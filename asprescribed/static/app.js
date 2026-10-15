@@ -47,6 +47,10 @@ async function init() {
     note = `This public demo runs no model: it replays real runs recorded on ${day(r.date)} on AMD Radeon GPUs, `
       + `${r.generator.name} on a ${r.generator.gpu.replace(/^AMD /, "")} drafting and `
       + `${r.falsifier.name} on a ${r.falsifier.gpu.replace(/^AMD /, "")} checking.`;
+  } else if (demo.live && demo.live.mode === "local") {
+    const named = (role) => (r && r[role].model === demo.live[role] ? `${r[role].name} on the ${r[role].gpu}` : demo.live[role]);
+    note = `Runs live on ${demo.live.where}: ${named("generator")} drafts, ${named("falsifier")} checks. `
+      + "Patient data never leaves this hardware.";
   } else if (demo.live && demo.live.where && r) {
     note = `Runs live on ${demo.live.where}: ${demo.live.generator} drafts, ${demo.live.falsifier} checks. `
       + `Real patient data stays in the clinic, on the clinic's own AMD Radeon cards, so every run here is `

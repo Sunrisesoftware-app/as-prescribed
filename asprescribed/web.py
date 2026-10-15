@@ -78,12 +78,12 @@ def budget() -> float | None:
     return v if v > 0 else None
 
 
-def where(cfg: Settings) -> str | None:
-    """Where a live run's models run, for the page; None in local mode (the clinic's own cards)."""
+def where(cfg: Settings) -> str:
+    """Where a live run's models run, for the page."""
+    if cfg.mode == "local":
+        return "the clinic’s own AMD Radeon GPUs (local mode)"
     tf = os.getenv("TOKENFACTORY_BASE_URL", "").rstrip("/")
-    if cfg.mode == "public" and tf and cfg.generator.base_url.startswith(tf):
-        return "AMD Radeon Cloud (Token Factory)"
-    return "a hosted endpoint" if cfg.mode == "public" else None
+    return "AMD Radeon Cloud (Token Factory)" if tf and cfg.generator.base_url.startswith(tf) else "a hosted endpoint"
 
 
 def clinic(key: str, payload: dict) -> dict | None:
@@ -107,7 +107,7 @@ def demo() -> dict:
     and where the recordings were made."""
     replay, cfg = os.getenv("AP_REPLAY") == "1", settings()
     live = None if replay or not cfg.generator.configured else {
-        "where": where(cfg), "generator": cfg.generator.model, "falsifier": cfg.falsifier.model}
+        "mode": cfg.mode, "where": where(cfg), "generator": cfg.generator.model, "falsifier": cfg.falsifier.model}
     return {"replay": replay, "live": live, "recording": recording()}
 
 

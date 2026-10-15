@@ -28,6 +28,10 @@ do not copy it here.
   speaker notes. The cover image is [`submission/cover.png`](submission/cover.png), 1920×1080,
   rendered from `cover.html` with headless Edge. It carries an Arabic and a Ukrainian line from the
   recorded clinic runs whose back-translations matched.
+- The video's script, recording setup and box run: [`submission/video.md`](submission/video.md). The
+  injections come from the recordings: S2-F4 (Ukrainian left/right swap, caught by the falsifier) and
+  S2-B3 (the bridge on the wrong side, missed). In local mode the desk's header now names the clinic's
+  Radeon GPUs and the models on them, so the video shows where it runs.
 
 **Measured:**
 - Token Factory is much slower in the morning. S2 prescription took 36 s at 21:30 EEST on 14.10. and

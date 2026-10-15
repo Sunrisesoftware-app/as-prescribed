@@ -51,7 +51,7 @@
     "scope": [
       "SUB-2 slides and SUB-3 cover, clinic-first",
       "SUB-4 texts after the owner's review",
-      "SUB-1 the video on Fri 16.10. (box lease, Gemma, GPU load on screen)",
+      "SUB-1 the video on Fri 16.10. per docs/submission/video.md (box lease, Gemma, GPU load on screen)",
       "Optional: DEPLOY-5 cache warming at a quiet hour"
     ],
     "gate": "A complete draft of every submission item by the end of Fri 16.10.; submitted on Sat 17.10., before Sun 18.10.2026 13:00 EEST at the latest",

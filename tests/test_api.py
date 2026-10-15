@@ -98,7 +98,8 @@ def test_a_cloud_run_is_compared_with_the_clinic_recording(client, monkeypatch):
     monkeypatch.setenv("AP_MODE", "public")
     monkeypatch.setenv("TOKENFACTORY_BASE_URL", "http://gen")
     cloud = "AMD Radeon Cloud (Token Factory)"
-    assert client.get("/api/demo").json()["live"] == {"where": cloud, "generator": "gen", "falsifier": "fal"}
+    assert client.get("/api/demo").json()["live"] == {"mode": "public", "where": cloud, "generator": "gen",
+                                                      "falsifier": "fal"}
     app.state.chat_fn = FakeLLM()
     result = next(d for k, d in events(client.get("/api/sessions/S2/run").text) if k == "result")
     assert result["models"]["where"] == cloud and not result.get("recorded")
@@ -110,7 +111,7 @@ def test_a_cloud_run_is_compared_with_the_clinic_recording(client, monkeypatch):
     assert c["caught"] and c["recorded_caught"]
     monkeypatch.setenv("AP_MODE", "local")  # a run on the clinic's own cards is not compared with itself
     result = next(d for k, d in events(client.get("/api/sessions/S2/run").text) if k == "result")
-    assert result["clinic"] is None and result["models"]["where"] is None
+    assert result["clinic"] is None and result["models"]["where"].startswith("the clinic")
 
 
 class SlowFake(FakeLLM):
