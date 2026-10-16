@@ -34,8 +34,9 @@ do not copy it here.
 - The whitepaper entry is a new §5d (v0.1.6) in the somnus repository, not a row in §5c: §5c's table
   compares keyed derivation tasks by cost per key hit, and this is a different workload. It holds
   the clinic-against-cloud table (line states, time to a ready program, tok/s, Wh and cost), the
-  evaluation gates and what the comparison does not show. Committed as 9f265f9 on a somnus branch;
-  push and PR wait for the owner.
+  evaluation gates and what the comparison does not show. With the owner's permission it was pushed
+  as [Sunrisesoftware-app/somnus#206](https://github.com/Sunrisesoftware-app/somnus/pull/206)
+  (mergeable, docs only); the owner merges it after reading.
 - Checked while writing: the 304 Wh telemetry window (14:30-15:44 UTC on 14.10.) holds both evaluation
   runs (committed 14:57 and 15:24 UTC), so per scored run it is under 4 Wh, idle time included.
 

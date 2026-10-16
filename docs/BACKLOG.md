@@ -46,10 +46,11 @@ must keep answering until the results.
 
 ## REP: reporting
 
-- **REP-2** The whitepaper entry is written as a new §5d (v0.1.6) in the somnus repository: commit
-  9f265f9 on the branch `claude/whitepaper-as-prescribed` (worktree
-  `somnus/.claude/worktrees/wp-as-prescribed`). Pushing it and opening the PR wait for the owner's
-  permission (the somnus rule).
+- **REP-2** (the owner) Read and merge the whitepaper PR
+  [Sunrisesoftware-app/somnus#206](https://github.com/Sunrisesoftware-app/somnus/pull/206): a new §5d
+  (v0.1.6), branch `claude/whitepaper-as-prescribed`, worktree `somnus/.claude/worktrees/wp-as-prescribed`.
+  After the merge: `git -C E:/projects/sunrisesoftware/somnus pull --ff-only`, and the branch and
+  worktree can go (with the owner's permission).
 - **REP-5** The Atlas model's system description of `as-prescribed` still says the public demo is
   planned behind nginx and not deployed (14.10.2026); rewrite it in the next Atlas PR (live on
   Token Factory, clinic recordings as fallback, the edge in `ap.edge`).
