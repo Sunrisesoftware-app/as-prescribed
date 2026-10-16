@@ -15,9 +15,7 @@ Updated 16.10.2026 (session 4: submitted on lablab).
 
 ## P: the owner's own actions
 
-- **P-6** Permission to remove the merged somnus branch `claude/whitepaper-as-prescribed` (local and
-  on GitHub) and its worktree `somnus/.claude/worktrees/wp-as-prescribed` (the somnus rule: merged
-  branches go with the owner's permission).
+Nothing open.
 
 ## DEPLOY
 

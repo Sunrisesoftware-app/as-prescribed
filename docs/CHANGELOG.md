@@ -37,7 +37,9 @@ do not copy it here.
   evaluation gates and what the comparison does not show. With the owner's permission it was pushed
   as [Sunrisesoftware-app/somnus#206](https://github.com/Sunrisesoftware-app/somnus/pull/206)
   (mergeable, docs only). The owner merged it after reading (2576829, 16.10. 16.51 EEST), and the
-  somnus main folder was pulled to it.
+  somnus main folder was pulled to it. With the owner's permission the merged branch was deleted
+  locally and on GitHub and its worktree removed, after checking that main holds the branch's content
+  unchanged.
 - Checked while writing: the 304 Wh telemetry window (14:30-15:44 UTC on 14.10.) holds both evaluation
   runs (committed 14:57 and 15:24 UTC), so per scored run it is under 4 Wh, idle time included.
 

@@ -48,7 +48,6 @@
       "Atlas AMD-ACT3-HEALTH-RAPORTTI"
     ],
     "scope": [
-      "P-6: with the owner's permission remove the merged somnus branch claude/whitepaper-as-prescribed and its worktree",
       "REP-5: the Atlas model's system description of as-prescribed, in the next Atlas PR",
       "Check the public demo answers while judging is in progress",
       "Optional: DEPLOY-5 cache warming (the owner declined it on 16.10.)"
