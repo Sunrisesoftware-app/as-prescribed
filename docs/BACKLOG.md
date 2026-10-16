@@ -46,10 +46,10 @@ must keep answering until the results.
 
 ## REP: reporting
 
-- **REP-1** `AMD-ACT3-HEALTH-RAPORTTI` in Atlas (tehty / kesken / ehdotettu / avoin).
-- **REP-2** The whitepaper §5c entry: R9700 + 7900 XT against tokenfactory (tok/s, Wh), when the
-  tokenfactory comparison exists, otherwise the local numbers alone.
-- **REP-3** What carries over to Since AI Turku (6.-8.11.2026).
+- **REP-2** The whitepaper entry is written as a new §5d (v0.1.6) in the somnus repository: commit
+  9f265f9 on the branch `claude/whitepaper-as-prescribed` (worktree
+  `somnus/.claude/worktrees/wp-as-prescribed`). Pushing it and opening the PR wait for the owner's
+  permission (the somnus rule).
 - **REP-5** The Atlas model's system description of `as-prescribed` still says the public demo is
   planned behind nginx and not deployed (14.10.2026); rewrite it in the next Atlas PR (live on
   Token Factory, clinic recordings as fallback, the edge in `ap.edge`).

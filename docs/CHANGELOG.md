@@ -26,6 +26,19 @@ do not copy it here.
 - A public S2 run at 16.20 missed the 90 s budget and served the clinic recording, labelled
   (`fallback: slow`).
 
+**Reporting (after the submit; the owner chose reporting over cache warming):**
+- `AMD-ACT3-HEALTH-RAPORTTI` v1 in Atlas answers the handoff's section 10. It covers what was built,
+  the evaluation against the pre-registration, the clinic against the cloud, the submission, the
+  whitepaper, what carries over to Since AI Turku and what is open. Each line is marked tehty,
+  kesken, ehdotettu or avoin.
+- The whitepaper entry is a new §5d (v0.1.6) in the somnus repository, not a row in §5c: §5c's table
+  compares keyed derivation tasks by cost per key hit, and this is a different workload. It holds
+  the clinic-against-cloud table (line states, time to a ready program, tok/s, Wh and cost), the
+  evaluation gates and what the comparison does not show. Committed as 9f265f9 on a somnus branch;
+  push and PR wait for the owner.
+- Checked while writing: the 304 Wh telemetry window (14:30-15:44 UTC on 14.10.) holds both evaluation
+  runs (committed 14:57 and 15:24 UTC), so per scored run it is under 4 Wh, idle time included.
+
 ## Session 3, 15.10.2026: the public demo runs live on AMD's cloud, the clinic first
 
 **Decided (the owner):**
