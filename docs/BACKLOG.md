@@ -15,7 +15,9 @@ Updated 16.10.2026 (session 4: submitted on lablab).
 
 ## P: the owner's own actions
 
-Nothing open (P-5, the deadline question, lapsed with the submission on 16.10.).
+- **P-6** Permission to remove the merged somnus branch `claude/whitepaper-as-prescribed` (local and
+  on GitHub) and its worktree `somnus/.claude/worktrees/wp-as-prescribed` (the somnus rule: merged
+  branches go with the owner's permission).
 
 ## DEPLOY
 
@@ -46,11 +48,6 @@ must keep answering until the results.
 
 ## REP: reporting
 
-- **REP-2** (the owner) Read and merge the whitepaper PR
-  [Sunrisesoftware-app/somnus#206](https://github.com/Sunrisesoftware-app/somnus/pull/206): a new §5d
-  (v0.1.6), branch `claude/whitepaper-as-prescribed`, worktree `somnus/.claude/worktrees/wp-as-prescribed`.
-  After the merge: `git -C E:/projects/sunrisesoftware/somnus pull --ff-only`, and the branch and
-  worktree can go (with the owner's permission).
 - **REP-5** The Atlas model's system description of `as-prescribed` still says the public demo is
   planned behind nginx and not deployed (14.10.2026); rewrite it in the next Atlas PR (live on
   Token Factory, clinic recordings as fallback, the edge in `ap.edge`).
