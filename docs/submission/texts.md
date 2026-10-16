@@ -1,69 +1,83 @@
-# As Prescribed: submission texts (draft for the owner, not yet submitted)
+# As Prescribed: submission texts (submitted on lablab 16.10.2026)
 
-## Title
+The texts exactly as submitted. The form limits them (title 50, short 255, long 2000 characters), so they
+are shorter than the first draft, which is in git history before this file's submission commit.
 
-As Prescribed: the home program, verified line by line
+Project page: https://lablab.ai/ai-hackathons/amd-developer-hackathon-act-iii/as-prescribed/as-prescribed-home-programs-verified-line-by-line
 
-## Short description
+## Title (50 / 50)
 
-During a physiotherapy visit, As Prescribed turns the session into the patient's home program in their
-own language (Arabic, Ukrainian) and verifies every line against what the therapist said, the patient's
-documented restrictions and a back-translation. In the clinic on AMD Radeon; to try, on AMD Radeon Cloud.
+As Prescribed: home programs verified line by line
 
-## Long description
+## Short description (233 / 255)
 
-**The problem.** A patient who does not speak the clinic's language leaves a physiotherapy visit with a
-home program they cannot read, or with a translation nobody in the room can check. A wrong side, a
-wrong dose or a dropped caution is a safety problem, and a free-writing AI makes it worse: it adds
-plausible exercises nobody prescribed.
+As Prescribed turns a physiotherapy visit into the patient's home program in their own language and
+verifies every line against the transcript, documented restrictions and a back-translation. Runs on the
+clinic's own AMD Radeon GPUs.
 
-**The user.** The physiotherapist, who prescribes, and the patient, who goes home with the program.
-Nothing reaches the patient until the therapist approves it.
+## Long description (1930 / 2000)
 
-**What it does.** As Prescribed reads the session transcript as it arrives and extracts what the
-therapist prescribed. When the visit ends it has drafted the program in the patient's language, and
-every line is in one of four states:
-- *supported*: linked to the transcript span where it was said;
-- *conflict*: a documented restriction blocks it, and the program halts for the therapist;
-- *proposal*: nothing in the session says it, so only the therapist sees it;
-- *uncertain translation*: the back-translation disagrees.
+The form keeps the paragraph breaks below; the public project page shows them as one paragraph.
 
-It verifies the therapist's prescription; it never diagnoses, never judges suitability and never adds
-advice of its own.
+The problem: a patient who does not speak the clinic's language leaves a physiotherapy visit with a home
+program they cannot read, or with a translation nobody in the room can check. A wrong side, a wrong dose
+or a dropped caution can hurt them, and a free-writing AI adds exercises nobody prescribed.
 
-**How.** Safety does not rest on a model. Documented restrictions are rules that a deterministic engine
-checks, and a fired restriction stays a conflict whatever a model does afterwards. A generator drafts
-and translates. A falsifier from a different model family checks every line against the transcript and
-back-translates it, in rounds, and a correction may never change the exercise.
+What it does: As Prescribed reads the visit transcript as it arrives, extracts what the therapist
+prescribed and drafts the program in the patient's language (Arabic and Ukrainian in the demo). Every
+line is supported (linked to where it was said), a conflict (a documented restriction blocks it and the
+program halts), a proposal (only the therapist can complete it) or an uncertain translation. Nothing
+reaches the patient until the therapist approves it. It verifies the prescription; it never diagnoses or
+advises.
 
-**On AMD.** Real patient data does not leave the clinic. The product runs on the clinic's own AMD Radeon
-cards: Qwen3.5-35B-A3B on a Radeon AI PRO R9700 drafts, and Gemma 3 12B on a Radeon RX 7900 XT checks,
-both on llama.cpp with ROCm. The program is ready about 40 s after the visit, and the whole evaluation
-used 304 Wh. Judges can try the same pipeline live on AMD Radeon Cloud (Token Factory), and each cloud
-run is compared on the page with the same case run on the clinic hardware. In our trial all six clean
-cases gave the same line states in both places.
+How: safety does not rest on a model. Documented restrictions are deterministic rules, a fired
+restriction stays a conflict, and a line the rules cannot check is never supported. A generator drafts
+and translates; a falsifier from another model family checks every line against the transcript and
+back-translates it.
 
-**Measured, and reported as it fell.** We sealed an evaluation plan before the first run: 32 injected
-errors of six types (wrong dose, wrong side, invented exercise, dropped caution, contraindicated
-exercise, mistranslation into Arabic or Ukrainian) and 9 clean runs.
-- The deterministic layer caught all 14 errors it is meant to catch, and every contraindicated item.
-- The model falsifier caught 28 % of the errors only a model can find in the pre-registered run, and
-  50 % after fixes (that run was made after reading the first, and is labelled so).
-- False alarms fell from 16 % to 7 %.
+On AMD: real patient data cannot leave the clinic, so the product runs on the clinic's own AMD Radeon
+GPUs: Qwen3.5-35B-A3B on a Radeon AI PRO R9700 drafts, Gemma 3 12B on a Radeon RX 7900 XT checks, on
+llama.cpp with ROCm. A program is ready about 40 s after the visit, and our whole evaluation used
+304 Wh. Judges can try the same pipeline live on AMD Radeon Cloud (Token Factory); each cloud run is
+compared with the same case on the clinic hardware.
 
-The recall gate failed in both runs, and we say so.
+Measured, and reported as it fell: a sealed evaluation of 32 injected errors and 9 clean runs. The
+rules caught every documented restriction; the falsifier caught 28% of the model-only errors in the
+pre-registered run and 50% after fixes; false alarms fell from 16% to 7%. The recall gate failed, and
+we say so. All data is synthetic.
 
-**What is next.** Real speech input, more languages, a native-speaker review of every fixed text, a
-stronger falsifier, and a new sealed evaluation on new sessions. All data in the demo is synthetic.
+## Participation, categories, track, technologies
 
-## Track and tags
+- Participation mode: Online.
+- Categories: Healthcare, Language and Translation.
+- Event track: Health and Wellbeing.
+- Technologies: AMD Developer Cloud, AMD ROCm, Gemma, Qwen3. The form's list has no llama.cpp, FastAPI
+  or Cloudflare (only Cloudflare Workers AI, which we do not use); the additional information names
+  them.
 
-Track: Health and Wellbeing. Technologies: AMD ROCm, AMD Radeon, AMD Developer Cloud (Token Factory),
-Gemma, Qwen3, llama.cpp, FastAPI, Cloudflare.
+## Media
 
-## Links
+- Cover image: [`cover.png`](cover.png), cropped in the form to the whole image.
+- Video: the captioned final cut (4:23, 15.9 MB), uploaded by the owner.
+- Slides: [`deck.pdf`](deck.pdf).
 
-- Demo: https://asprescribed.sunrisesoftware.app
-- Repository: https://github.com/Sunrisesoftware-app/as-prescribed
-- Demo application platform: self-hosted (a systemd service behind Cloudflare); models on AMD Radeon
-  Cloud and on on-prem AMD Radeon GPUs
+## Application
+
+- GitHub repository: https://github.com/Sunrisesoftware-app/as-prescribed
+- Demo application platform: Other (the form's choices are Streamlit, Replit, Vercel, native.builder,
+  Other, with no field to name it).
+- Demo application URL: https://asprescribed.sunrisesoftware.app
+
+## Additional information (804 / 2000)
+
+Platform: self-hosted. A FastAPI service on our own server behind a Cloudflare Worker (Workers VPC over
+a tunnel). Built with llama.cpp, FastAPI and Cloudflare, which the technology list did not offer.
+
+The live demo runs each synthetic case on AMD Radeon Cloud (Token Factory: Qwen3.8-27B drafts,
+Gemma-4-31B-IT checks) and shows the same case recorded on the clinic hardware (Radeon AI PRO R9700 and
+Radeon RX 7900 XT, llama.cpp with ROCm) beside it. If the cloud run passes 90 s or a model is
+unavailable, the page serves that clinic recording and labels it as such. The demo takes no free-text
+input and logs nothing about a session; all data is synthetic.
+
+The code is MIT. The sealed evaluation plan, its seal, the results and the raw runs are in eval/; the
+architecture decisions are in docs/adr/.

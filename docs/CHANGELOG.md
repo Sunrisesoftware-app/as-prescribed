@@ -5,6 +5,27 @@ sub-entries. What changed and *why*, with what was measured, so a later reader c
 decision from a habit. The canonical state is [`BUILD_INFO.json`](BUILD_INFO.json): refer to it,
 do not copy it here.
 
+## Session 4, 16.10.2026: submitted on lablab
+
+**Done:**
+- The project was submitted on lablab on Fri 16.10. at about 16.15 EEST, filled in together with the
+  owner in the owner's Chrome. The owner uploaded the video and confirmed the submit. The project page
+  is https://lablab.ai/ai-hackathons/amd-developer-hackathon-act-iii/as-prescribed/as-prescribed-home-programs-verified-line-by-line
+  and says judging is in progress.
+- The form's limits (title 50, short 255, long 2000 characters) needed shorter texts.
+  [`submission/texts.md`](submission/texts.md) now holds exactly what was submitted: categories,
+  track, technologies, media, links and the additional information.
+- The form's technology list has no llama.cpp, FastAPI or Cloudflare, and its platform list has no
+  self-hosted choice. The platform is "Other", and the additional information names them.
+- The project page was checked after the submit. It shows the video (4:23), the deck, the repository,
+  the demo URL, the tags and the track. The long description shows without its paragraph breaks.
+
+**Measured:**
+- Token Factory's Gemma-4-31B-IT answered "no_available_workers" at 12.54 EEST and answered again at
+  16.19 (7.2 s for a short request).
+- A public S2 run at 16.20 missed the 90 s budget and served the clinic recording, labelled
+  (`fallback: slow`).
+
 ## Session 3, 15.10.2026: the public demo runs live on AMD's cloud, the clinic first
 
 **Decided (the owner):**
