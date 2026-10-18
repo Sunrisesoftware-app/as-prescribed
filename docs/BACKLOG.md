@@ -11,11 +11,15 @@ before listing a row as open, verify it is not already done (an uncertain row is
 Codes: **P** the owner's own actions · **DEPLOY** the public demo · **SUB** the submission ·
 **DEMO** the demo itself · **REP** reporting.
 
-Updated 16.10.2026 (session 4: submitted on lablab).
+Updated 18.10.2026 (session 4: submitted on lablab; where the entries live, DECISIONS row 25).
 
 ## P: the owner's own actions
 
-Nothing open.
+- **P-7** After Since AI Turku (6.-8.11.2026): move this checkout to
+  `E:\projects\sunrisesoftware\hackathons\as-prescribed` (DECISIONS row 25). With the move: carry the
+  Claude Code project memory over (it is keyed by the folder path), update the paths in
+  `BUILD_INFO.json` and the memory, and trim `CLAUDE.md` to this entry's own facts now that
+  `hackathons\CLAUDE.md` holds the shared practice.
 
 ## DEPLOY
 
